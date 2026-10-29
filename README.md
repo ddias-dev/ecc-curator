@@ -138,12 +138,35 @@ Every piece of information must justify its existence.
 
 ## Documentation
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [Roadmap](docs/ROADMAP.md)
-- [Decision Model](docs/DECISIONS.md)
-- [Context Model](docs/CONTEXT_MODEL.md)
-- [Jev Integration](docs/JEV_INTEGRATION.md)
-- [Evaluation Framework](docs/EVALUATION.md)
+### Getting Started
+
+- [Architecture](docs/ARCHITECTURE.md) — System architecture, governance model, and component design
+- [Configuration](docs/CONFIGURATION.md) — Configuration reference, policies, profiles, and provider settings
+- [Roadmap](docs/ROADMAP.md) — Project milestones, phases, and long-term vision
+
+### Core Concepts
+
+- [Context Model](docs/CONTEXT_MODEL.md) — Context inventory, context items, lifecycle, and governance states
+- [Decision Records](docs/DECISIONS.md) — Architecture Decision Records (ADRs) and design rationale
+- [Evaluation Framework](docs/EVALUATION.md) — Benchmarks, metrics, and success criteria
+
+### Extensions
+
+- [Plugin API](docs/PLUGIN_API.md) — Plugin interfaces, providers, and extension model
+- [Jev Integration](docs/JEV_INTEGRATION.md) — Decision intelligence architecture and Jev provider integration
+
+### Reading Order
+
+If you're new to ECC Curator, we recommend the following order:
+
+1. [Architecture](docs/ARCHITECTURE.md)
+2. [Context Model](docs/CONTEXT_MODEL.md)
+3. [Decision Records](docs/DECISIONS.md)
+4. [Configuration](docs/CONFIGURATION.md)
+5. [Plugin API](docs/PLUGIN_API.md)
+6. [Jev Integration](docs/JEV_INTEGRATION.md)
+7. [Evaluation Framework](docs/EVALUATION.md)
+8. [Roadmap](docs/ROADMAP.md)
 
 ---
 
