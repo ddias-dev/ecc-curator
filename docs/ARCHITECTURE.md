@@ -1,461 +1,372 @@
-# ECC Curator Architecture
+# Architecture
 
-> Curating context for intelligent agents operating under finite attention and context constraints.
+> ECC Curator is a context governance engine that helps AI agents maximise reasoning value within finite context windows.
 
-## Overview
+Unlike traditional token-optimisation tools that focus exclusively on compression, ECC Curator focuses on **attention allocation**.
 
-ECC Curator is a context governance engine that sits between an AI agent and a language model.
-
-Its purpose is not to generate responses, store memories, or orchestrate workflows.
-
-Its sole responsibility is to determine what information should enter the model's context window.
-
-```text
-Agent
-  │
-  ▼
-ECC Curator
-  │
-  ▼
-LLM
-```
-
-## Design Philosophy
-
-Most agent frameworks assume that more context improves reasoning.
-
-ECC Curator is built on the opposite assumption:
-
-> Beyond a certain threshold, additional context contributes more noise than reasoning value.
-
-As context grows:
-
-- signal density decreases
-- token consumption increases
-- latency increases
-- reasoning quality degrades
-- context limits are reached
-
-ECC Curator exists to maximise information density within a finite context budget.
-
-For every piece of context:
-
-```text
-KEEP
-COMPRESS
-DROP
-```
-
-must be treated as an explicit architectural decision.
+Its primary responsibility is deciding what deserves space inside a model's context window.
 
 ---
 
-# Why ECC Curator Exists
+# Design Principles
 
-```mermaid
-flowchart TB
+## Governance Before Compression
 
-    subgraph Before
-        A["Agent"]
-        B["48000 Tokens"]
-        C["Context Explosion"]
-        D["Max Tokens Error"]
+Compression is a strategy.
 
-        A --> B
-        B --> C
-        C --> D
-    end
+Governance is the decision.
 
-    subgraph After
-        E["Agent"]
-        F["48000 Tokens"]
-        G["ECC Curator"]
-        H["12000 Tokens"]
-        I["Higher Signal Density"]
+Before optimising information, ECC Curator first determines whether the information should remain in the context at all.
 
-        E --> F
-        F --> G
-        G --> H
-        H --> I
-    end
+```text
+Information
+    ↓
+Governance
+    ↓
+Keep
+Compress
+Transform
+Drop
 ```
 
 ---
 
-# High-Level Architecture
+## Finite Context Is A Resource
+
+Every model operates within a finite context window.
+
+Each token has an opportunity cost.
+
+Adding information to a prompt should be treated as an investment decision.
+
+```text
+More Context
+≠
+Better Context
+```
+
+ECC Curator aims to maximise:
+
+```text
+Reasoning Value
+────────────────
+Token Cost
+```
+
+---
+
+## Context As A Portfolio
+
+ECC Curator treats context as a managed portfolio rather than an unbounded conversation history.
+
+Every item consumes budget.
+
+Every item must justify its existence.
+
+Example:
+
+```text
+Current Goal       High Value
+Current Task       High Value
+Active File        High Value
+
+Historical Plan    Medium Value
+
+Terminal Noise     Low Value
+```
+
+Limited budget should flow toward the highest-value context.
+
+---
+
+# System Overview
 
 ```mermaid
 flowchart TB
 
     Agent["Agent Runtime"]
-    Collector["Context Collector"]
+
     Inventory["Context Inventory"]
 
     Budget["Budget Manager"]
     Rules["Rule Engine"]
     Scorer["Context Scorer"]
 
+    Decision["Governor"]
+
     Keep["Keep"]
     Compress["Compress"]
+    Transform["Transform"]
     Drop["Drop"]
 
-    Compressor["Compression Engine"]
+    Compressor["Compression Adapter"]
+
     Assembler["Prompt Assembler"]
 
     LLM["Language Model"]
-    Response["Model Response"]
 
-    Memory["Memory Manager"]
-
-    Jev["Optional Jev Adapter"]
-
-    Agent --> Collector
-    Collector --> Inventory
+    Agent --> Inventory
 
     Inventory --> Budget
     Inventory --> Rules
     Inventory --> Scorer
 
-    Budget --> Keep
-    Budget --> Compress
-    Budget --> Drop
+    Budget --> Decision
+    Rules --> Decision
+    Scorer --> Decision
 
-    Rules --> Keep
-    Rules --> Compress
-    Rules --> Drop
-
-    Scorer --> Keep
-    Scorer --> Compress
-    Scorer --> Drop
+    Decision --> Keep
+    Decision --> Compress
+    Decision --> Transform
+    Decision --> Drop
 
     Compress --> Compressor
+    Transform --> Compressor
 
     Keep --> Assembler
     Compressor --> Assembler
 
     Assembler --> LLM
-
-    LLM --> Response
-
-    Response --> Memory
-    Memory --> Inventory
-
-    Jev --> Scorer
-    Jev --> Memory
 ```
 
 ---
 
 # Context Lifecycle
 
-Every context item moves through the same pipeline.
+Every piece of context follows the same lifecycle.
 
 ```mermaid
 flowchart LR
 
-    Raw["Raw Context
-48000 Tokens"]
+    Raw["Raw Context"]
 
-    Score["Classify and Score"]
+    Classify["Classify"]
+
+    Score["Score"]
+
+    Govern["Govern"]
 
     Keep["Keep"]
-
     Compress["Compress"]
-
+    Transform["Transform"]
     Drop["Drop"]
 
-    Final["Curated Context
-12000 Tokens"]
+    Final["Curated Context"]
 
-    Raw --> Score
+    Raw --> Classify
+    Classify --> Score
+    Score --> Govern
 
-    Score --> Keep
-    Score --> Compress
-    Score --> Drop
+    Govern --> Keep
+    Govern --> Compress
+    Govern --> Transform
+    Govern --> Drop
 
     Keep --> Final
     Compress --> Final
+    Transform --> Final
 ```
 
 ---
 
 # Core Components
 
-## Context Collector
+## Context Inventory
 
-Responsible for gathering available information from the agent runtime.
+The Context Inventory contains everything the agent could potentially send to a model.
 
 Examples:
 
-- conversation history
-- task plans
+- goals
+- tasks
 - memories
+- plans
 - tool outputs
-- terminal logs
-- test results
+- logs
 - source files
-- git diffs
+- diffs
+- retrieved content
 
-Output:
-
-```typescript
-ContextItem[]
-```
-
----
-
-## Context Inventory
-
-Central working set representing all currently available context.
-
-The inventory tracks:
-
-- token estimates
-- age
-- source
-- priority
-- references
-- compression status
-
-The inventory does not decide what to keep.
-
-It only maintains metadata.
+The inventory is the source of truth for context governance.
 
 ---
 
 ## Budget Manager
 
-Responsible for enforcing hard context limits.
+Responsible for enforcing context limits.
 
 Example:
 
 ```yaml
-model_context: 64000
+context_window: 64000
 
-reserved_for_output: 8000
+output_reserve: 8000
 
-max_prompt_budget: 56000
+working_budget: 56000
 ```
 
-The Budget Manager guarantees that the assembled prompt never exceeds the allowed budget.
+The Budget Manager guarantees the final prompt remains within budget.
 
 ---
 
 ## Rule Engine
 
-Applies deterministic decisions.
+Provides deterministic governance.
 
-Examples:
+Example rules:
 
 ```yaml
 terminal_output:
   ttl_turns: 3
 
-test_output:
-  compress_after: 1
-
 completed_tasks:
   drop_after: 5
+
+test_output:
+  compress_after: 1
 ```
 
 Advantages:
 
-- fast
+- predictable
 - explainable
-- deterministic
-- no model dependency
+- fast
+- model-independent
 
 ---
 
 ## Context Scorer
 
-Evaluates reasoning value.
+Assigns a reasoning-value score to each item.
 
-Typical signals:
-
-- recency
-- relevance
-- references
-- task association
-- source type
-- user importance
-
-Output:
-
-```typescript
-importance: 0.0 -> 1.0
-```
-
-Examples:
+Example:
 
 ```text
-Current Goal       1.00
-Current Task       0.95
-Active File        0.90
+Current Goal      1.00
+Current Task      0.95
+Current File      0.92
 
-Recent Diff        0.80
+Recent Plan       0.50
 
-Historical Plan    0.40
-
-Terminal Noise     0.10
+Terminal Noise    0.10
 ```
+
+Scores influence budget allocation and strategy selection.
 
 ---
 
-## Compression Engine
+## Governor
 
-Reduces token footprint while retaining information value.
+The Governor is the central decision-making component.
 
-Examples:
+For every context item it chooses:
 
 ```text
-Raw
-  ↓
-Summarised
-
-or
-
-Verbose
-  ↓
-Structured
-
-or
-
-Large
-  ↓
-Extracted Findings
+KEEP
+COMPRESS
+TRANSFORM
+DROP
 ```
 
-Compression is used only when information still has value.
+This component embodies the ECC Curation Principle.
 
 ---
 
-## Memory Manager
+## Compression Adapter
 
-Maintains long-lived information across agent iterations.
+Compression is intentionally pluggable.
 
-Responsibilities:
+ECC Curator does not aim to replace specialised optimisation engines.
 
-- retention policies
-- memory ageing
-- memory promotion
-- memory eviction
+Instead it orchestrates them.
 
-The memory manager determines what remains available for future curation cycles.
+Potential integrations include:
+
+| Project | Purpose |
+|----------|----------|
+| RTK | Tool output compression |
+| Caveman | Natural language compression |
+| LLMLingua | Prompt compression |
+| Troglodita | Token reduction |
+
+ECC Curator owns the decision.
+
+Optimisation engines execute the strategy.
 
 ---
 
-## Prompt Assembler
+# Ecosystem Positioning
 
-Produces the final prompt delivered to the model.
+```mermaid
+flowchart TB
 
-Responsibilities:
+    Inventory["Context Inventory"]
 
-- merge retained context
-- include compressed context
-- enforce token limits
-- preserve ordering guarantees
+    Governor["ECC Curator"]
 
-Output:
+    Keep["Keep"]
 
-```typescript
-Prompt
+    RTK["RTK"]
+    Caveman["Caveman"]
+    Lingua["LLMLingua"]
+    Troglodita["Troglodita"]
+
+    Drop["Drop"]
+
+    Final["Curated Context"]
+
+    Inventory --> Governor
+
+    Governor --> Keep
+    Governor --> RTK
+    Governor --> Caveman
+    Governor --> Lingua
+    Governor --> Troglodita
+    Governor --> Drop
+
+    Keep --> Final
+    RTK --> Final
+    Caveman --> Final
+    Lingua --> Final
+    Troglodita --> Final
 ```
 
 ---
 
-# Decision Flow
+# Future Decision Intelligence
+
+The initial architecture relies on:
 
 ```text
-Agent Creates Context
-          │
-          ▼
-Context Inventory
-          │
-          ▼
-Classify
-          │
-          ▼
-Score
-          │
-          ▼
-KEEP?
-COMPRESS?
-DROP?
-          │
-          ▼
-Prompt Assembly
-          │
-          ▼
-LLM Invocation
-```
-
----
-
-# Jev Integration
-
-Jev is optional.
-
-ECC Curator is intentionally designed to function without Jev.
-
-Phase 1 uses:
-
-```text
-Deterministic Rules
+Rules
++
+Budgets
 +
 Heuristic Scoring
 ```
 
-Phase 2 introduces:
+Future versions may introduce decision intelligence providers such as Jev.
 
-```text
-Jev Decision Intelligence
-```
-
-Potential Jev decisions:
+Potential decisions:
 
 ```text
 ContextRetentionDecision
-MemoryImportanceDecision
 CompressionDecision
+MemoryImportanceDecision
 RetryDecision
 ModelEscalationDecision
 ```
 
-ECC Curator owns governance.
+ECC Curator remains responsible for governance.
 
-Jev provides decision intelligence.
-
----
-
-# Future Architecture
-
-```text
-ECC Ecosystem
-
-ecc-curator
-    ↓
-Context Governance
-
-ecc-memory
-    ↓
-Persistent Knowledge
-
-ecc-router
-    ↓
-Model Governance
-
-ecc-harness
-    ↓
-Agent Orchestration
-```
-
-ECC Curator is intended to become the context layer for the broader ECC ecosystem.
+Decision engines provide additional reasoning capabilities.
 
 ---
 
 # Guiding Principle
 
-> The future of autonomous agents is not more context.
+> Compression makes context smaller.
 >
-> It is better context.
+> Governance makes context better.
+
+ECC Curator exists to ensure that the most valuable information reaches the model while everything else is compressed, transformed, or removed.
