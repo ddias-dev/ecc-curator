@@ -68,10 +68,10 @@ Many excellent projects optimise tokens:
 
 | Project | Focus |
 |----------|----------|
-| [RTK](https://github.com/rtk-ai/rtk){:target="_blank"} | Tool output compression |
-| [Caveman](https://github.com/JuliusBrussee/caveman){:target="_blank"} | Natural language compression |
-| [LLMLingua](https://github.com/microsoft/LLMLingua){:target="_blank"} | Prompt compression |
-| [Troglodita](https://github.com/leninejunior/troglodita){:target="_blank"} | Token reduction |
+| [RTK](https://github.com/rtk-ai/rtk) | Tool output compression |
+| [Caveman](https://github.com/JuliusBrussee/caveman) | Natural language compression |
+| [LLMLingua](https://github.com/microsoft/LLMLingua) | Prompt compression |
+| [Troglodita](https://github.com/leninejunior/troglodita) | Token reduction |
 
 ECC Curator operates at a different layer.
 
