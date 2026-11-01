@@ -4,7 +4,7 @@
 >
 > Jev augments governance decisions. It does not replace governance.
 
-This document describes how Jev may integrate with ECC Curator to provide structured decision intelligence for context governance.
+This document describes a possible future integration. The interfaces and examples are proposals, not an implemented Jev integration or a compatibility claim.
 
 ---
 

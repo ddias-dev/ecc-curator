@@ -1,10 +1,12 @@
 # Architecture
 
-> ECC Curator is a context governance engine that helps AI agents maximise reasoning value within finite context windows.
+> ECC Curator is designed as context governance for long-running local coding agents, with constrained context windows and hardware as primary design targets.
 
-Unlike traditional token-optimisation tools that focus exclusively on compression, ECC Curator focuses on **attention allocation**.
+Where an optimization tool may focus on a specific operation such as compression, ECC Curator's proposed focus is **attention allocation**.
 
 Its primary responsibility is deciding what deserves space inside a model's context window.
+
+The host agent and model remain responsible for execution. Runtime integrations are a planned delivery path, not an implemented capability in this design-stage repository. The diagrams and interfaces below describe intended architecture, not proof of working components or integrations.
 
 ---
 
@@ -193,7 +195,7 @@ The inventory is the source of truth for context governance.
 
 ## Budget Manager
 
-Responsible for enforcing context limits.
+Designed to enforce context limits.
 
 Example:
 
@@ -205,7 +207,7 @@ output_reserve: 8000
 working_budget: 56000
 ```
 
-The Budget Manager guarantees the final prompt remains within budget.
+The intended Budget Manager is responsible for keeping the assembled prompt within budget; this is a design responsibility, not a currently verified guarantee.
 
 ---
 
@@ -280,7 +282,7 @@ ECC Curator does not aim to replace specialised optimisation engines.
 
 Instead it orchestrates them.
 
-Potential integrations include:
+Potential provider integrations include:
 
 | Project | Purpose |
 |----------|----------|
@@ -293,9 +295,13 @@ ECC Curator owns the decision.
 
 Optimisation engines execute the strategy.
 
+These are candidate providers, not implemented or compatibility-tested integrations. See [Positioning](POSITIONING.md) for the scope of these comparisons.
+
 ---
 
 # Ecosystem Positioning
+
+The diagram shows a possible future routing arrangement. It does not indicate that adapters currently exist.
 
 ```mermaid
 flowchart TB

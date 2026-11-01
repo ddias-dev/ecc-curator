@@ -1,8 +1,8 @@
 # Configuration
 
-> ECC Curator is configured through a single declarative configuration file.
+> The proposed ECC Curator configuration uses a declarative configuration file.
 >
-> The configuration defines budgets, governance policies, plugin providers, and optimisation strategies.
+> The examples describe a design for budgets, governance policies, plugin providers, and optimization strategies; they are not evidence of a working configuration loader.
 
 This document describes the proposed configuration model.
 
@@ -10,7 +10,7 @@ This document describes the proposed configuration model.
 
 # Configuration Philosophy
 
-ECC Curator follows three principles:
+The configuration design follows three principles:
 
 ## Explicit Over Implicit
 
@@ -40,7 +40,7 @@ All intelligent capabilities are optional.
 
 ## Progressive Complexity
 
-A minimal configuration should be usable immediately.
+A minimal configuration should be usable without requiring optional providers.
 
 Advanced users should be able to enable:
 
@@ -54,7 +54,7 @@ Advanced users should be able to enable:
 
 # Configuration File
 
-ECC Curator uses:
+The proposed configuration filename is:
 
 ```text
 ecc-curator.yaml
@@ -74,7 +74,7 @@ Global configuration:
 ~/.ecc-curator/config.yaml
 ```
 
-Repository settings override global settings.
+The proposed precedence is for repository settings to override global settings.
 
 ---
 
@@ -304,13 +304,15 @@ scoring:
   provider: heuristic
 ```
 
-Supported providers:
+Provider identifiers shown in this proposed configuration model (not a current support list):
 
 ```text
 heuristic
 jev
 custom
 ```
+
+Here, `heuristic` is a deterministic baseline target; `jev` is an optional future provider; and `custom` denotes an extension point. The identifiers do not indicate implemented provider support.
 
 Future providers:
 
@@ -503,7 +505,7 @@ Example:
 ECC_DECISION_PROVIDER=jev
 ```
 
-Environment values always take precedence.
+The intended configuration precedence gives environment values priority.
 
 ---
 
@@ -564,3 +566,6 @@ budget:
 policies:
   terminal_output:
     action: compress
+```
+
+These are illustrative profiles in the proposed configuration model, not validated runtime configurations.

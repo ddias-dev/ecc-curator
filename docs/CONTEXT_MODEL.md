@@ -4,7 +4,7 @@
 >
 > Context is a portfolio of information competing for limited attention.
 
-ECC Curator models context as a collection of structured items that compete for inclusion within a finite token budget.
+ECC Curator models context accumulated during long-running coding sessions as structured items competing for inclusion within a finite token budget. This is the intended model; it does not imply an implemented runtime.
 
 This document defines the core context abstractions used throughout the system.
 
@@ -21,7 +21,7 @@ The context model must be:
 - Optimisable
 - Deterministic
 
-Most importantly, every piece of context must be evaluated independently.
+Most importantly, Context items must be evaluated according to their task relevance and budget cost, not assumed to be equally valuable.
 
 ---
 
@@ -347,7 +347,7 @@ Range:
 0.0 - 1.0
 ```
 
-Example:
+Illustrative scoring values only:
 
 ```text
 User Goal        1.00
@@ -375,7 +375,7 @@ Minutes
 Events
 ```
 
-Example:
+Illustrative age only:
 
 ```text
 Created 30 turns ago
@@ -389,7 +389,7 @@ Older items generally lose value over time unless frequently referenced.
 
 Tracks how often an item is used.
 
-Example:
+Illustrative reference counts only:
 
 ```text
 Goal         25 References
@@ -439,7 +439,7 @@ LLMLingua
 Troglodita
 ```
 
-Content remains available but occupies less budget.
+The intended result is a smaller representation; actual token savings depend on the provider and input and must be measured.
 
 ---
 
@@ -559,7 +559,7 @@ Use when:
 
 Context items compete for a limited budget.
 
-Example:
+Illustrative allocation only; actual allocations depend on policy and evaluation:
 
 ```text
 Available Budget

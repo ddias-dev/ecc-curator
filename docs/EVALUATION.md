@@ -4,21 +4,36 @@
 >
 > Better reasoning at lower context cost is the goal.
 
-ECC Curator must prove that context governance improves efficiency **without reducing task success**.
+ECC Curator is intended to be evaluated on whether context governance improves efficiency **without reducing task success**. No benchmark results, validated savings, or task-quality improvements are reported in this repository.
 
 This document defines the evaluation strategy, benchmarks, datasets, and success criteria used throughout the project.
+
+## Initial Target Profile
+
+The first evaluation profile should reflect long-running local coding sessions rather than isolated prompt compression:
+
+| Dimension | Initial target |
+|----------|----------------|
+| Agent environments | Claude Code, ECC Harness, Strata |
+| Models | Qwen3 Flash Next Coder; future local coding models |
+| Hardware profile | 32 GB RAM, 16 GB VRAM |
+| Context windows | 64K and 128K tokens |
+| Workload | Long-running autonomous coding sessions |
+| Session inputs | Plans, memories, diffs, test output, logs, tool responses, and conversation history |
+
+These are intended test targets, not a claim that integrations are available or that results have been measured. Record the exact model build, quantization, runtime, task, and hardware for every result so comparisons are reproducible.
 
 ---
 
 # Core Hypothesis
 
-ECC Curator is built around a simple hypothesis:
+ECC Curator is built around a hypothesis to test:
 
 > A smaller, higher-signal context produces equal or better outcomes than a larger, lower-signal context.
 
-Traditional approaches often measure success using token reduction alone.
+Token reduction alone can miss whether useful context was lost or task quality changed.
 
-ECC Curator measures both:
+Evaluation should measure both:
 
 ```text
 Efficiency
@@ -34,7 +49,7 @@ Reducing tokens while harming reasoning is considered a regression.
 
 ## Measure Outcomes, Not Optimisations
 
-A 90% reduction in prompt size is meaningless if task success falls.
+A large prompt reduction is not a success if task completion or quality falls.
 
 Success must be evaluated using real agent outcomes.
 
@@ -156,7 +171,7 @@ Percentage decrease between raw and curated context.
          raw_tokens
 ```
 
-Example:
+Illustrative example only; this is not a benchmark result:
 
 ```text
 48,000 → 12,000
@@ -184,7 +199,7 @@ Future versions may automate this calculation.
 
 Measures prompt size relative to available window.
 
-Example:
+Illustrative example only; this is not a benchmark result:
 
 ```text
 Window: 64,000
@@ -208,7 +223,7 @@ original_size
 final_size
 ```
 
-Example:
+Illustrative example only; this is not a benchmark result:
 
 ```text
 4:1
@@ -250,7 +265,7 @@ total_tests
 
 Measures how often an agent finishes the assigned objective.
 
-Example:
+Illustrative example only; this is not a benchmark result:
 
 ```text
 Baseline: 72%
@@ -264,7 +279,7 @@ ECC Curator: 81%
 
 Measures how often governance avoids unnecessary movement to larger models.
 
-Example:
+Illustrative example only; this is not a benchmark result:
 
 ```text
 Local Model
@@ -272,7 +287,7 @@ Local Model
 No Escalation Required
 ```
 
-Reducing escalation lowers cost and latency.
+Whether escalation is unnecessary, and any associated cost or latency effect, must be established by evaluation.
 
 ---
 
@@ -360,16 +375,19 @@ These workloads are particularly susceptible to context explosion.
 
 A primary focus area.
 
-Examples:
+Start with the target profile above, then extend across context sizes as integrations and hardware permit. The key question is whether governance lets an agent complete longer coding tasks without context saturation, quality loss, or avoidable model escalation.
+
+Optional future comparison scenarios may include:
 
 ```text
 8K Context
 16K Context
 32K Context
 64K Context
+128K Context
 ```
 
-The hypothesis is that ECC Curator delivers the greatest benefit in constrained environments.
+One hypothesis to test is whether governance delivers more benefit in constrained environments.
 
 ---
 
@@ -417,7 +435,7 @@ LLM
 
 ## Compression Only
 
-Examples:
+The projects below describe possible comparison categories, not integrations validated by this repository:
 
 - RTK
 - Caveman
@@ -450,25 +468,9 @@ This is the expected long-term architecture.
 
 ---
 
-# North Star Benchmark
+# North Star Evaluation
 
-A representative coding task should achieve:
-
-```text
-Raw Context:
-48,000 tokens
-
-Curated Context:
-12,000 tokens
-
-Reduction:
-75%
-
-Task Success Rate:
-Equal or Higher
-```
-
-This benchmark embodies the project's core thesis.
+Compare governed and ungoverned context on the same long-running coding workloads. Report context use alongside task completion, test outcomes, retries, and escalation behavior. Do not publish a token-saving claim without a reproducible measurement and its paired task-quality result.
 
 ---
 

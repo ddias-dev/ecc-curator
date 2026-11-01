@@ -1,179 +1,81 @@
 # ECC Curator
 
-> Context governance for AI agents.
->
-> Preserve signal. Compress redundancy. Eliminate noise.
+> **Context governance for long-running local coding agents.**
 
-ECC Curator is a context governance engine that helps AI agents operate within finite context windows.
+Long-running coding sessions accumulate plans, logs, tool output, test results, diffs, memories, and conversation history. Carrying all of it forward can fill a finite context window, bury useful evidence, and put pressure on constrained hardware. A 64K or 128K window is still a budget—not an instruction to retain everything.
 
-Instead of continuously accumulating context until a model reaches its token limit, ECC Curator manages working memory by deciding what deserves attention.
-
-For every piece of information:
+ECC Curator is a design-stage governance layer for deciding what context should reach the next model call. It treats session context as a budgeted working set and selects an action for each item:
 
 ```text
-KEEP
-COMPRESS
-TRANSFORM
-DROP
+Governance
+    ↓
+Keep
+Compress
+Transform
+Drop
 ```
 
-The goal is simple:
+**Compression is a strategy. Governance is the decision.** A shorter version of irrelevant material is still irrelevant; important information may need to be kept unchanged or transformed into a more useful form. ECC Curator is intended to govern accumulated context before it is assembled for the next step, with task outcomes—not token reduction alone—as the measure of success.
 
-> Increase reasoning value per token.
+## Who and what this is for
 
----
+The primary use case is long-running, autonomous coding work on local models and commodity hardware. Initial integration targets are **Claude Code, ECC Harness, and Strata**. The initial evaluation profile targets **Qwen3 Flash Next Coder**, future local coding models, **32 GB RAM, 16 GB VRAM**, and **64K or 128K context windows**.
 
-## The Problem
+These are design and evaluation targets, not claims of current compatibility, benchmarked performance, or validated savings. The repository currently describes the proposed architecture and evaluation approach; integrations and productivity results are not yet established.
 
-Modern AI agents accumulate:
+## Why compression alone is not enough
 
-- conversation history
-- plans
-- memories
-- terminal output
-- test results
-- code diffs
-- retrieved documents
+Compression can reduce the size of selected information, but it does not by itself decide whether that information belongs in the working context. Long sessions need lifecycle decisions: retain an active goal, preserve a useful test finding, transform verbose output, compress relevant detail, or drop stale noise. A compression provider may execute a chosen strategy; it does not replace the governance decision.
 
-As context grows, information density decreases.
+| Project | Focus described here | ECC Curator's distinct role |
+|---|---|---|
+| [RTK](https://github.com/rtk-ai/rtk) | Tool-output optimization | Govern whether accumulated context is retained and what action should be taken |
+| [Caveman](https://github.com/JuliusBrussee/caveman) | Natural-language compression | Treat compression as one possible governance outcome |
+| [LLMLingua](https://github.com/microsoft/LLMLingua) | Prompt compression | Govern selection, retention, transformation, and removal as well as compression |
+| [Troglodita](https://github.com/leninejunior/troglodita) | Token reduction | Allocate a finite context budget across competing items |
 
-Eventually agents hit:
+These are high-level descriptions based on the projects' stated roles, not a comparative product evaluation. The projects are potential complementary providers; adapters and integrations are planned, not implemented in this repository.
 
-- max token limits
-- context exhaustion
-- degraded reasoning quality
-- unnecessary model escalation
-
-The challenge is no longer generating information.
-
-The challenge is deciding what deserves attention.
-
----
-
-## The ECC Curation Principle
-
-ECC Curator is based on a simple observation:
-
-> As context grows, information density decreases. Beyond a certain threshold, additional context contributes more noise than reasoning value.
-
-Every token spent on low-value information is a token unavailable for reasoning.
-
-ECC Curator continuously curates context to maximise information density within a fixed token budget.
-
----
-
-## Compression Is Not Governance
-
-Many excellent projects optimise tokens:
-
-| Project | Focus |
-|----------|----------|
-| [RTK](https://github.com/rtk-ai/rtk) | Tool output compression |
-| [Caveman](https://github.com/JuliusBrussee/caveman) | Natural language compression |
-| [LLMLingua](https://github.com/microsoft/LLMLingua) | Prompt compression |
-| [Troglodita](https://github.com/leninejunior/troglodita) | Token reduction |
-
-ECC Curator operates at a different layer.
-
-Rather than asking:
-
-> "How can this be smaller?"
-
-It asks:
-
-> "Should this information remain in the context at all?"
-
-Governance happens before optimisation.
-
-Compression is only one possible strategy.
-
----
-
-## Why ECC Curator Exists
-
-```mermaid
-flowchart LR
-
-    A["Raw Context<br/>48k Tokens"]
-    B["ECC Curator"]
-    C["Curated Context<br/>12k Tokens"]
-    D["Higher Signal Density"]
-
-    A --> B
-    B --> C
-    C --> D
-```
-
----
-
-## Vision
+## Intended workflow
 
 ```text
-Context Inventory
-        │
-        ▼
-   Classify
-        │
-        ▼
-     Score
-        │
-        ▼
-     Budget
-        │
-        ▼
-Choose Strategy
-        │
- ┌──────┼──────┐
- ▼      ▼      ▼
-Keep Compress Drop
+Accumulated session context
+    ↓
+Inventory and budget
+    ↓
+Governance decision
+    ├── Keep
+    ├── Compress
+    ├── Transform
+    └── Drop
+    ↓
+Context assembled for the next model call
 ```
 
-ECC Curator acts as a portfolio manager for context.
+The design is deterministic-first, model- and runtime-agnostic, and local-first. It preserves the host agent's responsibility for coding and execution; ECC Curator's proposed responsibility is governing the context supplied to that work.
 
-Every piece of information consumes budget.
+## Project status
 
-Every piece of information must justify its existence.
-
----
+This repository is in the early design phase. The architecture, context model, proposed extension interfaces, configuration examples, and evaluation approach are documented, but do not imply that the corresponding runtime capabilities or integrations are already available.
 
 ## Documentation
 
-### Getting Started
+- [Positioning](docs/POSITIONING.md) — Problem, target users, differentiation, and mission
+- [Target Environment](docs/TARGET_ENVIRONMENT.md) — Intended users, hardware, integrations, workflows, and constraints
+- [Architecture](docs/ARCHITECTURE.md) — Governance architecture and components
+- [Context Model](docs/CONTEXT_MODEL.md) — Context items, metadata, and outcomes
+- [Decision Records](docs/DECISIONS.md) — Accepted design decisions
+- [Configuration](docs/CONFIGURATION.md) — Proposed configuration model
+- [Plugin API](docs/PLUGIN_API.md) — Proposed plugin interfaces and extension model
+- [Jev Integration](docs/JEV_INTEGRATION.md) — Optional decision-intelligence design
+- [Evaluation Framework](docs/EVALUATION.md) — Initial targets and evaluation methodology
+- [Roadmap](docs/ROADMAP.md) — Development phases and initial integration targets
 
-- [Architecture](docs/ARCHITECTURE.md) — System architecture, governance model, and component design
-- [Configuration](docs/CONFIGURATION.md) — Configuration reference, policies, profiles, and provider settings
-- [Roadmap](docs/ROADMAP.md) — Project milestones, phases, and long-term vision
+### Suggested reading order
 
-### Core Concepts
-
-- [Context Model](docs/CONTEXT_MODEL.md) — Context inventory, context items, lifecycle, and governance states
-- [Decision Records](docs/DECISIONS.md) — Architecture Decision Records (ADRs) and design rationale
-- [Evaluation Framework](docs/EVALUATION.md) — Benchmarks, metrics, and success criteria
-
-### Extensions
-
-- [Plugin API](docs/PLUGIN_API.md) — Plugin interfaces, providers, and extension model
-- [Jev Integration](docs/JEV_INTEGRATION.md) — Decision intelligence architecture and Jev provider integration
-
-### Reading Order
-
-If you're new to ECC Curator, we recommend the following order:
-
-1. [Architecture](docs/ARCHITECTURE.md)
-2. [Context Model](docs/CONTEXT_MODEL.md)
-3. [Decision Records](docs/DECISIONS.md)
-4. [Configuration](docs/CONFIGURATION.md)
-5. [Plugin API](docs/PLUGIN_API.md)
-6. [Jev Integration](docs/JEV_INTEGRATION.md)
-7. [Evaluation Framework](docs/EVALUATION.md)
-8. [Roadmap](docs/ROADMAP.md)
-
----
-
-## Status
-
-🚧 Early Design Phase
-
-The future of autonomous agents is not more context.
-
-The future of autonomous agents is better context.
+1. [Positioning](docs/POSITIONING.md)
+2. [Target Environment](docs/TARGET_ENVIRONMENT.md)
+3. [Architecture](docs/ARCHITECTURE.md)
+4. [Context Model](docs/CONTEXT_MODEL.md)
+5. [Evaluation Framework](docs/EVALUATION.md)
+6. [Roadmap](docs/ROADMAP.md)

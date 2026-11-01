@@ -1,10 +1,10 @@
 # Plugin API
 
-> ECC Curator is designed as an extensible governance platform.
+> ECC Curator is designed to support extensions to its governance model.
 >
-> Core governance remains stable while scoring engines, compression systems, transformation providers, and decision intelligence can be added through plugins.
+> The proposed plugin design separates core governance from scoring engines, compression systems, transformation providers, and decision intelligence.
 
-This document defines the initial plugin architecture.
+This document sketches a proposed plugin architecture. The interfaces and examples are not a statement that a plugin runtime or listed provider is currently implemented.
 
 ---
 
@@ -16,7 +16,7 @@ The plugin system must be:
 - Deterministic
 - Language-model agnostic
 - Runtime configurable
-- Backward compatible
+- Designed for backward compatibility
 - Easy to test
 
 A plugin should be able to add capabilities without modifying the ECC Curator core.
@@ -25,7 +25,7 @@ A plugin should be able to add capabilities without modifying the ECC Curator co
 
 # Plugin Categories
 
-ECC Curator supports several plugin types.
+The proposed plugin categories are:
 
 ```text
 Context Sources
@@ -82,7 +82,7 @@ flowchart TB
 
 # Plugin Lifecycle
 
-All plugins follow the same lifecycle.
+In this proposed design, plugins follow this lifecycle.
 
 ```text
 Load
@@ -233,7 +233,7 @@ export interface CompressionProvider
 }
 ```
 
-## Example
+## Illustrative example only; not a measured result
 
 ```text
 Original
@@ -285,7 +285,7 @@ export interface TransformationProvider
 
 Decision providers help evaluate governance decisions.
 
-The initial implementation uses:
+The intended deterministic baseline uses:
 
 ```text
 Rules
@@ -344,9 +344,9 @@ interface DecisionResult {
 
 ---
 
-# Provider Registry
+# Proposed Provider Registry
 
-Plugins are registered within a central registry.
+The proposed design registers plugins within a central registry.
 
 ```typescript
 registry.register(
@@ -395,7 +395,7 @@ plugins:
 
 # Strategy Resolution
 
-ECC Curator selects the provider based on the governance decision.
+The intended strategy-resolution flow selects a provider based on the governance decision.
 
 Example:
 

@@ -1,16 +1,18 @@
 # Roadmap
 
-> Build the governance layer for AI context.
+> Build context governance for long-running local coding agents.
 
-ECC Curator will evolve incrementally, proving the governance model before introducing advanced optimisation and decision intelligence.
+ECC Curator will evolve incrementally, validating the governance model before introducing advanced optimization and decision intelligence. The primary workload is long-running autonomous coding sessions under finite context and hardware budgets. Token reduction is an efficiency measure, not a success criterion by itself; task completion and quality must be evaluated alongside it.
 
-The roadmap prioritises measurable reductions in context size while maintaining or improving task success rates.
+## Initial integration targets
+
+The first runtime integration targets are **Claude Code, ECC Harness, and Strata**. The initial local-model evaluation target is **Qwen3 Flash Next Coder**, with future local coding models considered as evaluation expands. These are targets, not claims of current support or compatibility.
 
 ---
 
 # Guiding Goals
 
-Success is measured by improving:
+Intended success measures include:
 
 - Signal density
 - Reasoning quality
@@ -60,7 +62,7 @@ while reducing:
 - [ ] Context classifier
 - [ ] Prompt assembler
 
-## Supported Decisions
+## Planned Governance Outcomes
 
 ```text
 KEEP
@@ -82,9 +84,9 @@ tool_output:
 
 ## Success Criteria
 
-- 30-50% token reduction
-- No external dependencies
-- Reproducible results
+- Deterministic governance decisions are reproducible for the same inputs and policy
+- Context use and task outcomes can be measured against an ungoverned baseline
+- No external dependency is required for the deterministic baseline
 
 ---
 
@@ -100,7 +102,7 @@ tool_output:
 - [ ] Reference tracking
 - [ ] Context ageing
 
-## Supported Decisions
+## Planned Governance Outcomes
 
 ```text
 KEEP
@@ -110,9 +112,9 @@ DROP
 
 ## Success Criteria
 
-- 50-70% token reduction
-- Configurable policies
-- Project-specific governance profiles
+- Policies are configurable and explainable
+- Governance choices can be evaluated against task outcomes and context budgets
+- Project-specific governance profiles can be expressed
 
 ---
 
@@ -127,10 +129,12 @@ Compression remains pluggable.
 ## Deliverables
 
 - [ ] Compression provider abstraction
-- [ ] RTK adapter
-- [ ] Caveman adapter
-- [ ] LLMLingua adapter
-- [ ] Troglodita adapter
+- [ ] Evaluate potential RTK adapter
+- [ ] Evaluate potential Caveman adapter
+- [ ] Evaluate potential LLMLingua adapter
+- [ ] Evaluate potential Troglodita adapter
+
+The listed projects are candidates for future provider integrations, not current dependencies or validated compatibility targets.
 
 ## Strategy Selection
 
@@ -179,6 +183,8 @@ DROP
 ```
 
 ## Example
+
+Illustrative transformation examples only:
 
 ```text
 5000-line test log
@@ -234,19 +240,26 @@ Decision intelligence augments the system.
 
 **Objective:** Bring governance directly into agent workflows.
 
-## Integrations
+## Initial Integrations
 
 - [ ] Claude Code
+- [ ] ECC Harness
+- [ ] Strata
+
+## Other Potential Integrations
+
 - [ ] OpenCode
 - [ ] Codex
 - [ ] Cline
 - [ ] Aider
-- [ ] ECC Harness
 
 ## Success Criteria
 
-- Works transparently within agent runtimes
-- Reduces context growth during long-running sessions
+- Integrations expose governance within their agent workflows
+- Evaluated in long-running autonomous coding sessions against an ungoverned baseline
+- Task completion and test outcomes are not worse while context use is evaluated
+- Evaluation includes the 32 GB RAM / 16 GB VRAM target profile and 64K and 128K context windows
+- Model escalation and retries are measured without assuming governance will eliminate them
 
 ---
 
@@ -254,9 +267,9 @@ Decision intelligence augments the system.
 
 **Objective:** Treat context as a managed portfolio.
 
-Each context item becomes an asset with measurable value.
+The proposed portfolio model treats each context item as an asset with measurable value.
 
-Example:
+Illustrative values only:
 
 ```json
 {
@@ -312,17 +325,6 @@ ECC Curator becomes the context layer for the broader ECC ecosystem.
 
 ---
 
-# North Star Metric
+# North Star
 
-For a representative engineering task:
-
-```text
-Original Context: 48,000 tokens
-
-Curated Context: 12,000 tokens
-
-Task Success Rate:
-Equal or Higher
-```
-
-If ECC Curator can consistently achieve that outcome, the project succeeds.
+For long-running coding work, evaluate whether governed context helps an agent complete the task reliably within a finite context budget. Record task completion, test outcomes, context use, retries, and escalation together. Numeric reduction goals should be set only after reproducible baseline measurements exist.

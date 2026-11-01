@@ -4,6 +4,8 @@
 >
 > This document captures major architectural and product decisions, including rationale, alternatives considered, and consequences.
 
+These decisions describe the intended design. They do not imply that the proposed runtime capabilities or integrations are implemented.
+
 ---
 
 # ADR-001: ECC Curator Is A Governance Engine
@@ -12,16 +14,14 @@
 
 ## Context
 
-Most context optimisation projects focus on reducing token counts through compression, filtering, or summarisation.
-
-Examples include:
+The projects used as examples in this documentation are described by their focus on optimization techniques such as tool-output optimization, compression, or token reduction:
 
 - RTK
 - Caveman
 - LLMLingua
 - Troglodita
 
-These projects optimise information that has already been selected for inclusion in context.
+ECC Curator's intended distinction is to make the governance decision about context inclusion and treatment. This is a positioning distinction, not a comparative evaluation of those projects.
 
 ## Decision
 
@@ -34,7 +34,7 @@ Its primary responsibility is deciding what deserves attention within a finite c
 ### Positive
 
 - Clear differentiation from existing projects
-- Compatible with multiple optimisation providers
+- Designed to allow multiple optimisation providers
 - Higher-level abstraction
 - Focus on attention allocation
 
@@ -118,7 +118,7 @@ Providers execute the optimisation.
 
 - Future-proof architecture
 - Easy experimentation
-- Ecosystem compatibility
+- Provider choice is not fixed to one technology
 
 ### Negative
 
@@ -193,9 +193,7 @@ ECC Curator functions without them.
 
 ### Positive
 
-- Works offline
-- Works locally
-- Supports local-first environments
+- Intended to support offline and local-first environments
 - Avoids vendor lock-in
 
 ---
@@ -306,22 +304,21 @@ Provides enough flexibility to support future governance strategies.
 
 ## Context
 
-Most context-window failures occur on local and smaller models.
-
-These environments benefit most from aggressive governance.
+Long-running coding agents accumulate context across plans, memories, diffs, logs, test output, and tool responses. Local deployments may have fewer practical options for escaping context pressure through larger hosted models, making context governance especially valuable.
 
 ## Decision
 
-ECC Curator will optimise for:
+ECC Curator will prioritize:
 
 - local LLM deployments
 - air-gapped environments
 - constrained context windows
 - autonomous coding agents
+- long-running coding sessions on commodity hardware
 
 ## Consequences
 
-Features will prioritise context efficiency over cloud-scale assumptions.
+Features will prioritize context governance and task outcomes for local-first workflows. Local-model and agent compatibility remains a design target until integrations are implemented and evaluated.
 
 ---
 
@@ -339,7 +336,7 @@ Removing the wrong context is harmful.
 
 ## Decision
 
-Success will be evaluated using both:
+Future evaluations will measure both:
 
 ### Efficiency Metrics
 
