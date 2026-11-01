@@ -19,9 +19,23 @@ Drop
 
 ## Who and what this is for
 
-The primary use case is long-running, autonomous coding work on local models and commodity hardware. Initial integration targets are **Claude Code, ECC Harness, and Strata**. The initial evaluation profile targets **Qwen3 Flash Next Coder**, future local coding models, **32 GB RAM, 16 GB VRAM**, and **64K or 128K context windows**.
+The primary use case is long-running, autonomous coding work on local models and commodity hardware. Initial integration targets are **Claude Code, ECC Harness, and Strata**. The initial evaluation profile targets **ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF**, future local coding models, **32 GB RAM, 16 GB VRAM**, and **64K or 128K context windows**.
 
 These are design and evaluation targets, not claims of current compatibility, benchmarked performance, or validated savings. The repository currently describes the proposed architecture and evaluation approach; integrations and productivity results are not yet established.
+
+ECC Curator owns governance. Optional decision providers can propose answers for ambiguous decisions, but policy, validation, and final decisions stay in the Governor:
+
+```text
+ECC Curator
+    ↓
+Governance
+
+Decision Providers
+    ↓
+Optional proposals
+```
+
+**LiquidAI/d1-2B** is the reference local decision-provider evaluation candidate; **Jev** is a reference provider candidate. Neither is integrated or required. See [Decision Intelligence](docs/DECISION_INTELLIGENCE.md), [Decision Schemas](docs/DECISION_SCHEMAS.md), and [Providers](docs/PROVIDERS.md).
 
 ## Why compression alone is not enough
 
@@ -66,16 +80,22 @@ This repository is in the early design phase. The architecture, context model, p
 - [Context Model](docs/CONTEXT_MODEL.md) — Context items, metadata, and outcomes
 - [Decision Records](docs/DECISIONS.md) — Accepted design decisions
 - [Configuration](docs/CONFIGURATION.md) — Proposed configuration model
+- [Decision Intelligence](docs/DECISION_INTELLIGENCE.md) — Provider-neutral optional decision architecture
+- [Decision Schemas](docs/DECISION_SCHEMAS.md) — Provider-independent governance decision contracts
+- [Providers](docs/PROVIDERS.md) — Provider categories, candidates, and status
+- [Decision Intelligence Review](docs/DECISION_INTELLIGENCE_REVIEW.md) — Approved architecture assessment and migration recommendation
 - [Plugin API](docs/PLUGIN_API.md) — Proposed plugin interfaces and extension model
-- [Jev Integration](docs/JEV_INTEGRATION.md) — Optional decision-intelligence design
 - [Evaluation Framework](docs/EVALUATION.md) — Initial targets and evaluation methodology
 - [Roadmap](docs/ROADMAP.md) — Development phases and initial integration targets
+- [Documentation Changes](docs/DOCUMENTATION_CHANGES.md) — Summary of this architecture update
 
 ### Suggested reading order
 
 1. [Positioning](docs/POSITIONING.md)
 2. [Target Environment](docs/TARGET_ENVIRONMENT.md)
 3. [Architecture](docs/ARCHITECTURE.md)
-4. [Context Model](docs/CONTEXT_MODEL.md)
-5. [Evaluation Framework](docs/EVALUATION.md)
-6. [Roadmap](docs/ROADMAP.md)
+4. [Decision Intelligence](docs/DECISION_INTELLIGENCE.md)
+5. [Decision Schemas](docs/DECISION_SCHEMAS.md)
+6. [Context Model](docs/CONTEXT_MODEL.md)
+7. [Evaluation Framework](docs/EVALUATION.md)
+8. [Roadmap](docs/ROADMAP.md)

@@ -101,7 +101,9 @@ flowchart TB
     Transform["Transform"]
     Drop["Drop"]
 
-    Compressor["Compression Adapter"]
+    CompressionProvider["Compression Provider"]
+    TransformationProvider["Transformation Provider"]
+    DecisionProvider["Optional Decision Provider Interface"]
 
     Assembler["Prompt Assembler"]
 
@@ -117,16 +119,20 @@ flowchart TB
     Rules --> Decision
     Scorer --> Decision
 
+    Decision -->|ambiguous case; if enabled| DecisionProvider
+    DecisionProvider -->|proposal; Governor validates| Decision
+
     Decision --> Keep
     Decision --> Compress
     Decision --> Transform
     Decision --> Drop
 
-    Compress --> Compressor
-    Transform --> Compressor
+    Compress --> CompressionProvider
+    Transform --> TransformationProvider
 
     Keep --> Assembler
-    Compressor --> Assembler
+    CompressionProvider --> Assembler
+    TransformationProvider --> Assembler
 
     Assembler --> LLM
 ```
@@ -272,6 +278,24 @@ DROP
 
 This component embodies the ECC Curation Principle.
 
+### Decision providers are advisory
+
+The proposed decision path is provider-neutral:
+
+```text
+Rules
+  ↓
+Heuristics
+  ↓
+Optional Decision Provider
+  ↓
+Proposal
+  ↓
+Governor validates policy and decides
+```
+
+**Decision providers propose. The Governor decides.** Provider output cannot bypass policies, budgets, validation, or deterministic safeguards. Providers neither own governance nor execute compression and transformation strategies. See [Decision Intelligence](DECISION_INTELLIGENCE.md) and [Decision Schemas](DECISION_SCHEMAS.md).
+
 ---
 
 ## Compression Adapter
@@ -341,7 +365,7 @@ flowchart TB
 
 # Future Decision Intelligence
 
-The initial architecture relies on:
+The proposed deterministic baseline relies on:
 
 ```text
 Rules
@@ -351,21 +375,34 @@ Budgets
 Heuristic Scoring
 ```
 
-Future versions may introduce decision intelligence providers such as Jev.
+When rules and heuristics cannot resolve an ambiguous decision, ECC Curator may optionally consult a provider through the Decision Provider Interface:
 
-Potential decisions:
+```text
+Rules
+  ↓
+Heuristics
+  ↓
+Decision Provider Interface
+  ├── LiquidAI/d1-2B (reference local evaluation candidate)
+  ├── Jev (reference provider candidate)
+  ├── Local custom providers
+  └── Future providers
+```
+
+Neither LiquidAI nor Jev is a core dependency or an implemented integration. Provider output remains a proposal; ECC Curator's Governor validates and makes the final decision.
+
+Potential decision kinds are defined in [Decision Schemas](DECISION_SCHEMAS.md):
 
 ```text
 ContextRetentionDecision
-CompressionDecision
 MemoryImportanceDecision
+CompressionStrategyDecision
+TransformationDecision
 RetryDecision
 ModelEscalationDecision
 ```
 
-ECC Curator remains responsible for governance.
-
-Decision engines provide additional reasoning capabilities.
+Decision providers are separate from compression and transformation executors.
 
 ---
 

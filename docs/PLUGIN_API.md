@@ -283,41 +283,70 @@ export interface TransformationProvider
 
 # Decision Provider Plugins
 
-Decision providers help evaluate governance decisions.
+Decision providers are first-class optional components in the proposed extension architecture. They help evaluate ambiguous governance decisions by returning typed proposals; they do not own governance policy or execute actions.
 
-The intended deterministic baseline uses:
+The decision order remains:
 
 ```text
 Rules
-+
+  ↓
 Heuristics
-```
-
-Future implementations may use:
-
-```text
-Jev
-Local Models
-Custom Evaluators
+  ↓
+Optional Decision Provider
+  ↓
+Governor validates and decides
 ```
 
 ## Interface
 
 ```typescript
+export type DecisionKind =
+  | "ContextRetentionDecision"
+  | "MemoryImportanceDecision"
+  | "CompressionStrategyDecision"
+  | "TransformationDecision"
+  | "RetryDecision"
+  | "ModelEscalationDecision";
+
+export interface DecisionRequest<TInput = unknown> {
+  requestId: string;
+  kind: DecisionKind;
+  schemaVersion: "1";
+  input: TInput;
+  allowedOutcomes: readonly string[];
+  policyVersion: string;
+}
+
+export interface DecisionProposal<TOutcome = unknown> {
+  requestId: string;
+  kind: DecisionKind;
+  schemaVersion: "1";
+  outcome: TOutcome;
+  confidence?: number;
+  scores?: Record<string, number>;
+  rationaleCode?: string;
+}
+
 export interface DecisionProvider
   extends Plugin {
 
+  id: string;
+
+  capabilities: readonly DecisionKind[];
+
   evaluate(
     request: DecisionRequest
-  ): Promise<DecisionResult>;
+  ): Promise<DecisionProposal>;
 }
 ```
+
+Decision kinds, input fields, outcomes, and validation rules are described in [Decision Schemas](DECISION_SCHEMAS.md). The interface is proposed and is not implemented in this repository.
 
 ---
 
 # Governance Decisions
 
-Decision providers may evaluate:
+The Governor owns the final governance outcome:
 
 ```text
 KEEP
@@ -326,21 +355,21 @@ TRANSFORM
 DROP
 ```
 
-Example:
+The provider proposal must be validated against the request's decision kind and allowlisted outcomes. The Governor then applies policy, budgets, and safeguards before deciding.
 
-```typescript
-interface DecisionResult {
-  outcome:
-    | "KEEP"
-    | "COMPRESS"
-    | "TRANSFORM"
-    | "DROP";
+## Provider capabilities
 
-  confidence: number;
+Providers declare the `DecisionKind` values they implement. The registry must reject unsupported decision kinds rather than silently route them to a provider. Candidate providers such as LiquidAI/d1-2B and Jev are optional and are not implemented here.
 
-  reason?: string;
-}
-```
+## Validation and allowed outcomes
+
+The Governor validates schema version, request identity, decision kind, required fields, value ranges, and outcome membership in `allowedOutcomes`. Provider confidence or scores never override user policy, pins, budgets, provider allowlists, retry ceilings, or escalation constraints. Invalid or unsupported proposals are treated as provider failures.
+
+## Deterministic fallback
+
+When a provider is disabled, unavailable, times out, errors, or returns invalid data, the Governor follows the configured deterministic rule, heuristic, or explicit default. It records fallback provenance where permitted. Fallback must not be reported as a successful provider response, and providers cannot retry actions or execute compression/transformation themselves.
+
+See [Decision Intelligence](DECISION_INTELLIGENCE.md) for the lifecycle and [Providers](PROVIDERS.md) for candidate status.
 
 ---
 
@@ -354,23 +383,21 @@ registry.register(
 );
 ```
 
-Example:
+Illustrative registry example only; provider implementations are not currently present:
 
 ```typescript
 registry.register(
   new LLMLinguaProvider()
 );
 
-registry.register(
-  new JevProvider()
-);
+registry.register(decisionProvider);
 ```
 
 ---
 
 # Configuration
 
-Plugins are enabled through configuration.
+The following is a conceptual per-decision configuration. It does not imply that these provider IDs are available in a runtime:
 
 Example:
 
@@ -387,8 +414,15 @@ plugins:
   transformations:
     - summariser
 
-  decisions:
-    - jev
+  decision_intelligence:
+    context_retention:
+      provider: d1-2b
+
+    memory_importance:
+      provider: jev
+
+    compression_strategy:
+      provider: heuristic
 ```
 
 ---

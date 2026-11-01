@@ -31,10 +31,12 @@ This is a reference evaluation profile, not a minimum requirement, supported con
 
 ### Local coding models
 
-- Qwen3 Flash Next Coder
+- ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF
 - Future local coding models selected as they become relevant to evaluation
 
 No compatibility is implied until an integration is implemented and tested against a documented runtime and version. The model list is an evaluation target, not a supported-model list.
+
+The initial reference decision-model evaluation candidate is LiquidAI/d1-2B. It is not a required component or integrated provider; local resource fit alongside the coding model must be measured.
 
 ## Local-first philosophy
 

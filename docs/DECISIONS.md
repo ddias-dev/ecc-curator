@@ -165,29 +165,32 @@ No LLM dependency is required for the MVP.
 
 ---
 
-# ADR-005: Decision Intelligence Is Optional
+# ADR-005: Decision Intelligence Is Optional and Provider-Neutral
 
 **Status:** Accepted
 
 ## Context
 
-Projects such as Jev introduce structured decision intelligence.
+Decision intelligence may be supplied by interchangeable optional providers.
 
 These capabilities may improve governance quality but should not become mandatory.
 
 ## Decision
 
-Decision intelligence providers will remain optional.
+Decision intelligence providers will remain optional and interchangeable behind a provider-neutral interface.
 
 Potential examples:
 
 ```text
-Jev
-Custom Scorers
-Future Evaluators
+LiquidAI/d1-2B (reference local evaluation candidate)
+Jev (reference provider candidate)
+Local custom providers
+Future providers
 ```
 
 ECC Curator functions without them.
+
+The provider interface, schemas, and examples are proposals, not implemented integrations.
 
 ## Consequences
 
@@ -401,6 +404,57 @@ Agent Orchestration
 ## Consequences
 
 Clear boundaries reduce architectural overlap and improve maintainability.
+
+---
+
+# ADR-011: Decision Providers Are Advisory
+
+**Status:** Accepted
+
+## Context
+
+Rules and heuristics can resolve many governance cases deterministically. Optional providers may help assess ambiguous classification, scoring, or routing decisions. Providers may be remote, local, unavailable, or produce invalid outputs; they must not become authority over the governance engine.
+
+## Decision
+
+Decision providers return proposals only. The ECC Curator Governor validates provider output, applies policies and budgets, and makes the final governance decision.
+
+```text
+Decision Provider
+        ↓
+     Proposal
+        ↓
+Governor validates policies, budgets,
+schemas, and deterministic safeguards
+        ↓
+  Final governance decision
+```
+
+Provider output must never bypass:
+
+- policies and user-pinned context
+- budgets and allowlisted strategies
+- schema and outcome validation
+- deterministic safeguards, including retry and escalation limits
+
+When a provider is disabled, unavailable, fails, or returns invalid output, the Governor follows the configured deterministic fallback. Compression and transformation execution remains a separate responsibility.
+
+LiquidAI/d1-2B and Jev are provider candidates, not core dependencies. Provider-specific evaluation does not change this boundary.
+
+## Consequences
+
+### Positive
+
+- Governance policy remains owned by ECC Curator
+- Deterministic-first and local-first operation does not require decision inference
+- Providers can be replaced or compared against common schemas
+- Invalid or unavailable providers cannot silently bypass safeguards
+
+### Negative
+
+- The Governor requires explicit validation, fallback, and provenance behavior
+- Provider contracts and decision schemas require versioning and contract tests
+- Provider proposals need evaluation against deterministic baselines before adoption
 
 ---
 

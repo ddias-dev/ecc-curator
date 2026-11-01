@@ -30,7 +30,7 @@ is preferred over hidden behaviour.
 The default configuration should not require:
 
 - LLMs
-- Jev
+- Any decision provider
 - Cloud services
 - External APIs
 
@@ -46,7 +46,7 @@ Advanced users should be able to enable:
 
 - custom scoring
 - compression providers
-- Jev
+- optional decision providers
 - custom plugins
 - organisation-wide policies
 
@@ -110,8 +110,15 @@ plugins:
     - llmlingua
     - rtk
 
-  decisions:
-    - jev
+decision_intelligence:
+  context_retention:
+    provider: d1-2b
+
+  memory_importance:
+    provider: jev
+
+  compression_strategy:
+    provider: heuristic
 
 policies:
   terminal_output:
@@ -304,15 +311,14 @@ scoring:
   provider: heuristic
 ```
 
-Provider identifiers shown in this proposed configuration model (not a current support list):
+Scoring identifiers shown in this proposed model:
 
 ```text
 heuristic
-jev
 custom
 ```
 
-Here, `heuristic` is a deterministic baseline target; `jev` is an optional future provider; and `custom` denotes an extension point. The identifiers do not indicate implemented provider support.
+`heuristic` is a deterministic baseline target; `custom` denotes an extension point. This does not indicate implemented runtime support.
 
 Future providers:
 
@@ -344,25 +350,32 @@ scoring:
 
 ---
 
-# Decision Providers
+# Decision Intelligence
 
-Decision providers perform advanced governance evaluation.
-
-Example:
+Provider selection is proposed per decision kind. Rules and heuristics remain the deterministic baseline, and the Governor validates provider proposals before making the final decision.
 
 ```yaml
-decisions:
-  provider: jev
+decision_intelligence:
+  context_retention:
+    provider: d1-2b
+
+  memory_importance:
+    provider: jev
+
+  compression_strategy:
+    provider: heuristic
+
+  transformation:
+    provider: none
+
+  retry:
+    provider: none
+
+  model_escalation:
+    provider: none
 ```
 
-Example:
-
-```yaml
-decisions:
-  provider: none
-```
-
-Disables intelligent decision-making completely.
+This example demonstrates a configuration shape only. `d1-2b`, `jev`, and `none` do not imply that corresponding adapters or a configuration loader are implemented. The provider interface and safeguards are described in [Decision Intelligence](DECISION_INTELLIGENCE.md); see [Providers](PROVIDERS.md) for evaluation status.
 
 ---
 
@@ -436,8 +449,15 @@ plugins:
   transformations:
     - test-summary
 
-  decisions:
-    - jev
+decision_intelligence:
+  context_retention:
+    provider: d1-2b
+
+  memory_importance:
+    provider: jev
+
+  compression_strategy:
+    provider: heuristic
 ```
 
 See:
@@ -447,44 +467,6 @@ docs/PLUGIN_API.md
 ```
 
 for plugin development details.
-
----
-
-# Jev Configuration
-
-Example configuration:
-
-```yaml
-decisions:
-
-  provider: jev
-
-  confidence_threshold: 0.8
-```
-
-Advanced example:
-
-```yaml
-decisions:
-
-  provider: jev
-
-  decisions:
-
-    - context_retention
-
-    - memory_importance
-
-    - compression_strategy
-```
-
-See:
-
-```text
-docs/JEV_INTEGRATION.md
-```
-
-for integration details.
 
 ---
 
@@ -499,13 +481,7 @@ ECC_CONTEXT_WINDOW=128000
 ECC_OUTPUT_RESERVE=10000
 ```
 
-Example:
-
-```bash
-ECC_DECISION_PROVIDER=jev
-```
-
-The intended configuration precedence gives environment values priority.
+The intended configuration precedence gives environment values priority. Decision-provider environment override names are not standardized in this proposal.
 
 ---
 
