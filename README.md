@@ -87,7 +87,7 @@ This repository is in the early design phase. The architecture, context model, p
 - [Scoring Spec](docs/SCORING_SPEC.md) — Normalized heuristic scoring formula and examples
 - [Inventory API](docs/INVENTORY_API.md) — Proposed context inventory interfaces and lifecycle
 - [Prompt Assembler](docs/PROMPT_ASSEMBLER.md) — Deterministic prompt ordering and budget contract
-- [Agent Execution Rules](docs/integrations/AGENT_EXECUTION_RULES.md) — Operational guidance for long-running coding agents and integrations
+- [Agent Execution Rules](docs/integrations/AGENT_EXECUTION_RULES.md) — Operational guidance for long-running coding agents and future ECC integrations
 - [Plugin API](docs/PLUGIN_API.md) — Proposed plugin interfaces and extension model
 - [Evaluation Framework](docs/EVALUATION.md) — Initial targets and evaluation methodology
 - [Roadmap](docs/ROADMAP.md) — Development phases and initial integration targets

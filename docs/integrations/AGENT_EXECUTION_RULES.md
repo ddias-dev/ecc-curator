@@ -334,4 +334,4 @@ This document complements ECC Curator's context-governance philosophy by applyin
 
 It does not define ECC Curator runtime policy, inventory TTL behavior, context-item lifecycle, or automatic compaction handling. Runtime governance contracts remain specified in the [Governor Algorithm](../GOVERNOR_ALGORITHM.md), [Inventory API](../INVENTORY_API.md), and [Prompt Assembler](../PROMPT_ASSEMBLER.md).
 
-The earlier [Agent Context-Survival Rules](../AGENT_CONTEXT_SURVIVAL.md) document is retained as the original source for these operational rules.
+This document is the repository's authoritative agent-behaviour specification. Earlier agent-operating guidance has been consolidated into it; no separate context-survival document is maintained.

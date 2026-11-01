@@ -210,6 +210,8 @@ The listed projects are candidates, not current dependencies or validated compat
 
 **Objective:** Bring governance directly into agent workflows.
 
+> Agent integrations may consume [Agent Execution Rules](integrations/AGENT_EXECUTION_RULES.md) as a standard execution profile for context-aware development agents.
+
 ## Initial Integrations
 
 - [ ] Claude Code
