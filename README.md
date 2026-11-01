@@ -87,18 +87,23 @@ This repository is in the early design phase. The architecture, context model, p
 - [Scoring Spec](docs/SCORING_SPEC.md) — Normalized heuristic scoring formula and examples
 - [Inventory API](docs/INVENTORY_API.md) — Proposed context inventory interfaces and lifecycle
 - [Prompt Assembler](docs/PROMPT_ASSEMBLER.md) — Deterministic prompt ordering and budget contract
+- [Agent Execution Rules](docs/integrations/AGENT_EXECUTION_RULES.md) — Operational guidance for long-running coding agents and integrations
 - [Plugin API](docs/PLUGIN_API.md) — Proposed plugin interfaces and extension model
 - [Evaluation Framework](docs/EVALUATION.md) — Initial targets and evaluation methodology
 - [Roadmap](docs/ROADMAP.md) — Development phases and initial integration targets
-- [Documentation Changes](docs/DOCUMENTATION_CHANGES.md) — Summary of this architecture update
 
 ### Suggested reading order
 
 1. [Positioning](docs/POSITIONING.md)
 2. [Target Environment](docs/TARGET_ENVIRONMENT.md)
 3. [Architecture](docs/ARCHITECTURE.md)
-4. [Decision Intelligence](docs/DECISION_INTELLIGENCE.md)
-5. [Decision Schemas](docs/DECISION_SCHEMAS.md)
-6. [Context Model](docs/CONTEXT_MODEL.md)
-7. [Evaluation Framework](docs/EVALUATION.md)
-8. [Roadmap](docs/ROADMAP.md)
+4. [Context Model](docs/CONTEXT_MODEL.md)
+5. [Governor Algorithm](docs/GOVERNOR_ALGORITHM.md)
+6. [Scoring Spec](docs/SCORING_SPEC.md)
+7. [Inventory API](docs/INVENTORY_API.md)
+8. [Prompt Assembler](docs/PROMPT_ASSEMBLER.md)
+9. [Decision Intelligence](docs/DECISION_INTELLIGENCE.md)
+10. [Decision Schemas](docs/DECISION_SCHEMAS.md)
+11. [Evaluation Framework](docs/EVALUATION.md)
+12. [Roadmap](docs/ROADMAP.md)
+13. [Agent Execution Rules](docs/integrations/AGENT_EXECUTION_RULES.md)
