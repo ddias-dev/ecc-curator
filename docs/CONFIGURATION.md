@@ -6,6 +6,8 @@
 
 This document describes the proposed configuration model.
 
+The proposed scoring, governance, inventory, and assembly semantics are specified in [Scoring Spec](SCORING_SPEC.md), [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Inventory API](INVENTORY_API.md), and [Prompt Assembler](PROMPT_ASSEMBLER.md).
+
 ---
 
 # Configuration Philosophy

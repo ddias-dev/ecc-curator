@@ -8,6 +8,8 @@ Its primary responsibility is deciding what deserves space inside a model's cont
 
 The host agent and model remain responsible for execution. Runtime integrations are a planned delivery path, not an implemented capability in this design-stage repository. The diagrams and interfaces below describe intended architecture, not proof of working components or integrations.
 
+Implementation-focused specifications: [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Scoring Spec](SCORING_SPEC.md), [Inventory API](INVENTORY_API.md), and [Prompt Assembler](PROMPT_ASSEMBLER.md).
+
 ---
 
 # Design Principles

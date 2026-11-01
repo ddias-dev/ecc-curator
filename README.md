@@ -83,7 +83,10 @@ This repository is in the early design phase. The architecture, context model, p
 - [Decision Intelligence](docs/DECISION_INTELLIGENCE.md) — Provider-neutral optional decision architecture
 - [Decision Schemas](docs/DECISION_SCHEMAS.md) — Provider-independent governance decision contracts
 - [Providers](docs/PROVIDERS.md) — Provider categories, candidates, and status
-- [Decision Intelligence Review](docs/DECISION_INTELLIGENCE_REVIEW.md) — Approved architecture assessment and migration recommendation
+- [Governor Algorithm](docs/GOVERNOR_ALGORITHM.md) — Deterministic governance order, budget pressure, and provider fallback
+- [Scoring Spec](docs/SCORING_SPEC.md) — Normalized heuristic scoring formula and examples
+- [Inventory API](docs/INVENTORY_API.md) — Proposed context inventory interfaces and lifecycle
+- [Prompt Assembler](docs/PROMPT_ASSEMBLER.md) — Deterministic prompt ordering and budget contract
 - [Plugin API](docs/PLUGIN_API.md) — Proposed plugin interfaces and extension model
 - [Evaluation Framework](docs/EVALUATION.md) — Initial targets and evaluation methodology
 - [Roadmap](docs/ROADMAP.md) — Development phases and initial integration targets

@@ -8,6 +8,8 @@ ECC Curator models context accumulated during long-running coding sessions as st
 
 This document defines the core context abstractions used throughout the system.
 
+Implementation details for inventory operations, scoring, governance, and assembly are specified in [Inventory API](INVENTORY_API.md), [Scoring Spec](SCORING_SPEC.md), [Governor Algorithm](GOVERNOR_ALGORITHM.md), and [Prompt Assembler](PROMPT_ASSEMBLER.md).
+
 ---
 
 # Design Goals

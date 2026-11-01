@@ -4,6 +4,8 @@
 
 ECC Curator will evolve incrementally, validating the governance model before introducing advanced optimization and decision intelligence. The primary workload is long-running autonomous coding sessions under finite context and hardware budgets. Token reduction is an efficiency measure, not a success criterion by itself; task completion and quality must be evaluated alongside it.
 
+Implementation specs: [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Scoring Spec](SCORING_SPEC.md), [Inventory API](INVENTORY_API.md), and [Prompt Assembler](PROMPT_ASSEMBLER.md).
+
 ## Initial integration targets
 
 The first runtime integration targets are **Claude Code, ECC Harness, and Strata**. The initial local coding-model evaluation target is **ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF**. The reference local decision-provider evaluation candidate is **LiquidAI/d1-2B**; **Jev** is a reference provider candidate. These are evaluation targets, not claims of current support or compatibility.
