@@ -103,7 +103,7 @@ The pre-existing ECC npm package is not modified. The hook script is stored in t
 
 4. To disable the experiment for a project, set `"enabled": false` in its `.claude/ecc-curator.json`. To disable it globally, remove only the ECC Curator `UserPromptSubmit` entry from Claude settings. Preserve the existing model, environment, plugin, and permissions settings.
 
-This checkout has the experiment enabled with a bounded Git diff and two explicitly selected files. Other projects remain unchanged until they add their own config.
+This checkout has the experiment enabled, with automatic Git diff and file collection disabled and metadata logging enabled. Other projects remain unchanged until they add their own config.
 
 ## Opt-in metadata log
 
@@ -119,7 +119,7 @@ Logging is separate from context governance and is **off by default**. To enable
 
 The global `UserPromptSubmit` and `PreCompact` hooks use the same project-local setting. Events append to `.claude/logs/ecc-curator.jsonl`; logs are git-ignored. The active log is capped at 1 MiB and rotates once to `ecc-curator.jsonl.1`, replacing the previous rotated file. Disable logging by setting `enabled` to `false`; remove the two ECC Curator hook entries from personal Claude settings to disable the hook globally.
 
-Each `UserPromptSubmit` event records only timestamp, status, duration, context-type counts, collected/truncated/dropped counts, governance action totals, assembled-item counts, and estimated injected character/byte/token sizes. `PreCompact` records only the event and normalized trigger (`manual`, `auto`, or `unknown`). Hook errors record the stage, not the exception message.
+Each `UserPromptSubmit` event records only timestamp, status, duration, context-type counts, collected/truncated/dropped counts, governance action totals, assembled-item counts, the injection character limit and whether the injected payload fit plus its dropped/truncated item counts, and estimated injected character/byte/token sizes. `PreCompact` records only the event and normalized trigger (`manual`, `auto`, or `unknown`). Hook errors record the stage, not the exception message.
 
 The log does **not** contain prompt text, context or diff contents, item IDs, file paths, rule IDs, session IDs, transcript paths, or raw error details. Metadata can still reveal activity patterns and approximate context size, so keep it local and delete the log when no longer needed. No entries are written while logging is disabled. A log-write failure is reported on stderr and does not suppress otherwise valid governed context.
 
@@ -148,7 +148,7 @@ The hook treats the current user prompt as a pinned task for budgeting, then pro
 | Test results | `test_result` | Explicit `context.items` |
 | Plans | `plan` | Explicit `context.items` |
 
-The current prompt is not echoed in `additionalContext` because Claude already received it. Other context types are excluded. Items are bounded by count and characters; oversized items are truncated, and excessive items are dropped. Avoid secrets and irrelevant content in selected files and diffs.
+The current prompt is not echoed in `additionalContext` because Claude already received it. Other context types are excluded. Items are bounded by count and characters; oversized items are truncated, and excessive items are dropped. The same `maxTotalCharacters` limit also bounds the emitted `additionalContext` payload itself, header line and JSON framing included: the hook drops lowest-ranked non-pinned items first, then truncates remaining content (pinned included) from the tail until the rendered payload fits. If the framing alone cannot fit, the hook injects nothing.
 
 If configuration or curation fails, the hook writes a diagnostic to stderr and Claude continues with its original prompt and no added context. A Git diff collection error is reported to stderr; other explicitly configured context sources can still be governed.
 

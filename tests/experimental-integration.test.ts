@@ -6,6 +6,7 @@ import { join } from "node:path";
 
 import {
   collectExperimentalContext,
+  fitInjectionPayload,
   runExperimentalAdapter,
 } from "../experimental/adapter.ts";
 import {
@@ -239,6 +240,97 @@ test("curator failures are recorded without fabricating prompt or context measur
   assert.equal(comparison.runs[1].promptTokens, null);
   assert.equal(comparison.runs[1].contextTokens, null);
   assert.equal(comparison.runs[1].itemsKept, null);
+});
+
+test("injection payload fitting keeps every item when the rendered payload is within its bound", () => {
+  const fit = fitInjectionPayload(
+    [
+      { content: "AAA", pinned: true },
+      { content: "BBB", pinned: false },
+    ],
+    20,
+    (indexes, contents) => contents.join(""),
+  );
+
+  assert.equal(fit.fits, true);
+  assert.deepEqual([...fit.keptIndexes], [0, 1]);
+  assert.deepEqual([...fit.contents], ["AAA", "BBB"]);
+  assert.equal(fit.droppedCount, 0);
+  assert.equal(fit.truncatedCount, 0);
+});
+
+test("injection payload fitting drops lowest-ranked non-pinned items before touching pinned content", () => {
+  const fit = fitInjectionPayload(
+    [
+      { content: "AAAA", pinned: true },
+      { content: "BBBB", pinned: false },
+      { content: "CCCC", pinned: false },
+    ],
+    8,
+    (indexes, contents) => contents.join(""),
+  );
+
+  assert.equal(fit.fits, true);
+  assert.deepEqual([...fit.keptIndexes], [0, 1]);
+  assert.deepEqual([...fit.contents], ["AAAA", "BBBB"]);
+  assert.equal(fit.droppedCount, 1);
+  assert.equal(fit.truncatedCount, 0);
+});
+
+test("injection payload fitting truncates pinned content when only pinned items remain", () => {
+  const fit = fitInjectionPayload(
+    [
+      { content: "AAAAAA", pinned: true },
+      { content: "BBBBBB", pinned: true },
+    ],
+    8,
+    (indexes, contents) => contents.join(""),
+  );
+
+  assert.equal(fit.fits, true);
+  assert.deepEqual([...fit.keptIndexes], [0, 1]);
+  assert.deepEqual([...fit.contents], ["AAAAAA", "BB"]);
+  assert.equal(fit.truncatedCount, 1);
+});
+
+test("injection payload fitting remeasures non-contiguous retained indexes with framing", () => {
+  const render = (_indexes: readonly number[], contents: readonly string[]) =>
+    `HDR:${contents.join("|")}`;
+  const fit = fitInjectionPayload(
+    [
+      { content: "AAA", pinned: false },
+      { content: "PIN", pinned: true },
+      { content: "ZZZ", pinned: false },
+    ],
+    6,
+    render,
+  );
+
+  assert.equal(fit.fits, true);
+  assert.deepEqual([...fit.keptIndexes], [1]);
+  assert.deepEqual([...fit.contents], ["PI"]);
+  assert.ok(render(fit.keptIndexes, fit.contents).length <= 6);
+  assert.equal(fit.droppedCount, 2);
+  assert.equal(fit.truncatedCount, 1);
+});
+
+test("injection payload fitting reports no fit when framing alone exceeds the bound", () => {
+  const fit = fitInjectionPayload(
+    [{ content: "AB", pinned: true }],
+    5,
+    (indexes, contents) => "HEADER:" + contents.join(""),
+  );
+
+  assert.equal(fit.fits, false);
+  assert.equal(fit.keptIndexes.length, 0);
+  assert.equal(fit.droppedCount, 1);
+});
+
+test("injection payload fitting rejects a negative character bound", async () => {
+  await assert.rejects(
+    async () => fitInjectionPayload([], -1, (_indexes, _contents) => ""),
+    RangeError,
+  );
 });
 
 test("evaluation results can be persisted as JSON without storing prompts", async () => {

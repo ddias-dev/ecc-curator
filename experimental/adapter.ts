@@ -57,7 +57,80 @@ export interface ContextCollectionResult {
   collectedCharacters: number;
 }
 
-export interface ExperimentalTurnRequest<T> {
+export interface InjectionPayloadFit {
+  fits: boolean;
+  keptIndexes: readonly number[];
+  contents: readonly string[];
+  droppedCount: number;
+  truncatedCount: number;
+}
+
+interface InjectionPayloadCandidate {
+  content: string;
+  pinned: boolean;
+}
+
+export function fitInjectionPayload(
+  items: readonly InjectionPayloadCandidate[],
+  maximumCharacters: number,
+  render: (keptIndexes: readonly number[], contents: readonly string[]) => string,
+): InjectionPayloadFit {
+  requireLimit(maximumCharacters, "maximumCharacters");
+
+  const pinnedByIndex = items.map((item) => item.pinned === true);
+  let contents = items.map((item) => item.content);
+  let keptIndexes = items.map((_item, index) => index);
+  const truncatedIndexes = new Set<number>();
+
+  const measure = (indexes: readonly number[], candidateContents: readonly string[]) =>
+    render(indexes, indexes.map((index) => candidateContents[index])).length;
+
+  let payloadCharacters = measure(keptIndexes, contents);
+
+  while (payloadCharacters > maximumCharacters) {
+    const removablePosition = keptIndexes.findLastIndex((index) => !pinnedByIndex[index]);
+    if (removablePosition < 0) {
+      break;
+    }
+    keptIndexes = keptIndexes.filter((_, position) => position !== removablePosition);
+    payloadCharacters = measure(keptIndexes, contents);
+  }
+
+  if (payloadCharacters > maximumCharacters) {
+    while (payloadCharacters > maximumCharacters) {
+      const shrinkablePosition = keptIndexes.findLastIndex((index) => contents[index].length > 0);
+      if (shrinkablePosition < 0) {
+        return {
+          fits: false,
+          keptIndexes: [],
+          contents: [],
+          droppedCount: items.length,
+          truncatedCount: 0,
+        };
+      }
+      const shrinkableIndex = keptIndexes[shrinkablePosition];
+      const excess = payloadCharacters - maximumCharacters;
+      contents = contents.map((content, index) =>
+        index === shrinkableIndex
+          ? content.slice(0, Math.max(0, content.length - Math.max(1, excess)))
+          : content,
+      );
+      truncatedIndexes.add(shrinkableIndex);
+      payloadCharacters = measure(keptIndexes, contents);
+    }
+  }
+
+  const finalContents = keptIndexes.map((index) => contents[index]);
+  return {
+    fits: true,
+    keptIndexes,
+    contents: finalContents,
+    droppedCount: items.length - keptIndexes.length,
+    truncatedCount: truncatedIndexes.size,
+  };
+}
+
+interface ExperimentalTurnRequest<T> {
   baselinePrompt: string;
   fixedSegments: readonly PromptSegment[];
   contextItems: readonly ExperimentalContextInput[];
