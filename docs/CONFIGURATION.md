@@ -3,6 +3,8 @@
 > The proposed ECC Curator configuration uses a declarative configuration file.
 >
 > The examples describe a design for budgets, governance policies, plugin providers, and optimization strategies; they are not evidence of a working configuration loader.
+>
+> The separate [experimental integration](EXPERIMENTAL_INTEGRATION.md) implements only its local `ecc_curator.enabled` toggle and deterministic adapter settings. It does not implement this document's general-purpose YAML loader or provider configuration.
 
 This document describes the proposed configuration model.
 

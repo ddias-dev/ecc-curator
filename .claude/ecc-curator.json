@@ -1,0 +1,21 @@
+{
+  "ecc_curator": {
+    "enabled": true,
+    "contextWindowTokens": 65536,
+    "outputReserveTokens": 4096,
+    "safetyMarginTokens": 512,
+    "maxPromptTokens": 65536,
+    "maxItems": 24,
+    "maxCharactersPerItem": 8000,
+    "maxTotalCharacters": 16000,
+    "rules": []
+  },
+  "context": {
+    "includeGitDiff": true,
+    "files": [
+      "README.md",
+      "docs/EXPERIMENTAL_INTEGRATION.md"
+    ],
+    "items": []
+  }
+}

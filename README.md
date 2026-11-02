@@ -70,7 +70,7 @@ The design is deterministic-first, model- and runtime-agnostic, and local-first.
 
 ## Project status
 
-This repository is in the early design phase. The architecture, context model, proposed extension interfaces, configuration examples, and evaluation approach are documented, but do not imply that the corresponding runtime capabilities or integrations are already available.
+This repository includes a deterministic TypeScript MVP, a Claude Code `UserPromptSubmit` hook, and a callback-based evaluation harness for local measurement. The hook appends explicitly selected governed context without changing Claude Code's model routing. The integration is experimental, not production-ready, and makes no performance or quality claims.
 
 ## Documentation
 
@@ -90,6 +90,7 @@ This repository is in the early design phase. The architecture, context model, p
 - [Agent Execution Rules](docs/integrations/AGENT_EXECUTION_RULES.md) — Operational guidance for long-running coding agents and future ECC integrations
 - [Plugin API](docs/PLUGIN_API.md) — Proposed plugin interfaces and extension model
 - [Evaluation Framework](docs/EVALUATION.md) — Initial targets and evaluation methodology
+- [Experimental Integration](docs/EXPERIMENTAL_INTEGRATION.md) — Optional adapter, context bounds, and baseline-versus-governed evaluation
 - [Roadmap](docs/ROADMAP.md) — Development phases and initial integration targets
 
 ### Suggested reading order
