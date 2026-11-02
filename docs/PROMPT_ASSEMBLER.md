@@ -2,7 +2,7 @@
 
 > The Prompt Assembler turns the Governor's validated working-set plan into an ordered prompt package and checks its final budget.
 
-This specification describes the intended assembler contract. No prompt assembler is implemented in this repository. Governance decisions are made by the Governor; assembly must not silently change them except through an explicit overflow policy. See [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Inventory API](INVENTORY_API.md), and [Configuration](CONFIGURATION.md).
+This specification defines the assembler contract implemented by `src/assembler/assemble.ts` and `src/types/assembler.ts`. Governance decisions are made by the Governor; assembly must not silently change them except through an explicit overflow policy. See [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Inventory API](INVENTORY_API.md), and [Configuration](CONFIGURATION.md).
 
 ## Responsibilities
 

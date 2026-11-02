@@ -163,6 +163,10 @@ Ultimately these metrics matter most.
 
 # Efficiency Metrics
 
+## Deterministic MVP Harness
+
+The Phase 1 harness runs the fixtures in `src/eval/scenarios.ts` through the deterministic pipeline. `src/eval/metrics.ts` reports token savings, token-reduction rate, item-retention rate, task-success rate, and test-pass rate as numeric values. Task and test outcomes must be supplied from observed evaluations; scenario fixtures do not claim benchmark or quality results.
+
 ## Token Reduction
 
 Percentage decrease between raw and curated context.
