@@ -6,6 +6,12 @@ ECC Curator will evolve incrementally, validating the governance model before in
 
 Implementation specs: [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Scoring Spec](SCORING_SPEC.md), [Inventory API](INVENTORY_API.md), and [Prompt Assembler](PROMPT_ASSEMBLER.md).
 
+## Current status
+
+The deterministic inventory, rules, scoring, Governor, and prompt-assembly pipeline for Phases 1–2 is implemented. Its integration with Claude Code is limited and experimental: an opt-in `UserPromptSubmit` hook adds explicitly selected governed context, and a paired evaluation harness is available. This does not govern the full conversation or autonomous tool turns, and no benchmark results or outcome improvements have been established.
+
+**Current focus:** validate the Phase 1–2 pipeline in bounded, repeatable baseline-versus-governed workloads using the Phase 5 evaluation tooling. The evaluation harness exists, but the benchmark datasets, repeated agent runs, and resource measurements listed in Phase 5 remain future work. Do not treat Phase 7 as complete based on the experimental Claude Code hook.
+
 ## Initial integration targets
 
 The first runtime integration targets are **Claude Code, ECC Harness, and Strata**. The initial local coding-model evaluation target is **ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF**. The reference local decision-provider evaluation candidate is **LiquidAI/d1-2B**; **Jev** is a reference provider candidate. These are evaluation targets, not claims of current support or compatibility.
@@ -36,18 +42,18 @@ while reducing:
 
 ## Deliverables
 
-- [ ] Project architecture
-- [ ] Context item model
-- [ ] Governance principles
-- [ ] Evaluation methodology
+- [x] Project architecture
+- [x] Context item model
+- [x] Governance principles
+- [x] Evaluation methodology
 - [ ] Benchmark datasets
-- [ ] Token accounting framework
+- [x] Token accounting framework
 
 ## Success Criteria
 
-- Architecture documented
-- Core abstractions stabilised
-- Evaluation framework defined
+- [x] Architecture documented
+- [x] Core abstractions stabilised for the deterministic MVP
+- [x] Evaluation framework defined
 
 ---
 
@@ -57,12 +63,12 @@ while reducing:
 
 ## Deliverables
 
-- [ ] Context inventory
-- [ ] Token estimation
-- [ ] Budget manager
-- [ ] Rule engine
-- [ ] Context classifier
-- [ ] Prompt assembler
+- [x] Context inventory
+- [x] Token estimation
+- [x] Budget manager
+- [x] Rule engine
+- [ ] Context classifier (context types are supplied by callers; automatic classification is not implemented)
+- [x] Prompt assembler
 
 ## Planned Governance Outcomes
 
@@ -86,9 +92,9 @@ tool_output:
 
 ## Success Criteria
 
-- Deterministic governance decisions are reproducible for the same inputs and policy
-- Context use and task outcomes can be measured against an ungoverned baseline
-- No external dependency is required for the deterministic baseline
+- [x] Deterministic governance decisions are reproducible for the same inputs and policy
+- [x] Context use and task outcomes can be measured against an ungoverned baseline using the evaluation harness
+- [x] No external dependency is required for the deterministic baseline
 
 ---
 
@@ -98,11 +104,11 @@ tool_output:
 
 ## Deliverables
 
-- [ ] Context scoring
-- [ ] Relevance heuristics
-- [ ] Recency weighting
-- [ ] Reference tracking
-- [ ] Context ageing
+- [x] Context scoring
+- [x] Relevance heuristics
+- [x] Recency weighting
+- [x] Reference tracking
+- [x] Context ageing
 
 ## Planned Governance Outcomes
 
@@ -114,9 +120,9 @@ DROP
 
 ## Success Criteria
 
-- Policies are configurable and explainable
-- Governance choices can be evaluated against task outcomes and context budgets
-- Project-specific governance profiles can be expressed
+- [x] Policies are configurable and explainable
+- [x] Governance choices can be evaluated against task outcomes and context budgets using the evaluation harness
+- [x] Project-specific governance profiles can be expressed
 
 ---
 
@@ -214,7 +220,7 @@ The listed projects are candidates, not current dependencies or validated compat
 
 ## Initial Integrations
 
-- [ ] Claude Code
+- [x] Claude Code — limited experimental `UserPromptSubmit` hook; validation ongoing (not a full agent integration)
 - [ ] ECC Harness
 - [ ] Strata
 
