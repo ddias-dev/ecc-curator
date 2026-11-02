@@ -37,6 +37,17 @@ The pre-existing ECC npm package is not modified. The hook script is stored in t
              }
            ]
          }
+       ],
+       "PreCompact": [
+         {
+           "hooks": [
+             {
+               "type": "command",
+               "command": "\"C:\\Program Files\\nodejs\\node.exe\" \"C:\\ddias-dev\\ecc-curator\\experimental\\claude-code-hook.mjs\"",
+               "timeout": 10
+             }
+           ]
+         }
        ]
      }
    }
@@ -62,6 +73,9 @@ The pre-existing ECC npm package is not modified. The hook script is stored in t
        "includeGitDiff": true,
        "files": ["README.md", "docs/ARCHITECTURE.md"],
        "items": []
+     },
+     "logging": {
+       "enabled": false
      }
    }
    ```
@@ -90,6 +104,24 @@ The pre-existing ECC npm package is not modified. The hook script is stored in t
 4. To disable the experiment for a project, set `"enabled": false` in its `.claude/ecc-curator.json`. To disable it globally, remove only the ECC Curator `UserPromptSubmit` entry from Claude settings. Preserve the existing model, environment, plugin, and permissions settings.
 
 This checkout has the experiment enabled with a bounded Git diff and two explicitly selected files. Other projects remain unchanged until they add their own config.
+
+## Opt-in metadata log
+
+Logging is separate from context governance and is **off by default**. To enable it in one project, set:
+
+```json
+{
+  "logging": {
+    "enabled": true
+  }
+}
+```
+
+The global `UserPromptSubmit` and `PreCompact` hooks use the same project-local setting. Events append to `.claude/logs/ecc-curator.jsonl`; logs are git-ignored. The active log is capped at 1 MiB and rotates once to `ecc-curator.jsonl.1`, replacing the previous rotated file. Disable logging by setting `enabled` to `false`; remove the two ECC Curator hook entries from personal Claude settings to disable the hook globally.
+
+Each `UserPromptSubmit` event records only timestamp, status, duration, context-type counts, collected/truncated/dropped counts, governance action totals, assembled-item counts, and estimated injected character/byte/token sizes. `PreCompact` records only the event and normalized trigger (`manual`, `auto`, or `unknown`). Hook errors record the stage, not the exception message.
+
+The log does **not** contain prompt text, context or diff contents, item IDs, file paths, rule IDs, session IDs, transcript paths, or raw error details. Metadata can still reveal activity patterns and approximate context size, so keep it local and delete the log when no longer needed. No entries are written while logging is disabled. A log-write failure is reported on stderr and does not suppress otherwise valid governed context.
 
 ## Toggle and programmatic adapter
 

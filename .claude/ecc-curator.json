@@ -17,5 +17,8 @@
       "docs/EXPERIMENTAL_INTEGRATION.md"
     ],
     "items": []
+  },
+  "logging": {
+    "enabled": true
   }
 }

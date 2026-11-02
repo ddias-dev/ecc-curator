@@ -1,3 +1,5 @@
+<!-- ECC Curator README: design-stage overview; see docs/ for details. -->
+
 # ECC Curator
 
 > **Context governance for long-running local coding agents.**
@@ -70,7 +72,7 @@ The design is deterministic-first, model- and runtime-agnostic, and local-first.
 
 ## Project status
 
-This repository includes a deterministic TypeScript MVP, a Claude Code `UserPromptSubmit` hook, and a callback-based evaluation harness for local measurement. The hook appends explicitly selected governed context without changing Claude Code's model routing. The integration is experimental, not production-ready, and makes no performance or quality claims.
+This repository includes a deterministic TypeScript MVP, Claude Code `UserPromptSubmit` and `PreCompact` hooks, opt-in metadata-only logging, and a callback-based evaluation harness for local measurement. The prompt hook appends explicitly selected governed context without changing Claude Code's model routing. The integration is experimental, not production-ready, and makes no performance or quality claims.
 
 ## Documentation
 
