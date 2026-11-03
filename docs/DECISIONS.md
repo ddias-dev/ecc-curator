@@ -409,7 +409,7 @@ Clear boundaries reduce architectural overlap and improve maintainability.
 
 # ADR-011: Decision Providers Are Advisory
 
-**Status:** Accepted
+**Status:** Accepted (implemented for `ContextRetentionDecision` on 2026-11-04; see [Decision Intelligence](DECISION_INTELLIGENCE.md) and `src/types/decision.ts` / `src/governor/provider.ts`)
 
 ## Context
 

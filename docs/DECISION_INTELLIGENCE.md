@@ -2,7 +2,7 @@
 
 > ECC Curator governs context. Decision providers are optional components that help evaluate ambiguous governance decisions.
 
-This document describes the provider-neutral design for decision intelligence. It is an architectural proposal, not an implemented runtime or provider integration. For provider-independent request and proposal shapes, see [Decision Schemas](DECISION_SCHEMAS.md). Candidate provider status is summarized in [Providers](PROVIDERS.md).
+This document describes the provider-neutral design for decision intelligence. The Phase 3 Decision Provider Interface is now implemented for `ContextRetentionDecision` (`src/types/decision.ts` contracts and `src/governor/provider.ts` enforcement): request/proposal envelopes, a capability-based registry, Governor-side validation, gated escalation, deterministic fallback, and provenance. No provider adapters exist yet, the other decision kinds remain conceptual, and baseline operation never requires a provider. For provider-independent request and proposal shapes, see [Decision Schemas](DECISION_SCHEMAS.md). Candidate provider status is summarized in [Providers](PROVIDERS.md).
 
 ## Purpose
 
@@ -127,7 +127,7 @@ interface DecisionProvider {
 }
 ```
 
-`DecisionRequest` and `DecisionProposal` are defined in [Decision Schemas](DECISION_SCHEMAS.md). This is a proposed API, not an implemented interface. A provider must declare capabilities, accept only supported decision kinds, return schema-valid outcomes, and avoid assuming it has the full conversation or unrestricted access to the context store.
+`DecisionRequest` and `DecisionProposal` are defined in [Decision Schemas](DECISION_SCHEMAS.md). The Phase 3 implementation specializes this shape to `ContextRetentionDecision`: the implemented registry contract is `DecisionRegistryEntry` (id, declared capabilities, opt-in `enabled` flag, optional call ceiling, and a `propose` entry point) in `src/types/decision.ts`, and `evaluateContextRetentionRequest`/`resolveContextRetention` in `src/governor/provider.ts` perform the Governor-side call, timeout, validation, and fallback. The task-level kind is implemented as `DecisionRequestKind` because `../types/governance.ts` already freezes `DecisionKind` as the governance *action* alias; the two concepts must never shadow each other. A provider must declare capabilities, accept only supported decision kinds, return schema-valid outcomes, and avoid assuming it has the full conversation or unrestricted access to the context store.
 
 ## Fallback behavior
 
@@ -141,6 +141,8 @@ The Governor should:
 - Surface configuration errors explicitly; it must not silently present fallback as a provider success.
 
 A fallback is a governance policy decision, not an implicit provider retry. Retry limits and timeouts are configured by the host implementation.
+
+**Implementation note (Phase 3).** `resolveContextRetention` consults a provider only after deterministic gates pass: escalation enabled, item not pinned, no rule already decided, heuristic score inside the configured `ambiguityRange`, context type registered in policy, and at least one policy-allowed, governance-enabled, executable outcome (Phase 3 MVP: `KEEP`/`DROP`). Every skip and every provider failure is recorded as an explicit gating or failure code in provenance (`ContextRetentionProvenance`), and a non-adoption path returns the deterministic `GovernanceDecisionRecord` byte-for-byte — fallback never disguises itself as provider success. On adoption the record's `reasonCode` is restated as the explicit `PROVIDER_PROPOSAL_ADOPTED` so the final action and reason never contradict each other (e.g. `DROP` must not be explained by `MIDDLE_BAND_KEEP`), while provenance keeps the deterministic baseline (`deterministicAction`, `deterministicReasonCode`) auditable alongside the final pair.
 
 ## Local-first considerations
 

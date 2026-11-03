@@ -165,6 +165,8 @@ Escalate only when all conditions hold:
 
 Do not call providers for every item by default. Do not send an entire conversation when a summary and metadata suffice. For d1-2B in particular, use bounded decision state; its model card cautions that reliability falls beyond roughly 64K tokens of state.
 
+**Implementation note (Phase 3).** `src/governor/provider.ts` implements these criteria as deterministic gates, each with an explicit skip code recorded in provenance: `ESCALATION_DISABLED`, `HARD_CONSTRAINT_PINNED`, `RULE_ALREADY_DECIDED`, `AMBIGUITY_NOT_CONFIGURED`, `AMBIGUITY_WINDOW_MISS`, `POLICY_TYPE_UNREGISTERED`, and `NO_ALLOWED_OUTCOMES` (policy-allowed ∩ governance-enabled ∩ executable-without-a-strategy-executor must be non-empty; Phase 3 MVP offers only `KEEP`/`DROP`).
+
 ## Provider fallback behavior
 
 On provider disabled, unavailable, timeout, exception, unsupported kind, invalid response, or disallowed outcome:
@@ -175,6 +177,8 @@ On provider disabled, unavailable, timeout, exception, unsupported kind, invalid
 4. Never retry a provider call unless a separate bounded retry policy explicitly allows it.
 
 Provider output cannot bypass policies, budgets, validation, registered provider lists, or deterministic safeguards (see ADR-011 in [Decisions](DECISIONS.md)).
+
+**Implementation note (Phase 3).** The implemented fallback path returns the deterministic `GovernanceDecisionRecord` byte-for-byte; only the provenance record changes (status `provider_failed` plus the failure or violation code). Failure codes are typed, never success-shaped: `PROVIDER_DISABLED`, `NO_CAPABLE_PROVIDER`, `UNSUPPORTED_DECISION_KIND`, `PROVIDER_UNAVAILABLE`, `PROVIDER_TIMEOUT`, `PROVIDER_EXCEPTION`, and `PROPOSAL_INVALID` with a detail code (`DecisionProposalViolationCode`). Call ceilings are host-declared (`requestTimeoutMs` overrides the registry entry's `timeoutMs`, defaulting to 5s); invalid ceilings surface as explicit `InvalidContextItemError` configuration problems, and no provider call is retried. On the adoption path the final record's `reasonCode` is the explicit `PROVIDER_PROPOSAL_ADOPTED` — the deterministic band's reason would contradict a provider-chosen action — with the deterministic action/reason pair retained unchanged in provenance.
 
 ## Pseudocode
 

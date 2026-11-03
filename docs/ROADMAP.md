@@ -8,7 +8,7 @@ Implementation specs: [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Scoring Spec
 
 ## Current status
 
-The deterministic inventory, rules, scoring, Governor, and prompt-assembly pipeline for Phases 1–2 is implemented. Its integration with Claude Code is limited and experimental: an opt-in `UserPromptSubmit` hook adds explicitly selected governed context, and a paired evaluation harness is available. This does not govern the full conversation or autonomous tool turns, and no benchmark results or outcome improvements have been established.
+The deterministic inventory, rules, scoring, Governor, and prompt-assembly pipeline for Phases 1–2 is implemented. The Phase 3 provider-neutral Decision Provider Interface is also implemented for `ContextRetentionDecision` (contracts in `src/types/decision.ts`, Governor-side enforcement in `src/governor/provider.ts`): gated provider escalation, typed validation and fallback codes, and decision provenance — with no provider adapter implemented yet and baseline operation still never requiring a provider. Its integration with Claude Code is limited and experimental: an opt-in `UserPromptSubmit` hook adds explicitly selected governed context, and a paired evaluation harness is available. This does not govern the full conversation or autonomous tool turns, and no benchmark results or outcome improvements have been established.
 
 **Current focus:** validate the Phase 1–2 pipeline in bounded, repeatable baseline-versus-governed workloads using the Phase 5 evaluation tooling. Benchmark datasets, loader/validation, and a paired dataset runner now exist (`docs/BENCHMARK_DATASETS.md`), and a metadata-only context classifier is in place (`docs/CONTEXT_CLASSIFIER.md`); the current runs execute a scripted reference agent, so repeated real-agent runs and the resource measurements listed in Phase 5 remain future work. Do not treat Phase 7 as complete based on the experimental Claude Code hook.
 
@@ -136,10 +136,10 @@ See [Decision Intelligence](DECISION_INTELLIGENCE.md), [Decision Schemas](DECISI
 
 ## Deliverables
 
-- [ ] Decision kinds and provider-independent schemas
-- [ ] Provider capability declaration and registry contract
-- [ ] Governor-side result validation and allowed-outcome enforcement
-- [ ] Deterministic fallback behavior and provenance
+- [x] Decision kinds and provider-independent schemas — implemented for `ContextRetentionDecision` (`src/types/decision.ts`); the other decision kinds remain conceptual
+- [x] Provider capability declaration and registry contract — `DecisionRegistryEntry` with explicit opt-in `enabled` flags and deterministic first-capable lookup
+- [x] Governor-side result validation and allowed-outcome enforcement — raw provider output handled as `untrusted`, re-validated against the request, normalized, and rejected with typed violation codes
+- [x] Deterministic fallback behavior and provenance — gated escalation, byte-identical deterministic-record fallback, and `ContextRetentionProvenance` recording why a provider was or was not consulted
 
 ## Success Criteria
 

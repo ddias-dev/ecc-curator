@@ -1,6 +1,6 @@
 # Decision Schemas
 
-These provider-independent schemas describe proposed requests and responses for decision intelligence. They are conceptual documentation, not implemented types or a guarantee of JSON Schema/runtime validation.
+These provider-independent schemas describe proposed requests and responses for decision intelligence. `ContextRetentionDecision` now has implemented types and runtime validation (Phase 3: `src/types/decision.ts` and Governor-side enforcement in `src/governor/provider.ts`); the remaining decision kinds are conceptual documentation, not implemented types.
 
 ## Shared types
 
@@ -197,3 +197,13 @@ For all decision kinds, the Governor must:
 - Enforce policy and hard safeguards independently of provider confidence.
 - Treat missing, malformed, unsupported, or failed provider output as a provider failure and apply configured deterministic fallback.
 - Keep provider proposals distinct from final governance decisions and from strategy execution.
+
+## Implementation status (Phase 3)
+
+Implemented on 2026-11-04 for `ContextRetentionDecision` only; the other decision kinds above remain conceptual and must not parse into the implemented request/proposal unions until their own contracts and evaluations exist.
+
+- **Naming decision:** the request-level field is implemented as `DecisionRequestKind` (not `DecisionKind`) because `../types/governance.ts` freezes `DecisionKind` as an alias of the governance *action* values. The task kind names the decision being asked about; the action names what the Governor executes.
+- **Request envelope:** the Governor builds every request; `requestId` is derived deterministically as `retain:<itemId>@<policyVersion>` and providers only echo it. Inputs are bounded (id, policy version, task summary, and content summary length limits; non-negative safe-integer costs), so decision state stays small and privacy-filterable — relevant to the d1-2B caveat about reliability falling beyond roughly 64K tokens of state.
+- **Allowed outcomes:** computed by the Governor as policy-allowed ∩ governance-enabled ∩ executable-without-a-strategy-executor (Phase 3 MVP: `KEEP`/`DROP`). A proposal outside this set is always a violation (`PROPOSAL_OUTCOME_NOT_ALLOWED`), never a substitution.
+- **Validation codes:** provider-call failures (`PROVIDER_DISABLED`, `NO_CAPABLE_PROVIDER`, `PROVIDER_UNAVAILABLE`, `PROVIDER_TIMEOUT`, `PROVIDER_EXCEPTION`, ...) and proposal violations (`PROPOSAL_REQUEST_ID_MISMATCH`, `PROPOSAL_SCHEMA_VERSION_UNSUPPORTED`, `PROPOSAL_SCORES_INVALID`, ...) are explicit typed codes; on success the Governor rebuilds a normalized proposal from validated fields only, so provider-invented extra keys cannot survive into governance.
+- **Escalation gating and fallback:** see [Decision Intelligence](DECISION_INTELLIGENCE.md) (implementation note) and `src/governor/provider.ts`; non-adoption returns the deterministic record unchanged with provenance explaining why; adoption restates the record's `reasonCode` as `PROVIDER_PROPOSAL_ADOPTED` so action and reason agree, with the deterministic baseline kept in provenance.
