@@ -11,10 +11,18 @@
 //   application, restricted test invocations, and completion checks. It records
 //   no measurements and invents no outcomes; measurements come only from harness
 //   runs (evaluation/harness.ts + evaluation/runner.mjs).
-// - All inputs must be network-free and credential-free: workspace fixtures are
-//   inline in the dataset JSON, paths are restricted to safe relative paths, and
-//   test invocations are restricted to argv starting with "node" (argv arrays,
-//   never shell strings).
+// - Credential inheritance is bounded: test children run with the parent
+//   environment REPLACED (env: {}) and the interpreter pinned to process.execPath,
+//   so the parent's credentials and unrelated variables are never inherited
+//   (Windows still provides a system-minimal set like PATH/SYSTEMROOT, which
+//   carries no credentials).
+// - TRUST BOUNDARY: test invocations execute the Node scripts the dataset's
+//   setup files materialize, i.e. arbitrary dataset-supplied code. No stable,
+//   cross-platform filesystem/network sandbox exists for child processes on the
+//   supported Node versions (24+), so datasets and their test scripts must be
+//   trusted inputs; "offline" describes this module's plumbing and the
+//   fixtures' intent, not enforced confinement of dataset scripts
+//   (docs/BENCHMARK_DATASETS.md, "Trust boundary").
 // - Workspaces must be materialized outside the repository; the loader returns
 //   validated data only, and callers choose the isolated directory (the runner
 //   uses os.tmpdir()). This module never touches the checkout.
@@ -27,7 +35,14 @@
 //   MVP pipeline can execute (KEEP/DROP); COMPRESS/TRANSFORM rules are rejected
 //   because they would be silently unexecuted.
 // - Test invocations are argv arrays with argv[0] === "node" and safe relative
-//   path arguments; a spawn timeout bounds each test run (default 30s).
+//   path arguments; a spawn timeout bounds each test run (default 30s). argv[0]
+//   "node" runs as the interpreter that loaded this module (process.execPath)
+//   with an empty child environment; this bounds credential inheritance but is
+//   not isolation (see the trust boundary above).
+// - Completion checks treat only ENOENT as "absent"; any other read failure
+//   (an existing directory, an unreadable entry, a path through a non-
+//   directory component) surfaces as UnexpectedWorkspaceReadError instead of
+//   silently satisfying or failing a check.
 // - A scripted reference agent (applyScriptedSolution + evaluate checks) exists
 //   for plumbing validation only; real agent execution belongs to the host.
 
@@ -50,6 +65,18 @@ export class InvalidBenchmarkWorkloadError extends Error {
   constructor(reason: string, workloadHint?: string) {
     super(`Invalid benchmark workload${workloadHint === undefined ? "" : ` ${workloadHint}`}: ${reason}`);
     this.name = "InvalidBenchmarkWorkloadError";
+  }
+}
+
+// A workspace read failure that is not a missing path: the check path exists
+// (or exists unreadably) but cannot be read as a file — e.g. an existing
+// directory or a permission error. Surfaced rather than swallowed so a
+// completion check can never claim success (or "absent") over a path it could
+// not inspect; only ENOENT reads as genuinely absent.
+export class UnexpectedWorkspaceReadError extends Error {
+  constructor(path: string, reason: string) {
+    super(`Unexpected workspace read for ${path}: ${reason}`);
+    this.name = "UnexpectedWorkspaceReadError";
   }
 }
 
@@ -555,7 +582,14 @@ export async function runScriptedAgent(workload: BenchmarkWorkload, workspaceDir
 }
 
 // Runs the dataset's test invocations in the workspace. argv arrays only,
-// argv[0] === "node", bounded by a spawn timeout; no shell, no network.
+// argv[0] === "node" (executed as process.execPath — the Node runtime that
+// loaded this module, pinned so the test runs on the same version and no PATH
+// lookup is needed), and an EMPTY child environment (env replaced, so the
+// parent's credentials and unrelated variables are never inherited; Windows
+// still contributes a system-minimal credential-free set). The spawn timeout
+// bounds each run. This is credential bounding, NOT isolation: the dataset's
+// materialized scripts run arbitrary trusted code (docs/BENCHMARK_DATASETS.md,
+// "Trust boundary").
 export async function runTestRuns(
   workload: BenchmarkWorkload,
   workspaceDirectory: string,
@@ -569,7 +603,10 @@ export async function runTestRuns(
   const results: BenchmarkTestResult[] = [];
   for (const testRun of workload.testRuns) {
     const cwd = testRun.cwd === "." ? workspaceDirectory : join(workspaceDirectory, testRun.cwd);
-    const spawned = spawnSync(testRun.argv[0], testRun.argv.slice(1), { cwd, timeout: timeoutMs });
+    // env: {} replaces (not extends) the inherited environment, so parent
+    // credentials (API keys, tokens, NODE_OPTIONS, NODE_PATH, ...) can never
+    // reach a dataset script; the absolute execPath removes the PATH dependency.
+    const spawned = spawnSync(process.execPath, testRun.argv.slice(1), { cwd, timeout: timeoutMs, env: {} });
     results.push({
       id: testRun.id,
       // @types/node names the exit status `status`; a spawn failure or a
@@ -591,6 +628,34 @@ export interface BenchmarkTestResult {
   stderr: string;
 }
 
+// Only ENOENT (a genuinely missing path, including missing parents) reads as
+// "absent" (null content). Any other read failure — an existing directory
+// (EISDIR), an unreadable entry, a path through a non-directory component
+// (ENOTDIR), ... — surfaces as UnexpectedWorkspaceReadError rather than
+// silently counting as absent (a passing file_absent check) or absent-but-
+// failed (a file_contains check): completion results must never be produced
+// from a path the check could not inspect.
+async function readForCompletionCheck(target: string, checkPath: string): Promise<string | null> {
+  try {
+    return await readFile(target, "utf8");
+  } catch (error) {
+    const code = fsErrorCode(error);
+    if (code === "ENOENT") {
+      return null;
+    }
+    throw new UnexpectedWorkspaceReadError(checkPath, `read failed${code === undefined ? "" : ` (code ${code})`}: ${fsErrorMessage(error)}`);
+  }
+}
+
+function fsErrorCode(error: unknown): string | undefined {
+  const code = (error as { code?: unknown }).code;
+  return typeof code === "string" ? code : undefined;
+}
+
+function fsErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export async function evaluateCompletionChecks(
   workload: BenchmarkWorkload,
   workspaceDirectory: string,
@@ -598,12 +663,7 @@ export async function evaluateCompletionChecks(
   const results: boolean[] = [];
   for (const check of workload.completionChecks) {
     const target = join(workspaceDirectory, check.path);
-    let content: string | null = null;
-    try {
-      content = await readFile(target, "utf8");
-    } catch {
-      content = null;
-    }
+    const content = await readForCompletionCheck(target, check.path);
     if (check.kind === "file_absent") {
       results.push(content === null);
       continue;

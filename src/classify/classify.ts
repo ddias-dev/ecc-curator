@@ -94,8 +94,11 @@ function normalizeSourceTokens(source: string): string[] {
   return matched;
 }
 
+// Tags: trim + lowercase + hyphen fold only (one tag = one signal; tags are
+// exact-match, not token-split), so a host-style "Git-Diff" tag matches the
+// underscore-spelled alias vocabulary ("git_diff" -> diff).
 function normalizeTag(tag: string): string {
-  return tag.trim().toLowerCase();
+  return tag.trim().toLowerCase().replaceAll("-", "_");
 }
 
 export function classifyContext(input: ContextClassificationInput): ContextClassification {

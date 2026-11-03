@@ -18,8 +18,12 @@
 //   resultTag   default "paired"          (safe filename tag; existing results
 //                                          are never overwritten, re-tag or move
 //                                          the file to re-run into a fresh slot)
-// No network access, no credentials: workspaces are materialized under the OS
-// temp directory, test invocations are restricted to node argv arrays.
+// Credential-free plumbing: this runner contacts no network and test children
+// run with the parent environment replaced (empty env; the parent's
+// credentials and other variables are never inherited) on process.execPath.
+// Trust boundary: dataset test invocations execute the Node scripts their
+// setup files materialize, so only trusted, reviewed datasets belong in
+// benchmarks/ (no filesystem/network isolation; see docs/BENCHMARK_DATASETS.md).
 
 import { loadBenchmarkDataset, toEvaluationWorkload, toIntegrationConfig, materializeWorkspace, runScriptedAgent } from "./dataset.ts";
 import { compareEvaluationWorkload, saveEvaluationComparison } from "./harness.ts";
@@ -70,4 +74,4 @@ for (const workload of workloads) {
   console.log(`saved: ${resultPath} (existing files are not overwritten)`);
 }
 
-console.log("Limitations: scripted reference agent only; real-agent runs must replace runScriptedAgent. Nondeterministic model runs, workspace/order effects, and single repetitions are not comparable across releases. See docs/BENCHMARK_DATASETS.md.");
+console.log("Limitations: scripted reference agent only; real-agent runs must replace runScriptedAgent. Nondeterministic model runs, workspace/order effects, and single repetitions are not comparable across releases. Dataset test scripts run arbitrary trusted code (credential inheritance is bounded, filesystem/network isolation is not). See docs/BENCHMARK_DATASETS.md.");

@@ -14,9 +14,22 @@ governed comparisons are produced and read.
   `benchmarks/` (schemaVersion `"1"`). Each workload specifies a task, bounded
   context inputs, a starting state (`setup`), a scripted reference solution
   (`solution`), and objective completion/test checks (`checks`).
-- **Offline and credential-free**: fixture contents are inline in the JSON,
-  test invocations are argv arrays restricted to `node`, and no network or
-  external service is contacted.
+- **Credential-free plumbing**: fixture contents are inline in the JSON and
+  test invocations are argv arrays restricted to `node`. Test children are
+  spawned with the parent environment replaced (empty `env`, so parent
+  credentials like API keys, tokens, proxies, `NODE_OPTIONS`/`NODE_PATH` are
+  never inherited; Windows contributes a system-minimal credential-free set
+  such as `PATH`/`SYSTEMROOT`), and `argv[0] === "node"` runs as the
+  interpreter that loaded the runner (`process.execPath`). The loader and
+  runner themselves contact no network.
+- **Trust boundary — not a sandbox**: a workload's test scripts are Node
+  programs materialized from its `setup` files and executed as written, so
+  running a dataset executes arbitrary code supplied by the dataset. There is
+  no stable, cross-platform filesystem/network sandbox for child processes
+  across supported Node versions (24+), so **datasets and their test scripts
+  must be trusted inputs** (reviewed before they enter `benchmarks/`). "Offline"
+  here describes the plumbing and the fixtures' intent, not an enforced
+  confinement of what a dataset's scripts may do.
 - **Isolation**: workspaces materialize under the OS temp directory
   (`runner.mjs` uses `os.tmpdir()`), never in the repository checkout, so runs
   cannot alter the working tree. Baseline and governed runs get separate fresh
@@ -59,9 +72,14 @@ Decisions the loader locks in (documented so runs stay reproducible):
 - Rule actions are restricted to `KEEP`/`DROP`: the MVP Governor executes only
   those, so `COMPRESS`/`TRANSFORM` rules would be silently unexecuted.
 - Test invocations are argv arrays with `argv[0] === "node"` and safe relative
-  path arguments, each bounded by a spawn timeout (default 30 s).
+  path arguments, each bounded by a spawn timeout (default 30 s). `argv[0]`
+  "node" executes as the Node binary running the runner (`process.execPath`)
+  with an empty child environment; the resulting child process is credential-
+  free but not confined (see the trust boundary above).
 - Completion checks are limited to `file_contains`/`file_absent` on safe
-  workspace-relative paths.
+  workspace-relative paths. A missing path (ENOENT) is the only "absent"
+  result; any other read failure (an existing directory, an unreadable entry)
+  surfaces as `UnexpectedWorkspaceReadError` instead of counting as absent.
 - Workspace paths are id-shaped segments joined by `/` (no `..`, no leading
   dot, no absolute paths).
 
@@ -108,6 +126,13 @@ comparisons) remain future work.
 
 ## Known limitations
 
+- **Trusted datasets only / no process isolation**: test runs execute the
+  Node scripts dataset `setup` files materialize, i.e. arbitrary dataset-
+  supplied code that can read/write the filesystem and contact the network.
+  The empty child environment bounds credential inheritance, but nothing
+  confines the scripts themselves (Node 24+ offers no stable, cross-platform
+  child-process sandbox to claim as secure). Never run unreviewed third-party
+  datasets; results from such runs are untrustworthy at best.
 - **Nondeterminism**: real agent/model runs are not deterministic; one
   repetition is not comparable across releases. Repeat runs need an agreed
   repetition count and recorded model/runtime settings.

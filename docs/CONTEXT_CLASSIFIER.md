@@ -19,8 +19,10 @@ explicit signals, and refuses to answer when the signals do not support one.
   (`knownType: false` records that), and conflicting signals never rewrite it.
 - `source` (required) — normalized: trimmed, lowercased, hyphens folded to
   underscores, then split on whitespace/commas/semicolons into tokens.
-- `tags` (optional) — normalized to trim + lowercase + hyphen fold; tags match
-  the vocabulary by exact text, they are not token-split.
+- `tags` (optional) — normalized to trim + lowercase + hyphen fold (so a
+  `git-diff` tag matches the `git_diff` alias → `diff`); tags match the
+  vocabulary by exact text, they are not token-split (a `git diff` tag, for
+  example, matches nothing).
 
 Content is never inspected: the classifier cannot and does not guess from
 content. Anything not in the signal vocabulary matches nothing.

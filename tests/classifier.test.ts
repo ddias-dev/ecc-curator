@@ -73,6 +73,30 @@ test("source tokens split on whitespace, commas, and semicolons", () => {
   );
 });
 
+test("hyphenated tags fold to underscores so git-diff tags as diff", () => {
+  const hyphenated = classifyContext({
+    id: "diff-1",
+    content: "+++ b/src/fizz_buzz.js",
+    source: "workspace",
+    tags: ["git-diff"],
+  });
+  assert.equal(hyphenated.confidence, "certain");
+  assert.equal(hyphenated.type, "diff");
+  assert.equal(hyphenated.reasonCode, "SINGLE_TAG_SIGNAL");
+  assert.deepEqual(hyphenated.signals, [{ kind: "tag", value: "git_diff", mappedType: "diff" }]);
+
+  const cased = classifyContext({ id: "diff-2", content: "x", source: "workspace", tags: [" Git-Diff "] });
+  assert.equal(cased.confidence, "certain");
+  assert.equal(cased.type, "diff");
+});
+
+test("tags stay exact-match: a spaced tag is not token-split", () => {
+  const spaced = classifyContext({ id: "spaced-1", content: "x", source: "workspace", tags: ["git diff"] });
+  assert.equal(spaced.confidence, "unrecognized");
+  assert.equal(spaced.type, undefined);
+  assert.deepEqual([...spaced.signals], []);
+});
+
 test("source and tag signals that agree collapse to one type", () => {
   const classification = classifyContext({
     id: "file-1",

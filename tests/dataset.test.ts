@@ -5,7 +5,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import { parseBenchmarkWorkload, loadBenchmarkWorkload, loadBenchmarkDataset, toEvaluationWorkload, toIntegrationConfig, materializeWorkspace, runScriptedAgent, runTestRuns, evaluateCompletionChecks } from "../evaluation/dataset.ts";
-import { InvalidBenchmarkWorkloadError } from "../evaluation/dataset.ts";
+import { InvalidBenchmarkWorkloadError, UnexpectedWorkspaceReadError } from "../evaluation/dataset.ts";
 
 import type { BenchmarkWorkload } from "../evaluation/dataset.ts";
 
@@ -273,6 +273,75 @@ test("file_absent completion holds when nothing wrote outside the fixture", asyn
     await materializeWorkspace(workload, directory);
     const results = await evaluateCompletionChecks(workload, directory);
     assert.deepEqual([...results], [true]);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("test children never inherit the parent environment (no credential leak)", async () => {
+  const previousSecret = process.env.ECC_TEST_PARENT_SECRET;
+  process.env.ECC_TEST_PARENT_SECRET = "do-not-inherit";
+  const document = structuredClone(minimalDocument()) as Record<string, unknown>;
+  document.setup = [{
+    path: "env-probe.js",
+    content: "const keys = Object.keys(process.env).map((key) => key.toUpperCase());\nprocess.exitCode = keys.includes(\"ECC_TEST_PARENT_SECRET\") ? 7 : 0;\n",
+  }];
+  document.checks = { tests: [{ id: "env-probe", argv: ["node", "env-probe.js"] }], completion: [] };
+  const workload = parseBenchmarkWorkload(document);
+  const directory = await mkdtemp(join(tmpdir(), "ecc-dataset-env-"));
+  try {
+    await materializeWorkspace(workload, directory);
+    const results = await runTestRuns(workload, directory);
+    assert.deepEqual(results.map((result) => result.exitCode), [0]);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+    if (previousSecret === undefined) {
+      delete process.env.ECC_TEST_PARENT_SECRET;
+    } else {
+      process.env.ECC_TEST_PARENT_SECRET = previousSecret;
+    }
+  }
+});
+
+test("only ENOENT reads as absent: deep missing paths still satisfy file_absent", async () => {
+  const workload = parseBenchmarkWorkload(mutate("checks", {
+    tests: [],
+    completion: [
+      { kind: "file_absent", path: "deep/nested/scratch.js" },
+      { kind: "file_contains", path: "deep/nested/scratch.js", needle: "anything" },
+    ],
+  }));
+  const directory = await mkdtemp(join(tmpdir(), "ecc-dataset-absent-"));
+  try {
+    await materializeWorkspace(workload, directory);
+    const results = await evaluateCompletionChecks(workload, directory);
+    assert.deepEqual([...results], [true, false]);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("an existing directory is not absent; the unexpected read error is surfaced", async () => {
+  // The setup path src/boundary.js materializes "src" as a directory, so both
+  // checks target an existing non-file path: file_absent must not pass and
+  // file_contains must not silently fail behind a bare boolean.
+  const document = structuredClone(minimalDocument()) as Record<string, unknown>;
+  document.checks = { tests: [], completion: [{ kind: "file_absent", path: "src" }] };
+  const absentWorkload = parseBenchmarkWorkload(document);
+  const containsDocument = structuredClone(document) as Record<string, unknown>;
+  containsDocument.checks = { tests: [], completion: [{ kind: "file_contains", path: "src", needle: "count" }] };
+  const containsWorkload = parseBenchmarkWorkload(containsDocument);
+  const directory = await mkdtemp(join(tmpdir(), "ecc-dataset-dir-present-"));
+  try {
+    await materializeWorkspace(containsWorkload, directory);
+    await assert.rejects(
+      () => evaluateCompletionChecks(containsWorkload, directory),
+      (error: unknown) => error instanceof UnexpectedWorkspaceReadError,
+    );
+    await assert.rejects(
+      () => evaluateCompletionChecks(absentWorkload, directory),
+      (error: unknown) => error instanceof UnexpectedWorkspaceReadError,
+    );
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
