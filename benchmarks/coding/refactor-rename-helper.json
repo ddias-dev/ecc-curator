@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1",
+  "id": "refactor-rename-helper",
+  "category": "coding/refactor",
+  "task": "Rename normalize() to tidyText() in src/text.js and export it, then make tests/text_spec.js pass.",
+  "setup": [
+    {
+      "path": "src/text.js",
+      "content": "function normalize(value) {\n  return value.replace(/\\s+/g, \" \").trim();\n}\n\nexport function slug(value) {\n  return normalize(value).replace(\" \", \"-\").toLowerCase();\n}\n"
+    },
+    {
+      "path": "tests/text_spec.js",
+      "content": "import { slug, tidyText } from \"../src/text.js\";\n\nconst failures = [];\nif (slug(\" Ship Release \") !== \"ship-release\") failures.push(\"slug regressed\");\nif (tidyText(\"  Release   Now \") !== \"Release Now\") failures.push(\"tidyText missing or wrong\");\nif (failures.length > 0) {\n  console.error(failures.join(\"; \"));\n  process.exitCode = 1;\n} else {\n  console.log(\"ok\");\n}\n"
+    }
+  ],
+  "solution": [
+    {
+      "path": "src/text.js",
+      "content": "export function tidyText(value) {\n  return value.replace(/\\s+/g, \" \").trim();\n}\n\nexport function slug(value) {\n  return tidyText(value).replace(\" \", \"-\").toLowerCase();\n}\n"
+    }
+  ],
+  "contextItems": [
+    {
+      "id": "goal-1",
+      "type": "goal",
+      "content": "Rename the helper without changing its behaviour.",
+      "source": "user_goal",
+      "priority": 1
+    },
+    {
+      "id": "task-1",
+      "type": "task",
+      "content": "normalize() -> tidyText() in src/text.js; keep slug() working.",
+      "source": "session-task"
+    },
+    {
+      "id": "plan-1",
+      "type": "plan",
+      "content": "1) rename the helper 2) export tidyText 3) run tests/text_spec.js",
+      "source": "plan; roadmap"
+    },
+    {
+      "id": "file-1",
+      "type": "file",
+      "content": "src/text.js: normalize() is private; slug() exported and depends on it.",
+      "source": "workspace-file",
+      "priority": 0.7
+    },
+    {
+      "id": "diff-1",
+      "type": "diff",
+      "content": "--- a/src/text.js\n+++ b/src/text.js\n-function normalize(value) {\n+function tidyText(value) {",
+      "source": "git-diff"
+    },
+    {
+      "id": "tool-1",
+      "type": "tool_output",
+      "content": "grep normalize -> src/text.js:1 src/text.js:7",
+      "source": "command_output"
+    },
+    {
+      "id": "log-1",
+      "type": "terminal_output",
+      "content": "10:01 session resumed\n10:02 replayed 26 turns\n10:03 context grew to 58k tokens\n10:04 cache warm\n10:05 no failures logged",
+      "source": "build_log",
+      "priority": 0.2
+    },
+    {
+      "id": "log-2",
+      "type": "terminal_output",
+      "content": "10:06 idle\n10:07 idle\n10:08 idle\n10:09 idle",
+      "source": "runtime_log",
+      "priority": 0.1
+    }
+  ],
+  "rules": [
+    {
+      "ruleId": "drop-terminal-noise",
+      "priority": 10,
+      "scope": "context_type",
+      "contextType": "terminal_output",
+      "action": "DROP"
+    }
+  ],
+  "checks": {
+    "tests": [
+      {
+        "id": "text-spec",
+        "argv": ["node", "tests/text_spec.js"]
+      }
+    ],
+    "completion": [
+      {
+        "kind": "file_contains",
+        "path": "src/text.js",
+        "needle": "tidyText"
+      }
+    ]
+  },
+  "notes": "Synthetic fixture: mostly-noisy terminal_output items exercise the governed DROP rule. Scripted solution only; no model behaviour claimed."
+}

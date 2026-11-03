@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1",
+  "id": "feature-work-greeting",
+  "category": "coding/feature-work",
+  "task": "Add shout(message) to src/greet.js so it returns the message uppercased with a trailing exclamation mark, then make tests/greet_spec.js pass.",
+  "setup": [
+    {
+      "path": "src/greet.js",
+      "content": "export function greet(name) {\n  return `Hello, ${name}!`;\n}\n"
+    },
+    {
+      "path": "tests/greet_spec.js",
+      "content": "import { greet, shout } from \"../src/greet.js\";\n\nconst failures = [];\nif (greet(\"Ada\") !== \"Hello, Ada!\") failures.push(\"greet regressed\");\nif (shout(\"ship\") !== \"SHIP!\") failures.push(\"shout missing or wrong\");\nif (failures.length > 0) {\n  console.error(failures.join(\"; \"));\n  process.exitCode = 1;\n} else {\n  console.log(\"ok\");\n}\n"
+    }
+  ],
+  "solution": [
+    {
+      "path": "src/greet.js",
+      "content": "export function greet(name) {\n  return `Hello, ${name}!`;\n}\n\nexport function shout(message) {\n  return `${message.toUpperCase()}!`;\n}\n"
+    }
+  ],
+  "contextItems": [
+    {
+      "id": "goal-1",
+      "type": "goal",
+      "content": "Extend the greeting helper without regressing greet().",
+      "source": "user_goal",
+      "priority": 1
+    },
+    {
+      "id": "task-1",
+      "type": "task",
+      "content": "Implement shout(message) per the spec in tests/greet_spec.js.",
+      "source": "session-task"
+    },
+    {
+      "id": "file-1",
+      "type": "file",
+      "content": "export function greet(name) {\n  return `Hello, ${name}!`;\n}\n",
+      "source": "workspace-file",
+      "priority": 0.8
+    },
+    {
+      "id": "tool-1",
+      "type": "tool_output",
+      "content": "read tests/greet_spec.js: shout must upper-case and append '!'",
+      "source": "command_output"
+    },
+    {
+      "id": "log-1",
+      "type": "terminal_output",
+      "content": "09:01 watcher idle\n09:02 no file changes\n09:03 cache warm",
+      "source": "runtime_log",
+      "priority": 0.15
+    }
+  ],
+  "rules": [
+    {
+      "ruleId": "keep-goal",
+      "priority": 5,
+      "scope": "item",
+      "itemId": "goal-1",
+      "action": "KEEP"
+    },
+    {
+      "ruleId": "drop-terminal-noise",
+      "priority": 10,
+      "scope": "context_type",
+      "contextType": "terminal_output",
+      "action": "DROP"
+    }
+  ],
+  "checks": {
+    "tests": [
+      {
+        "id": "greet-spec",
+        "argv": ["node", "tests/greet_spec.js"]
+      }
+    ],
+    "completion": [
+      {
+        "kind": "file_contains",
+        "path": "src/greet.js",
+        "needle": "toUpperCase"
+      }
+    ]
+  },
+  "notes": "Synthetic fixture (offline, credential-free). Scripted solution validates plumbing only."
+}

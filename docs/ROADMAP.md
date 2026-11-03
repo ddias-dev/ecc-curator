@@ -10,7 +10,7 @@ Implementation specs: [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Scoring Spec
 
 The deterministic inventory, rules, scoring, Governor, and prompt-assembly pipeline for Phases 1–2 is implemented. Its integration with Claude Code is limited and experimental: an opt-in `UserPromptSubmit` hook adds explicitly selected governed context, and a paired evaluation harness is available. This does not govern the full conversation or autonomous tool turns, and no benchmark results or outcome improvements have been established.
 
-**Current focus:** validate the Phase 1–2 pipeline in bounded, repeatable baseline-versus-governed workloads using the Phase 5 evaluation tooling. The evaluation harness exists, but the benchmark datasets, repeated agent runs, and resource measurements listed in Phase 5 remain future work. Do not treat Phase 7 as complete based on the experimental Claude Code hook.
+**Current focus:** validate the Phase 1–2 pipeline in bounded, repeatable baseline-versus-governed workloads using the Phase 5 evaluation tooling. Benchmark datasets, loader/validation, and a paired dataset runner now exist (`docs/BENCHMARK_DATASETS.md`), and a metadata-only context classifier is in place (`docs/CONTEXT_CLASSIFIER.md`); the current runs execute a scripted reference agent, so repeated real-agent runs and the resource measurements listed in Phase 5 remain future work. Do not treat Phase 7 as complete based on the experimental Claude Code hook.
 
 ## Initial integration targets
 
@@ -46,7 +46,7 @@ while reducing:
 - [x] Context item model
 - [x] Governance principles
 - [x] Evaluation methodology
-- [ ] Benchmark datasets
+- [x] Benchmark datasets — small offline fixture set (`benchmarks/`), loader/validation, and a paired baseline-versus-governed runner (real-agent measurements remain future work)
 - [x] Token accounting framework
 
 ## Success Criteria
@@ -67,7 +67,7 @@ while reducing:
 - [x] Token estimation
 - [x] Budget manager
 - [x] Rule engine
-- [ ] Context classifier (context types are supplied by callers; automatic classification is not implemented)
+- [x] Context classifier (narrow, deterministic, metadata-only; experimental — docs/CONTEXT_CLASSIFIER.md)
 - [x] Prompt assembler
 
 ## Planned Governance Outcomes

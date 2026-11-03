@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1",
+  "workloadId": "feature-work-greeting",
+  "contextWindowTokens": 32768,
+  "runs": [
+    {
+      "mode": "baseline",
+      "promptTokens": 66,
+      "contextTokens": 139,
+      "itemsKept": 5,
+      "itemsDropped": 0,
+      "taskCompleted": true,
+      "testsPassed": 1,
+      "testsTotal": 1,
+      "testPassRate": 1,
+      "retries": 0,
+      "errors": 0,
+      "errorStage": null,
+      "sessionDurationMs": 104.1702,
+      "promptUtilisation": 0.00201416015625,
+      "contextUtilisation": 0.004241943359375
+    },
+    {
+      "mode": "governed",
+      "promptTokens": 613,
+      "contextTokens": 110,
+      "itemsKept": 4,
+      "itemsDropped": 1,
+      "taskCompleted": true,
+      "testsPassed": 1,
+      "testsTotal": 1,
+      "testPassRate": 1,
+      "retries": 0,
+      "errors": 0,
+      "errorStage": null,
+      "sessionDurationMs": 106.97729999999999,
+      "promptUtilisation": 0.018707275390625,
+      "contextUtilisation": 0.00335693359375
+    }
+  ]
+}

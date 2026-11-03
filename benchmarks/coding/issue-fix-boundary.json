@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "1",
+  "id": "issue-fix-boundary",
+  "category": "coding/issue-fix",
+  "task": "Fix src/boundary.js so boundarySize(count) returns count + 1 for positive counts, then make tests/spec.js pass.",
+  "setup": [
+    {
+      "path": "src/boundary.js",
+      "content": "export function boundarySize(count) {\n  return count <= 0 ? 0 : count - 1;\n}\n"
+    },
+    {
+      "path": "tests/spec.js",
+      "content": "import { boundarySize } from \"../src/boundary.js\";\n\nconst failures = [];\nif (boundarySize(3) !== 4) failures.push(\"boundarySize(3) should be 4\");\nif (boundarySize(0) !== 0) failures.push(\"boundarySize(0) should be 0\");\nif (failures.length > 0) {\n  console.error(failures.join(\"; \"));\n  process.exitCode = 1;\n} else {\n  console.log(\"ok\");\n}\n"
+    }
+  ],
+  "solution": [
+    {
+      "path": "src/boundary.js",
+      "content": "export function boundarySize(count) {\n  return count <= 0 ? 0 : count + 1;\n}\n"
+    }
+  ],
+  "contextItems": [
+    {
+      "id": "goal-1",
+      "type": "goal",
+      "content": "Keep the boundary helper correct at zero and positive counts.",
+      "source": "user_goal",
+      "priority": 1
+    },
+    {
+      "id": "task-1",
+      "type": "task",
+      "content": "Repair the off-by-one in boundarySize and keep the test spec untouched.",
+      "source": "session-task"
+    },
+    {
+      "id": "plan-1",
+      "type": "plan",
+      "content": "1) Re-read src/boundary.js. 2) Patch the positive branch. 3) Run tests/spec.js.",
+      "source": "plan; roadmap"
+    },
+    {
+      "id": "diff-1",
+      "type": "diff",
+      "content": "--- a/src/boundary.js\n+++ b/src/boundary.js\n-  return count <= 0 ? 0 : count - 1;\n+  return count <= 0 ? 0 : count + 1;",
+      "source": "git-diff"
+    },
+    {
+      "id": "test-1",
+      "type": "test_result",
+      "content": "FAILED: boundarySize(3) should be 4 (got 2)",
+      "source": "test_output; run 2027"
+    },
+    {
+      "id": "log-1",
+      "type": "terminal_output",
+      "content": "08:12 build start\n08:13 loaded 14 modules\n08:14 warm cache reused\n08:15 compile ok\n08:15 spec run queued",
+      "source": "build_log",
+      "priority": 0.2
+    },
+    {
+      "id": "tool-1",
+      "type": "tool_output",
+      "content": "grep boundarySize -> src/boundary.js:3",
+      "source": "command_output"
+    }
+  ],
+  "rules": [
+    {
+      "ruleId": "drop-terminal-noise",
+      "priority": 10,
+      "scope": "context_type",
+      "contextType": "terminal_output",
+      "action": "DROP"
+    }
+  ],
+  "checks": {
+    "tests": [
+      {
+        "id": "spec",
+        "argv": ["node", "tests/spec.js"]
+      }
+    ],
+    "completion": [
+      {
+        "kind": "file_contains",
+        "path": "src/boundary.js",
+        "needle": "count + 1"
+      },
+      {
+        "kind": "file_absent",
+        "path": "src/boundary.js.bak"
+      }
+    ]
+  },
+  "notes": "Synthetic fixture (offline, credential-free). The scripted solution validates dataset plumbing only; it is not evidence about model behaviour."
+}

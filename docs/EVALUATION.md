@@ -167,7 +167,7 @@ Ultimately these metrics matter most.
 
 The Phase 1 harness runs the fixtures in `src/eval/scenarios.ts` through the deterministic pipeline. `src/eval/metrics.ts` reports token savings, token-reduction rate, item-retention rate, task-success rate, and test-pass rate as numeric values. Task and test outcomes must be supplied from observed evaluations; scenario fixtures do not claim benchmark or quality results.
 
-The [Claude Code hook and side-by-side evaluation harness](EXPERIMENTAL_INTEGRATION.md) provide a local integration path. The hook appends selected governed context; the evaluation harness records observed task outcomes and runtime measurements for baseline and governed prompts. Neither establishes that governance improves outcomes.
+The [Claude Code hook and side-by-side evaluation harness](EXPERIMENTAL_INTEGRATION.md) provide a local integration path. The hook appends selected governed context; the evaluation harness records observed task outcomes and runtime measurements for baseline and governed prompts. `evaluation/runner.mjs` runs the dataset workloads through that harness with a scripted reference agent; this validates the paired plumbing offline and establishes nothing about model behaviour (see [Benchmark Datasets](BENCHMARK_DATASETS.md)). None of these establish that governance improves outcomes.
 
 ## Token Reduction
 
@@ -424,6 +424,11 @@ benchmarks/
     ├── plans/
     └── tool-output/
 ```
+
+The implemented format, loader/validation rules, and the paired baseline-versus-
+governed runner are documented in [Benchmark Datasets](BENCHMARK_DATASETS.md).
+The implemented tree currently holds synthetic offline fixtures (for example
+`benchmarks/coding/`); the wider categories above remain the target layout.
 
 ---
 
