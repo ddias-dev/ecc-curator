@@ -47,8 +47,12 @@ import { join } from "node:path";
 
 // The request every real-agent callback receives. Everything is explicit so
 // the callback needs no hidden harness state: the mode-appropriate prompt the
-// harness chose (the raw task prompt in baseline, the assembled governed
-// package in governed), the mode, the workload id, and a fresh isolated
+// harness chose — baseline gets the host-built UNGOVERNED serialization
+// (JSON of the fixed task segment + EVERY validated workload context item,
+// no KEEP/DROP rules, scoring, or budget selection applied); governed gets
+// the assembled governed package (same fixed task segment, only
+// governance-retained items) — plus the mode, the workload id, and a fresh
+// isolated
 // workspace already holding the dataset's setup files (and no solution).
 export interface RealAgentRequest {
   workloadId: string;

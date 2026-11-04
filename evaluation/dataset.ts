@@ -510,14 +510,34 @@ export async function loadBenchmarkDataset(datasetDirectory: string): Promise<Be
   return workloads;
 }
 
-// Projection into the harness contract (evaluation/harness.ts). The same task
-// text feeds baselinePrompt and the fixed "user" segment so both modes receive
-// the identical objective; contextItems and rules are mode-independent inputs.
+// Projection into the harness contract (evaluation/harness.ts). Both modes get
+// the identical task instruction and the identical bounded workload context
+// items: fixedSegments and contextItems are literally the same values for the
+// baseline prompt and the harness's governed pipeline inputs.
+//
+// Baseline vs governed prompt distinction (a fair comparison):
+// - baselinePrompt is the host-built UNGOVERNED serialization required by the
+//   harness contract (docs/EXPERIMENTAL_INTEGRATION.md: the baseline host "must
+//   build the baseline prompt from the same fixed instructions/task and include
+//   the full supplied context"): fixedSegments + EVERY validated workload
+//   context item, serialized as JSON in the same convention the experimental
+//   adapter uses for prompts ("ecc-experimental-json": JSON.stringify of
+//   {fixedSegments, contextItems}). No KEEP/DROP rules, no scoring, and no
+//   budget-based selection or truncation is applied - the loader already
+//   rejects over-limit inputs, so nothing silently shrinks here. Raw
+//   ExperimentalContextInput shapes are kept as authored.
+// - The governed prompt is produced by runPipeline through the adapter: it may
+//   DROP items per rules/scoring/budget and re-shape kept items (metadata
+//   form). That kept-versus-all difference is exactly what the paired
+//   comparison measures - the serialization convention itself is shared.
+// Deterministic: JSON.stringify over fixed-order arrays; identical workload
+// inputs always produce identical baseline and governed prompts.
 export function toEvaluationWorkload(workload: BenchmarkWorkload): EvaluationWorkload {
+  const fixedSegments: PromptSegment[] = [{ id: "task-instructions", role: "user", content: workload.task, fixed: true, order: 0 }];
   return {
     id: workload.id,
-    baselinePrompt: workload.task,
-    fixedSegments: [{ id: "task-instructions", role: "user", content: workload.task, fixed: true, order: 0 }],
+    baselinePrompt: JSON.stringify({ fixedSegments, contextItems: workload.contextItems }),
+    fixedSegments,
     contextItems: workload.contextItems,
   };
 }

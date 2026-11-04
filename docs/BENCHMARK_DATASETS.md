@@ -107,6 +107,13 @@ test tallies, session durations, utilisation) come from those actual runs.
 Record the run tag, Node version, and dataset state alongside any comparison so
 it stays reproducible.
 
+Because the projection now serializes the full workload context into the
+baseline prompt (see "Baseline vs governed prompts" under "Real-agent opt-in
+path"), baseline prompt-token measurements include that context, so baseline
+and governed prompt-token figures cover comparable inputs. The scripted
+reference agent ignores the prompt content, so scripted **outcomes** are
+unchanged; only the baseline prompt-token measurement shifts.
+
 ## Reading results honestly
 
 The runner's agent is **scripted**: it applies the dataset's declared solution
@@ -149,8 +156,9 @@ export async function runAgent(request) {
   // request = { workloadId, mode: "baseline" | "governed", prompt,
   //             workspaceDirectory }
   // Launch your coding agent against request.workspaceDirectory using
-  // request.prompt (raw task prompt in baseline; assembled governed package
-  // in governed). Optionally return { retries, errors } counts the agent
+  // request.prompt (ungoverned task+full-context serialization in baseline;
+  // assembled governed package in governed - see "Baseline vs governed
+  // prompts" below). Optionally return { retries, errors } counts the agent
   // observed (non-negative integers; the harness validates them).
 }
 ```
@@ -171,6 +179,20 @@ Per mode the path guarantees:
   `agent`) so the paired run continues — consistent with scripted harness
   behaviour; an invalid retries/errors report rejects with
   `InvalidEvaluationOutcomeError`.
+
+**Baseline vs governed prompts (the fair comparison)**: `toEvaluationWorkload`
+in `evaluation/dataset.ts` builds the harness-contract baseline prompt (the
+host must include the full supplied context —
+[Experimental Integration](EXPERIMENTAL_INTEGRATION.md)): a deterministic
+**ungoverned** JSON serialization `{fixedSegments, contextItems}` — the task
+instruction segment plus **every** validated workload context item verbatim,
+with no KEEP/DROP rules, no scoring, and no budget-based selection applied.
+The governed prompt is the pipeline-assembled governed package: the same
+fixed task segment, only governance-retained items, in governed metadata
+shape. Both modes therefore receive the same task instructions and the same
+workload context source, and both prompts are deterministic across repeated
+comparisons; the difference the paired run measures is governance's kept-versus-
+all selection, not a difference in inputs.
 
 Results save as `<workload-id>-<tag>.json` (default tag `real`; scripted runs
 use `paired`), so the run mode is identifiable from the filename and results

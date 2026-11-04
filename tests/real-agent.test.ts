@@ -90,8 +90,9 @@ test("compareEvaluationWorkload drives the real callback in both modes with mode
     await writeFile(join(request.workspaceDirectory, "src", "boundary.js"), solutionContent, { encoding: "utf8" });
   });
 
+  const projected = toEvaluationWorkload(workload);
   const comparison = await compareEvaluationWorkload(
-    toEvaluationWorkload(workload),
+    projected,
     toIntegrationConfig(workload, 8_192),
     execute,
   );
@@ -99,9 +100,13 @@ test("compareEvaluationWorkload drives the real callback in both modes with mode
   assert.equal(invocations.length, 2);
   assert.deepEqual(invocations.map((invocation) => invocation.mode), ["baseline", "governed"]);
   assert.notEqual(invocations[0].workspace, invocations[1].workspace);
-  // Baseline sees the raw task prompt; governed sees the assembled package
-  // (JSON of fixed segments + kept context items) containing the same task.
-  assert.equal(invocations[0].prompt, workload.task);
+  // Baseline sees the host-built UNGOVERNED serialization (task + every
+  // context item); governed sees the assembled governed package
+  // (JSON of fixed segments + kept context items in ContextItem shape).
+  // Same task text and same context source feed both.
+  assert.equal(invocations[0].prompt, projected.baselinePrompt);
+  assert.ok(invocations[0].prompt.includes(workload.task));
+  assert.ok(invocations[0].prompt.includes("Boundary correctness."));
   assert.ok(invocations[1].prompt.includes(workload.task));
   assert.notEqual(invocations[1].prompt, invocations[0].prompt);
 
@@ -115,6 +120,92 @@ test("compareEvaluationWorkload drives the real callback in both modes with mode
       && baseline.contextTokens !== null
       && governed.contextTokens <= baseline.contextTokens,
   );
+});
+
+// Workload whose context has one item a governed rule will DROP: the fair
+// comparison must show the baseline callback receiving it and the governed
+// callback not receiving it.
+function noiseDocument(): unknown {
+  return {
+    schemaVersion: "1",
+    id: "issue-fix-boundary-noisy",
+    category: "coding/issue-fix",
+    task: "Fix src/boundary.js so boundarySize returns count + 1.",
+    setup: [{ path: "src/boundary.js", content: setupContent }],
+    solution: [{ path: "src/boundary.js", content: solutionContent }],
+    contextItems: [
+      { id: "goal-1", type: "goal", content: "Boundary correctness.", source: "user_goal", priority: 1 },
+      { id: "noise-1", type: "terminal_output", content: "UNGOVERNED-ONLY-MARKER", source: "operator", priority: 1 },
+    ],
+    rules: [{ ruleId: "drop-terminal-noise", priority: 10, scope: "context_type", contextType: "terminal_output", action: "DROP" }],
+    checks: {
+      tests: [],
+      completion: [{ kind: "file_contains", path: "src/boundary.js", needle: "count + 1" }],
+    },
+  };
+}
+
+test("baseline callback receives task plus EVERY context item, including one a governed rule drops; governed receives only retained items", async () => {
+  const workload: BenchmarkWorkload = parseBenchmarkWorkload(noiseDocument());
+  const prompts: { mode: string; prompt: string }[] = [];
+  const execute = createRealAgentExecute(workload, async (request: RealAgentRequest) => {
+    prompts.push({ mode: request.mode, prompt: request.prompt });
+    await writeFile(join(request.workspaceDirectory, "src", "boundary.js"), solutionContent, { encoding: "utf8" });
+  });
+
+  const comparison = await compareEvaluationWorkload(
+    toEvaluationWorkload(workload),
+    toIntegrationConfig(workload, 8_192),
+    execute,
+  );
+
+  const [baselineRun, governedRun] = comparison.runs;
+  const [baselinePrompt, governedPrompt] = [prompts[0].prompt, prompts[1].prompt];
+
+  // Baseline: ungoverned serialization carries the task AND every context
+  // item verbatim, including the terminal_output item the governed DROP rule
+  // removes. No governance selection was applied to it.
+  assert.equal(baselineRun.mode, "baseline");
+  assert.ok(baselinePrompt.includes(workload.task));
+  assert.ok(baselinePrompt.includes("Boundary correctness."));
+  assert.ok(baselinePrompt.includes("UNGOVERNED-ONLY-MARKER"));
+  assert.equal(baselineRun.itemsKept, 2);
+  assert.equal(baselineRun.itemsDropped, 0);
+
+  // Governed: same task instruction, only governance-retained items - the
+  // rule-dropped item's content never appears in the governed prompt.
+  assert.equal(governedRun.mode, "governed");
+  assert.ok(governedPrompt.includes(workload.task));
+  assert.ok(governedPrompt.includes("Boundary correctness."));
+  assert.notEqual(governedPrompt.includes("UNGOVERNED-ONLY-MARKER"), true);
+  assert.equal(governedRun.itemsKept, 1);
+  assert.equal(governedRun.itemsDropped, 1);
+});
+
+test("baseline and governed prompts are deterministic across repeated comparisons of the same workload", async () => {
+  const workload: BenchmarkWorkload = parseBenchmarkWorkload(noiseDocument());
+  const prompts: string[] = [];
+  const runOnce = async (): Promise<void> => {
+    const execute = createRealAgentExecute(workload, async (request: RealAgentRequest) => {
+      prompts.push(`${request.mode}:${request.prompt}`);
+      await writeFile(join(request.workspaceDirectory, "src", "boundary.js"), solutionContent, { encoding: "utf8" });
+    });
+    await compareEvaluationWorkload(
+      toEvaluationWorkload(workload),
+      toIntegrationConfig(workload, 8_192),
+      execute,
+    );
+  };
+
+  await runOnce();
+  await runOnce();
+
+  assert.equal(prompts.length, 4);
+  // Byte-identical prompts across independent comparisons (same workload
+  // inputs, no random selection, no Date.now in the governed path).
+  assert.equal(prompts[0], prompts[2]);
+  assert.equal(prompts[1], prompts[3]);
+  assert.notEqual(prompts[0], prompts[1]);
 });
 
 test("a callback exception is recorded as a failed run and the paired run continues", async () => {

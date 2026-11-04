@@ -193,14 +193,23 @@ test("dataset directories load deterministically and ids stay unique", async () 
   assert.deepEqual([...ids], [...ids].sort());
 });
 
-test("harness projections carry the task identically for both modes", () => {
+test("harness projections share the task and context with both modes; baselinePrompt carries all of it ungoverned", () => {
   const workload = parseBenchmarkWorkload(minimalDocument());
   const evaluationWorkload = toEvaluationWorkload(workload);
-  assert.equal(evaluationWorkload.baselinePrompt, workload.task);
   const segment = evaluationWorkload.fixedSegments[0];
   assert.equal(segment.role, "user");
   assert.equal(segment.fixed, true);
   assert.equal(segment.content, workload.task);
+  // baselinePrompt is the host-built ungoverned serialization required by the
+  // harness contract: fixedSegments + EVERY validated context item, JSON
+  // framing mirroring the adapter's prompt serialization, with no rule/scoring/
+  // budget filtering applied.
+  assert.equal(
+    evaluationWorkload.baselinePrompt,
+    JSON.stringify({ fixedSegments: evaluationWorkload.fixedSegments, contextItems: evaluationWorkload.contextItems }),
+  );
+  assert.ok(evaluationWorkload.baselinePrompt.includes(workload.task));
+  assert.ok(evaluationWorkload.baselinePrompt.includes("Boundary correctness."));
 
   const config = toIntegrationConfig(workload, 4_096);
   assert.equal(config.ecc_curator.enabled, true);
