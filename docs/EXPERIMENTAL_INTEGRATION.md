@@ -177,6 +177,8 @@ The harness runs baseline first and governed second, passing the same workload I
 
 Call `saveEvaluationComparison` to write the result to `evaluation/<result-id>.json`. Result IDs are restricted to safe filename characters, existing files are not overwritten, and stored results contain measurements—not prompts or raw context. The harness does not save results unless explicitly called.
 
+For a command-line entry point to this callback path, `evaluation/runner-real.mjs` wraps the same harness around a user-supplied `--agent <module>` (explicitly opt-in; the module must export `runAgent` and is trusted, un-sandboxed user code). It creates separate fresh workspaces per mode that contain only the dataset's setup files — the workload's scripted `solution` is never applied — and scores the objective checks with the same shared `scoreWorkspace` as the scripted runner. Scripted results (`<id>-paired.json`) and real-agent results (default `<id>-real.json`) are therefore identifiable by tag and never overwrite each other. See [Benchmark Datasets](BENCHMARK_DATASETS.md), "Real-agent opt-in path".
+
 ## Measurements
 
 Each run records:

@@ -119,10 +119,77 @@ therefore establish:
 - the paired plumbing produces comparable result documents.
 
 What they do **not** establish: anything about model behaviour, task-quality
-improvement, token savings, or context-window headroom. Replacing
-`runScriptedAgent` with a host-agent callback is the future real-workload path;
-Phase 5 measurements (repeated agent runs, resource profiles, provider
-comparisons) remain future work.
+improvement, token savings, or context-window headroom. The real-workload path
+exists but is strictly opt-in (below, "Real-agent opt-in path"): running a real
+agent is the user's decision, and Phase 5 measurements (repeated real-agent
+runs, resource profiles, provider comparisons) remain future work.
+
+## Real-agent opt-in path
+
+`evaluation/real-agent.ts` + `evaluation/runner-real.mjs` run the same bounded
+workloads with a **user-supplied real coding-agent callback** instead of the
+scripted reference agent. Nothing in ECC Curator invokes a model or agent
+runtime on its own: the runner refuses to start unless the user passes an
+explicit `--agent <path>` naming a module they wrote and reviewed, and the
+contract is provider-neutral (no vendor, model, or runtime is imported or
+assumed).
+
+```text
+node evaluation/runner-real.mjs --agent <agentModulePath> [datasetDir] [outputDir] [resultTag]
+# defaults:      (required)      benchmarks  evaluation  real
+```
+
+The agent module must export `runAgent`:
+
+```js
+// agent.mjs - user-supplied; trusted, NOT sandboxed; review before wiring in.
+import { writeFile } from "node:fs/promises";
+import { join } from "node:path";
+export async function runAgent(request) {
+  // request = { workloadId, mode: "baseline" | "governed", prompt,
+  //             workspaceDirectory }
+  // Launch your coding agent against request.workspaceDirectory using
+  // request.prompt (raw task prompt in baseline; assembled governed package
+  // in governed). Optionally return { retries, errors } counts the agent
+  // observed (non-negative integers; the harness validates them).
+}
+```
+
+Per mode the path guarantees:
+
+- a **fresh, separate workspace** under `os.tmpdir()` (mode-named), holding ONLY
+  the dataset's `setup` files; the workload's scripted `solution` is never
+  applied in real-agent mode, and the workspace is removed after the run;
+- the callback receives the mode-appropriate prompt plus workload id, mode, and
+  workspace path, and the **existing** harness (`compareEvaluationWorkload`)
+  records prompt/context tokens, items kept/dropped, test tallies, reported
+  retries/errors, and durations — no parallel evaluation framework;
+- after the callback returns, the SAME objective checks as the scripted path
+  (`scoreWorkspace`: completion checks + node test runs) decide task
+  completion; the agent's self-report is not trusted for completion or tests;
+- a callback exception is recorded as a failed run (one error, `errorStage`
+  `agent`) so the paired run continues — consistent with scripted harness
+  behaviour; an invalid retries/errors report rejects with
+  `InvalidEvaluationOutcomeError`.
+
+Results save as `<workload-id>-<tag>.json` (default tag `real`; scripted runs
+use `paired`), so the run mode is identifiable from the filename and results
+never overwrite each other.
+
+Interpreting real results honestly:
+
+- Real results measure what the user's callback actually did; scripted results
+  measure plumbing only. Never present a real-versus-scripted difference as an
+  improvement.
+- Record for every real run: agent name/version, runtime, model build and
+  settings, dataset state, Node version, run tag, execution order (baseline
+  runs first, governed second — the harness does not randomize order), and
+  repetition count. One run proves nothing: real agent/model runs are
+  nondeterministic, and conclusions need repeated same-configuration samples
+  with the sample size reported.
+- The callback and the dataset's test scripts execute arbitrary trusted code.
+  Replacing child-process environments bounds credential inheritance only; it
+  is **not** sandboxing. Never wire in unreviewed callbacks or datasets.
 
 ## Known limitations
 
@@ -149,7 +216,13 @@ comparisons) remain future work.
 ## Files
 
 - `evaluation/dataset.ts` — loader, validation, harness projections, isolated-
-  workspace plumbing (unit tests: `tests/dataset.test.ts`)
-- `evaluation/runner.mjs` — paired dataset runner (writes results to
-  `evaluation/`)
+  workspace plumbing, and the shared check scoring `scoreWorkspace` (unit
+  tests: `tests/dataset.test.ts`)
+- `evaluation/runner.mjs` — paired dataset runner, scripted reference agent
+  (writes results to `evaluation/`)
+- `evaluation/real-agent.ts` — opt-in real-agent callback contract and
+  harness-compatible execute factory (unit tests:
+  `tests/real-agent.test.ts`)
+- `evaluation/runner-real.mjs` — opt-in paired runner requiring an explicit
+  `--agent` module (never runs a model/runtime by itself)
 - `benchmarks/**` — workload documents

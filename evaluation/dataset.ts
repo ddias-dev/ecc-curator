@@ -51,7 +51,7 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { EXPERIMENTAL_CONTEXT_TYPES, DEFAULT_CONTEXT_COLLECTION_LIMITS } from "../experimental/adapter.ts";
-import type { EvaluationWorkload, EvaluationTaskOutcome } from "./harness.ts";
+import type { EvaluationWorkload, EvaluationTaskOutcome, EvaluationMode } from "./harness.ts";
 
 import type { ExperimentalContextInput, ExperimentalContextType, ExperimentalIntegrationConfig } from "../experimental/adapter.ts";
 import type { GovernanceRule } from "../src/types/governance.ts";
@@ -564,10 +564,17 @@ export async function materializeWorkspace(workload: BenchmarkWorkload, workspac
 // scores completion and test checks. This validates the plumbing only; it is
 // not a real coding-agent run and must never be reported as benchmark
 // evidence about model behaviour (docs/BENCHMARK_DATASETS.md).
-export async function runScriptedAgent(workload: BenchmarkWorkload, workspaceDirectory: string): Promise<EvaluationTaskOutcome> {
-  for (const file of workload.solution) {
-    await writeWorkspaceFile(workspaceDirectory, file);
-  }
+// Shared check scoring: scores completion checks and node test runs in a
+// workspace as an EvaluationTaskOutcome. runScriptedAgent uses this after
+// applying the dataset's scripted solution; the opt-in real-agent path
+// (evaluation/real-agent.ts) uses it after the user-supplied callback has run,
+// so both modes score the SAME objective checks. Completion semantics: the
+// task counts as completed only when every completion check passes AND every
+// run test exits 0 (a vacuous pass only when the workload declares no tests).
+export async function scoreWorkspace(
+  workload: BenchmarkWorkload,
+  workspaceDirectory: string,
+): Promise<EvaluationTaskOutcome> {
   const completionPassed = (await evaluateCompletionChecks(workload, workspaceDirectory)).every((passed) => passed);
   const testResults = await runTestRuns(workload, workspaceDirectory);
   const testsTotal = testResults.length;
@@ -579,6 +586,17 @@ export async function runScriptedAgent(workload: BenchmarkWorkload, workspaceDir
     retries: 0,
     errors: 0,
   };
+}
+
+// The scripted reference agent: applies the dataset's declared edits, then
+// scores completion and test checks via scoreWorkspace. This validates the
+// plumbing only; it is not a real coding-agent run and must never be reported
+// as benchmark evidence about model behaviour (docs/BENCHMARK_DATASETS.md).
+export async function runScriptedAgent(workload: BenchmarkWorkload, workspaceDirectory: string): Promise<EvaluationTaskOutcome> {
+  for (const file of workload.solution) {
+    await writeWorkspaceFile(workspaceDirectory, file);
+  }
+  return await scoreWorkspace(workload, workspaceDirectory);
 }
 
 // Runs the dataset's test invocations in the workspace. argv arrays only,
