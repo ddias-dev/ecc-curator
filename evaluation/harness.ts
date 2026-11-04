@@ -49,6 +49,9 @@ export interface EvaluationComparison {
   schemaVersion: "1";
   workloadId: string;
   contextWindowTokens: number;
+  // Execution order the comparison actually used (fairness runners record it;
+  // absent means the historical baseline-first, governed-second default).
+  executionOrder?: readonly EvaluationMode[];
   runs: readonly [EvaluationRunMetrics, EvaluationRunMetrics];
 }
 
@@ -152,6 +155,11 @@ export async function compareEvaluationWorkload(
     mode: EvaluationMode,
     workloadId: string,
   ) => Promise<EvaluationTaskOutcome>,
+  // Evaluation-fairness knob: the execution ORDER of the two modes.
+  // Default remains the historical "baseline first, governed second";
+  // repeated-comparison runners pass alternating orders per repetition and
+  // record the order actually used (evaluation/results must state it).
+  order: EvaluationMode[] = ["baseline", "governed"],
 ): Promise<EvaluationComparison> {
   const contextWindowTokens = config.ecc_curator.contextWindowTokens ?? 32_768;
   requireCount(contextWindowTokens, "contextWindowTokens");
@@ -159,106 +167,116 @@ export async function compareEvaluationWorkload(
     throw new InvalidEvaluationOutcomeError("contextWindowTokens must be greater than zero");
   }
 
-  const baselineMeasured: { value?: MeasuredExecution } = {};
-  const baselineStartedAt = performance.now();
-  const baseline = await runExperimentalAdapter(
-    { ecc_curator: { ...config.ecc_curator, enabled: false } },
-    {
-      baselinePrompt: workload.baselinePrompt,
-      fixedSegments: workload.fixedSegments,
-      contextItems: workload.contextItems,
-      execute: async (prompt) => {
-        const value = await measureExecution(execute, prompt, "baseline", workload.id);
-        baselineMeasured.value = value;
-        return value;
-      },
-    },
-  );
-  const baselineExecution = baselineMeasured.value;
-  if (baseline.mode !== "baseline" || baselineExecution === undefined) {
-    throw new Error("Baseline agent execution did not produce evaluation measurements");
-  }
-  const measuredBaseline: MeasuredExecution = {
-    ...baselineExecution,
-    sessionDurationMs: Math.max(0, performance.now() - baselineStartedAt),
-  };
-
-  const governedMeasured: { value?: MeasuredExecution } = {};
-  const governedStartedAt = performance.now();
-  let governedMetrics: EvaluationRunMetrics;
-  try {
-    const governed = await runExperimentalAdapter(
-      { ecc_curator: { ...config.ecc_curator, enabled: true } },
+  const runBaseline = async (): Promise<EvaluationRunMetrics> => {
+    const baselineMeasured: { value?: MeasuredExecution } = {};
+    const baselineStartedAt = performance.now();
+    const baseline = await runExperimentalAdapter(
+      { ecc_curator: { ...config.ecc_curator, enabled: false } },
       {
         baselinePrompt: workload.baselinePrompt,
         fixedSegments: workload.fixedSegments,
         contextItems: workload.contextItems,
         execute: async (prompt) => {
-          const value = await measureExecution(execute, prompt, "governed", workload.id);
-          governedMeasured.value = value;
+          const value = await measureExecution(execute, prompt, "baseline", workload.id);
+          baselineMeasured.value = value;
           return value;
         },
       },
     );
-    if (governed.mode !== "governed" || governedMeasured.value === undefined) {
-      throw new Error("ECC Curator execution did not produce governed evaluation measurements");
+    const baselineExecution = baselineMeasured.value;
+    if (baseline.mode !== "baseline" || baselineExecution === undefined) {
+      throw new Error("Baseline agent execution did not produce evaluation measurements");
     }
-    const governedExecution: MeasuredExecution = {
-      ...governedMeasured.value,
-      sessionDurationMs: Math.max(0, performance.now() - governedStartedAt),
+    const measuredBaseline: MeasuredExecution = {
+      ...baselineExecution,
+      sessionDurationMs: Math.max(0, performance.now() - baselineStartedAt),
     };
-    governedMetrics = toMetrics(
-      "governed",
-      governedExecution,
-      governed.promptTokens,
-      governed.contextTokens,
-      governed.itemsKept,
-      governed.itemsDropped,
+    const baselineContextTokens = workload.contextItems.reduce(
+      (total, item) => total + estimateTokens(item.content),
+      0,
+    );
+    return toMetrics(
+      "baseline",
+      measuredBaseline,
+      estimateTokens(baseline.prompt),
+      baselineContextTokens,
+      workload.contextItems.length,
+      0,
       contextWindowTokens,
     );
-  } catch (error) {
-    if (error instanceof InvalidEvaluationOutcomeError) {
-      throw error;
-    }
-    governedMetrics = {
-      mode: "governed",
-      promptTokens: null,
-      contextTokens: null,
-      itemsKept: null,
-      itemsDropped: null,
-      taskCompleted: false,
-      testsPassed: 0,
-      testsTotal: 0,
-      testPassRate: null,
-      retries: 0,
-      errors: 1,
-      errorStage: "curator",
-      sessionDurationMs: Math.max(0, performance.now() - governedStartedAt),
-      promptUtilisation: null,
-      contextUtilisation: null,
-    };
-  }
+  };
 
-  const baselineContextTokens = workload.contextItems.reduce(
-    (total, item) => total + estimateTokens(item.content),
-    0,
-  );
+  const runGoverned = async (): Promise<EvaluationRunMetrics> => {
+    const governedMeasured: { value?: MeasuredExecution } = {};
+    const governedStartedAt = performance.now();
+    try {
+      const governed = await runExperimentalAdapter(
+        { ecc_curator: { ...config.ecc_curator, enabled: true } },
+        {
+          baselinePrompt: workload.baselinePrompt,
+          fixedSegments: workload.fixedSegments,
+          contextItems: workload.contextItems,
+          execute: async (prompt) => {
+            const value = await measureExecution(execute, prompt, "governed", workload.id);
+            governedMeasured.value = value;
+            return value;
+          },
+        },
+      );
+      if (governed.mode !== "governed" || governedMeasured.value === undefined) {
+        throw new Error("ECC Curator execution did not produce governed evaluation measurements");
+      }
+      const governedExecution: MeasuredExecution = {
+        ...governedMeasured.value,
+        sessionDurationMs: Math.max(0, performance.now() - governedStartedAt),
+      };
+      return toMetrics(
+        "governed",
+        governedExecution,
+        governed.promptTokens,
+        governed.contextTokens,
+        governed.itemsKept,
+        governed.itemsDropped,
+        contextWindowTokens,
+      );
+    } catch (error) {
+      if (error instanceof InvalidEvaluationOutcomeError) {
+        throw error;
+      }
+      return {
+        mode: "governed",
+        promptTokens: null,
+        contextTokens: null,
+        itemsKept: null,
+        itemsDropped: null,
+        taskCompleted: false,
+        testsPassed: 0,
+        testsTotal: 0,
+        testPassRate: null,
+        retries: 0,
+        errors: 1,
+        errorStage: "curator",
+        sessionDurationMs: Math.max(0, performance.now() - governedStartedAt),
+        promptUtilisation: null,
+        contextUtilisation: null,
+      };
+    }
+  };
+
+  const normalizedOrder: EvaluationMode[] =
+    order.length === 2 && order[0] === "governed" && order[1] === "baseline"
+      ? ["governed", "baseline"]
+      : ["baseline", "governed"];
+  const metricsByMode: Record<EvaluationMode, EvaluationRunMetrics> = {};
+  for (const mode of normalizedOrder) {
+    metricsByMode[mode] = mode === "baseline" ? await runBaseline() : await runGoverned();
+  }
   return {
     schemaVersion: "1",
     workloadId: workload.id,
     contextWindowTokens,
-    runs: [
-      toMetrics(
-        "baseline",
-        measuredBaseline,
-        estimateTokens(baseline.prompt),
-        baselineContextTokens,
-        workload.contextItems.length,
-        0,
-        contextWindowTokens,
-      ),
-      governedMetrics,
-    ],
+    executionOrder: normalizedOrder,
+    runs: [metricsByMode.baseline, metricsByMode.governed],
   };
 }
 
