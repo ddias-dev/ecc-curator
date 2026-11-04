@@ -1,0 +1,276 @@
+{
+ "capturedAt": "2026-11-04T07:41:38.764Z",
+ "config": {
+  "weights": {
+   "priority": 0.3,
+   "recency": 0.25,
+   "references": 0.15,
+   "typeBaseline": 0.2,
+   "cost": 0.1
+  },
+  "halfLifeTurns": 10,
+  "referenceSaturation": 3
+ },
+ "decisionBoundary": 0.35,
+ "totalItems": 2430,
+ "quantileProbs": [
+  0.05,
+  0.25,
+  0.5,
+  0.75,
+  0.95
+ ],
+ "featureQuantiles": {
+  "P": [
+   0.35,
+   0.5,
+   0.8,
+   0.8,
+   0.8
+  ],
+  "R": [
+   3.992667282135391e-9,
+   0.00001156399968345947,
+   0.0017002940689377433,
+   0.09473228540689989,
+   0.6155722066724582
+  ],
+  "F": [
+   0,
+   0,
+   0,
+   0,
+   0.625
+  ],
+  "T": [
+   0.35,
+   0.5,
+   0.8,
+   0.8,
+   0.8
+  ],
+  "C": [
+   0.9760328389830508,
+   0.9776549258474576,
+   0.993114406779661,
+   0.9977158368644068,
+   0.9993710275423728
+  ],
+  "score": [
+   0.275211149685,
+   0.349964594437,
+   0.497977850653,
+   0.521329078438,
+   0.617665219
+  ]
+ },
+ "featureMeans": {
+  "P": 0.634,
+  "R": 0.103,
+  "F": 0.087,
+  "T": 0.634,
+  "C": 0.989,
+  "score": 0.454
+ },
+ "perType": {
+  "unknown": {
+   "n": 601,
+   "keptShare": 0.541,
+   "medianScore": 0.350581350824
+  },
+  "terminal_output": {
+   "n": 200,
+   "keptShare": 0.16,
+   "medianScore": 0.274994553348
+  },
+  "file": {
+   "n": 470,
+   "keptShare": 1,
+   "medianScore": 0.572750098029
+  },
+  "diff": {
+   "n": 746,
+   "keptShare": 1,
+   "medianScore": 0.499864521195
+  },
+  "tool_output": {
+   "n": 223,
+   "keptShare": 0.233,
+   "medianScore": 0.300136012267
+  },
+  "retrieved_content": {
+   "n": 161,
+   "keptShare": 1,
+   "medianScore": 0.412179667633
+  },
+  "test_result": {
+   "n": 29,
+   "keptShare": 1,
+   "medianScore": 0.426749501672
+  }
+ },
+ "unknownTypeDiagnostics": 0,
+ "flipsVsBaseline": {
+  "recency_weight_0": 615,
+  "references_weight_0": 471,
+  "cost_weight_0": 331,
+  "priority_weight_0": 264,
+  "typeBaseline_weight_0": 217,
+  "halfLife_5": 146,
+  "halfLife_20": 202,
+  "refSat_1": 0,
+  "refSat_6": 0
+ },
+ "estimatorRows": [
+  {
+   "sessionId": "0619e768-b39d-44ed-86a6-dcc790a03540",
+   "estContentTokens": 2230161,
+   "promptSidePositiveGrowth": 177747,
+   "compactionEvents": 25,
+   "maxPromptSideTokens": 56412,
+   "estTokensKeptTotal": 100776,
+   "ratioFullContent": 12.547,
+   "ratioKeptTruncated": 0.567
+  },
+  {
+   "sessionId": "12b69c7f-c15c-4313-97a4-192014ec3f51",
+   "estContentTokens": 140718,
+   "promptSidePositiveGrowth": 17442,
+   "compactionEvents": 1,
+   "maxPromptSideTokens": 44481,
+   "estTokensKeptTotal": 20318,
+   "ratioFullContent": 8.068,
+   "ratioKeptTruncated": 1.165
+  },
+  {
+   "sessionId": "1966ca36-ba23-47de-bc41-5ae258eb967f",
+   "estContentTokens": 18269,
+   "promptSidePositiveGrowth": 0,
+   "compactionEvents": 0,
+   "maxPromptSideTokens": 20002,
+   "estTokensKeptTotal": 1440,
+   "ratioFullContent": null,
+   "ratioKeptTruncated": null
+  },
+  {
+   "sessionId": "1e456aa6-6ce5-4cc3-9252-fba43b7dfcac",
+   "estContentTokens": 374070,
+   "promptSidePositiveGrowth": 176152,
+   "compactionEvents": 2,
+   "maxPromptSideTokens": 111893,
+   "estTokensKeptTotal": 76868,
+   "ratioFullContent": 2.124,
+   "ratioKeptTruncated": 0.436
+  },
+  {
+   "sessionId": "29958462-1a63-4969-9e42-f62a6e49982a",
+   "estContentTokens": 579475,
+   "promptSidePositiveGrowth": 68241,
+   "compactionEvents": 7,
+   "maxPromptSideTokens": 48256,
+   "estTokensKeptTotal": 59280,
+   "ratioFullContent": 8.492,
+   "ratioKeptTruncated": 0.869
+  },
+  {
+   "sessionId": "43e58f7f-de1d-42ec-bc67-22114ad581a9",
+   "estContentTokens": 126242,
+   "promptSidePositiveGrowth": 76910,
+   "compactionEvents": 0,
+   "maxPromptSideTokens": 98995,
+   "estTokensKeptTotal": 42674,
+   "ratioFullContent": 1.641,
+   "ratioKeptTruncated": 0.555
+  },
+  {
+   "sessionId": "44ab90b4-0904-48b4-a1d0-2d333ff3c286",
+   "estContentTokens": 270652,
+   "promptSidePositiveGrowth": 24693,
+   "compactionEvents": 3,
+   "maxPromptSideTokens": 47225,
+   "estTokensKeptTotal": 29896,
+   "ratioFullContent": 10.961,
+   "ratioKeptTruncated": 1.211
+  },
+  {
+   "sessionId": "7706f467-09a5-4015-8490-06a08b680034",
+   "estContentTokens": 202351,
+   "promptSidePositiveGrowth": 74105,
+   "compactionEvents": 0,
+   "maxPromptSideTokens": 96428,
+   "estTokensKeptTotal": 41919,
+   "ratioFullContent": 2.731,
+   "ratioKeptTruncated": 0.566
+  },
+  {
+   "sessionId": "79a4d454-0a3c-498a-abff-ff534576a354",
+   "estContentTokens": 394720,
+   "promptSidePositiveGrowth": 169843,
+   "compactionEvents": 2,
+   "maxPromptSideTokens": 113715,
+   "estTokensKeptTotal": 85806,
+   "ratioFullContent": 2.324,
+   "ratioKeptTruncated": 0.505
+  },
+  {
+   "sessionId": "85b1dd6a-934f-49dc-984c-51aed9e53bf3",
+   "estContentTokens": 1463322,
+   "promptSidePositiveGrowth": 116447,
+   "compactionEvents": 17,
+   "maxPromptSideTokens": 56910,
+   "estTokensKeptTotal": 137982,
+   "ratioFullContent": 12.566,
+   "ratioKeptTruncated": 1.185
+  },
+  {
+   "sessionId": "925b33ec-cf4b-41ba-afec-c273c6be70f0",
+   "estContentTokens": 262320,
+   "promptSidePositiveGrowth": 146895,
+   "compactionEvents": 1,
+   "maxPromptSideTokens": 112479,
+   "estTokensKeptTotal": 78656,
+   "ratioFullContent": 1.786,
+   "ratioKeptTruncated": 0.535
+  },
+  {
+   "sessionId": "96064b5f-cdee-49c3-9468-15e417c6c406",
+   "estContentTokens": 91850,
+   "promptSidePositiveGrowth": 26014,
+   "compactionEvents": 0,
+   "maxPromptSideTokens": 48161,
+   "estTokensKeptTotal": 18694,
+   "ratioFullContent": 3.531,
+   "ratioKeptTruncated": 0.719
+  },
+  {
+   "sessionId": "9c3a2fb1-ec4b-4080-9462-0a7b41928772",
+   "estContentTokens": 26973,
+   "promptSidePositiveGrowth": 5397,
+   "compactionEvents": 0,
+   "maxPromptSideTokens": 27914,
+   "estTokensKeptTotal": 3632,
+   "ratioFullContent": 4.998,
+   "ratioKeptTruncated": 0.673
+  },
+  {
+   "sessionId": "a8da5132-b0d6-4460-85d0-81d819a2edeb",
+   "estContentTokens": 298193,
+   "promptSidePositiveGrowth": 28560,
+   "compactionEvents": 2,
+   "maxPromptSideTokens": 53464,
+   "estTokensKeptTotal": 27909,
+   "ratioFullContent": 10.441,
+   "ratioKeptTruncated": 0.977
+  },
+  {
+   "sessionId": "ca98efb7-016b-4f0d-82d3-8f5e63846de8",
+   "estContentTokens": 258601,
+   "promptSidePositiveGrowth": 128051,
+   "compactionEvents": 1,
+   "maxPromptSideTokens": 113168,
+   "estTokensKeptTotal": 79979,
+   "ratioFullContent": 2.02,
+   "ratioKeptTruncated": 0.625
+  }
+ ]
+}

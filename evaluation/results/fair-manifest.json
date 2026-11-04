@@ -1,0 +1,512 @@
+{
+ "capturedAt": "2026-11-04T08:43:00.738Z",
+ "nodeVersion": "v24.22.1",
+ "agentModulePath": "C:\\ddias-dev\\ecc-curator\\evaluation\\agent-reference.mjs",
+ "agentSettings": {
+  "agent": "deterministic reference (applies dataset solution)",
+  "model": "none",
+  "note": "fixture plumbing evidence only; not model evidence"
+ },
+ "envNote": "agent callback inherits the parent process environment in full (model endpoint auth); recorded per docs/BENCHMARK_DATASETS.md",
+ "datasetDirectory": "benchmarks",
+ "datasetState": [
+  {
+   "file": "benchmarks\\coding\\feature-work-greeting.json",
+   "sha256": "783182620657cec2bd0695500e4345a00f0caaebf68054796e1123ef138efb98"
+  },
+  {
+   "file": "benchmarks\\coding\\issue-fix-boundary.json",
+   "sha256": "0a9a6b2fd2cf061ea228038eba30986ee5880d08bfba444a2eea42a13ac9509d"
+  },
+  {
+   "file": "benchmarks\\coding\\refactor-rename-helper.json",
+   "sha256": "d4ca46701dd86b3fba47691ca0cf1bf5ec500b827a9530f3acf72770d1d3e5fc"
+  }
+ ],
+ "repeats": 5,
+ "orderPattern": "rep0 baseline-first, rep1 governed-first, alternating",
+ "runs": [
+  {
+   "workloadId": "feature-work-greeting",
+   "rep": 0,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\feature-work-greeting-ref-r0.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 368,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 613,
+    "itemsKept": 4,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "feature-work-greeting",
+   "rep": 1,
+   "order": [
+    "governed",
+    "baseline"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\feature-work-greeting-ref-r1.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 368,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 613,
+    "itemsKept": 4,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "feature-work-greeting",
+   "rep": 2,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\feature-work-greeting-ref-r2.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 368,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 613,
+    "itemsKept": 4,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "feature-work-greeting",
+   "rep": 3,
+   "order": [
+    "governed",
+    "baseline"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\feature-work-greeting-ref-r3.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 368,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 613,
+    "itemsKept": 4,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "feature-work-greeting",
+   "rep": 4,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\feature-work-greeting-ref-r4.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 368,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 613,
+    "itemsKept": 4,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "rep": 0,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\issue-fix-boundary-ref-r0.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 514,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 899,
+    "itemsKept": 6,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "rep": 1,
+   "order": [
+    "governed",
+    "baseline"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\issue-fix-boundary-ref-r1.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 514,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 899,
+    "itemsKept": 6,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "rep": 2,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\issue-fix-boundary-ref-r2.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 514,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 899,
+    "itemsKept": 6,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "rep": 3,
+   "order": [
+    "governed",
+    "baseline"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\issue-fix-boundary-ref-r3.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 514,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 899,
+    "itemsKept": 6,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "rep": 4,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\issue-fix-boundary-ref-r4.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 514,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 899,
+    "itemsKept": 6,
+    "itemsDropped": 1,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "rep": 0,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\refactor-rename-helper-ref-r0.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 535,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 858,
+    "itemsKept": 6,
+    "itemsDropped": 2,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "rep": 1,
+   "order": [
+    "governed",
+    "baseline"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\refactor-rename-helper-ref-r1.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 535,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 858,
+    "itemsKept": 6,
+    "itemsDropped": 2,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "rep": 2,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\refactor-rename-helper-ref-r2.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 535,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 858,
+    "itemsKept": 6,
+    "itemsDropped": 2,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "rep": 3,
+   "order": [
+    "governed",
+    "baseline"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\refactor-rename-helper-ref-r3.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 535,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 858,
+    "itemsKept": 6,
+    "itemsDropped": 2,
+    "errors": 0,
+    "errorStage": null
+   }
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "rep": 4,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\results\\refactor-rename-helper-ref-r4.json",
+   "baseline": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 535,
+    "errors": 0,
+    "errorStage": null
+   },
+   "governed": {
+    "taskCompleted": true,
+    "testsPassed": 1,
+    "testsTotal": 1,
+    "promptTokens": 858,
+    "itemsKept": 6,
+    "itemsDropped": 2,
+    "errors": 0,
+    "errorStage": null
+   }
+  }
+ ],
+ "summaries": [
+  {
+   "workloadId": "feature-work-greeting",
+   "reps": 5,
+   "baselineCompleted": 5,
+   "baselineTestsPass": 5,
+   "governedCompleted": 5,
+   "governedTestsPass": 5,
+   "promptTokens": {
+    "baseline": [
+     368,
+     368,
+     368,
+     368,
+     368
+    ],
+    "governed": [
+     613,
+     613,
+     613,
+     613,
+     613
+    ]
+   },
+   "errors": []
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "reps": 5,
+   "baselineCompleted": 5,
+   "baselineTestsPass": 5,
+   "governedCompleted": 5,
+   "governedTestsPass": 5,
+   "promptTokens": {
+    "baseline": [
+     514,
+     514,
+     514,
+     514,
+     514
+    ],
+    "governed": [
+     899,
+     899,
+     899,
+     899,
+     899
+    ]
+   },
+   "errors": []
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "reps": 5,
+   "baselineCompleted": 5,
+   "baselineTestsPass": 5,
+   "governedCompleted": 5,
+   "governedTestsPass": 5,
+   "promptTokens": {
+    "baseline": [
+     535,
+     535,
+     535,
+     535,
+     535
+    ],
+    "governed": [
+     858,
+     858,
+     858,
+     858,
+     858
+    ]
+   },
+   "errors": []
+  }
+ ]
+}

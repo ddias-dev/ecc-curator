@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1",
+  "workloadId": "issue-fix-boundary",
+  "contextWindowTokens": 32768,
+  "executionOrder": [
+    "governed",
+    "baseline"
+  ],
+  "runs": [
+    {
+      "mode": "baseline",
+      "promptTokens": 514,
+      "contextTokens": 262,
+      "itemsKept": 7,
+      "itemsDropped": 0,
+      "taskCompleted": true,
+      "testsPassed": 1,
+      "testsTotal": 1,
+      "testPassRate": 1,
+      "retries": 0,
+      "errors": 0,
+      "errorStage": null,
+      "sessionDurationMs": 86.53099999999995,
+      "promptUtilisation": 0.01568603515625,
+      "contextUtilisation": 0.00799560546875
+    },
+    {
+      "mode": "governed",
+      "promptTokens": 899,
+      "contextTokens": 209,
+      "itemsKept": 6,
+      "itemsDropped": 1,
+      "taskCompleted": true,
+      "testsPassed": 1,
+      "testsTotal": 1,
+      "testPassRate": 1,
+      "retries": 0,
+      "errors": 0,
+      "errorStage": null,
+      "sessionDurationMs": 89.23700000000008,
+      "promptUtilisation": 0.027435302734375,
+      "contextUtilisation": 0.006378173828125
+    }
+  ]
+}

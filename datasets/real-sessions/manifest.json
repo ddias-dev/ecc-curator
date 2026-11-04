@@ -1,0 +1,8473 @@
+{
+  "capturedAt": "2026-11-04T07:08:06.327Z",
+  "source": "Claude Code session transcripts (local, real coding sessions on this repository)",
+  "rawSourceDirectory": "C:/Users/ddias/.claude/projects/c--ddias-dev-ecc-curator",
+  "sessions": [
+    {
+      "sessionId": "0619e768-b39d-44ed-86a6-dcc790a03540",
+      "rawFile": "0619e768-b39d-44ed-86a6-dcc790a03540.jsonl",
+      "rawBytes": 24491085,
+      "rawLines": 3695,
+      "assistantTurns": 414,
+      "extractedItems": 617,
+      "keptItems": 300,
+      "truncatedItems": 245,
+      "tokenUsage": {
+        "input": 371,
+        "cacheRead": 10930726,
+        "cacheCreation": 4576636,
+        "output": 392538,
+        "turns": 372
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 26399
+        },
+        {
+          "atTurn": 2,
+          "actual": 26399
+        },
+        {
+          "atTurn": 3,
+          "actual": 26399
+        },
+        {
+          "atTurn": 4,
+          "actual": 26399
+        },
+        {
+          "atTurn": 5,
+          "actual": 27603
+        },
+        {
+          "atTurn": 6,
+          "actual": 27603
+        },
+        {
+          "atTurn": 7,
+          "actual": 27603
+        },
+        {
+          "atTurn": 8,
+          "actual": 27603
+        },
+        {
+          "atTurn": 9,
+          "actual": 33932
+        },
+        {
+          "atTurn": 10,
+          "actual": 33932
+        },
+        {
+          "atTurn": 11,
+          "actual": 33932
+        },
+        {
+          "atTurn": 12,
+          "actual": 36333
+        },
+        {
+          "atTurn": 13,
+          "actual": 36333
+        },
+        {
+          "atTurn": 14,
+          "actual": 36333
+        },
+        {
+          "atTurn": 15,
+          "actual": 37031
+        },
+        {
+          "atTurn": 16,
+          "actual": 37031
+        },
+        {
+          "atTurn": 17,
+          "actual": 40237
+        },
+        {
+          "atTurn": 18,
+          "actual": 40237
+        },
+        {
+          "atTurn": 19,
+          "actual": 40237
+        },
+        {
+          "atTurn": 21,
+          "actual": 53597
+        },
+        {
+          "atTurn": 22,
+          "actual": 53597
+        },
+        {
+          "atTurn": 23,
+          "actual": 53597
+        },
+        {
+          "atTurn": 24,
+          "actual": 35913
+        },
+        {
+          "atTurn": 25,
+          "actual": 35913
+        },
+        {
+          "atTurn": 26,
+          "actual": 35913
+        },
+        {
+          "atTurn": 28,
+          "actual": 36077
+        },
+        {
+          "atTurn": 29,
+          "actual": 36077
+        },
+        {
+          "atTurn": 30,
+          "actual": 36077
+        },
+        {
+          "atTurn": 31,
+          "actual": 36077
+        },
+        {
+          "atTurn": 33,
+          "actual": 38636
+        },
+        {
+          "atTurn": 34,
+          "actual": 38636
+        },
+        {
+          "atTurn": 35,
+          "actual": 38801
+        },
+        {
+          "atTurn": 36,
+          "actual": 38801
+        },
+        {
+          "atTurn": 37,
+          "actual": 38801
+        },
+        {
+          "atTurn": 39,
+          "actual": 40434
+        },
+        {
+          "atTurn": 40,
+          "actual": 40434
+        },
+        {
+          "atTurn": 41,
+          "actual": 40434
+        },
+        {
+          "atTurn": 43,
+          "actual": 45136
+        },
+        {
+          "atTurn": 44,
+          "actual": 45136
+        },
+        {
+          "atTurn": 45,
+          "actual": 45136
+        },
+        {
+          "atTurn": 46,
+          "actual": 45136
+        },
+        {
+          "atTurn": 47,
+          "actual": 32647
+        },
+        {
+          "atTurn": 48,
+          "actual": 32666
+        },
+        {
+          "atTurn": 49,
+          "actual": 32666
+        },
+        {
+          "atTurn": 50,
+          "actual": 32666
+        },
+        {
+          "atTurn": 51,
+          "actual": 32666
+        },
+        {
+          "atTurn": 52,
+          "actual": 32666
+        },
+        {
+          "atTurn": 53,
+          "actual": 34340
+        },
+        {
+          "atTurn": 54,
+          "actual": 34340
+        },
+        {
+          "atTurn": 55,
+          "actual": 34340
+        },
+        {
+          "atTurn": 56,
+          "actual": 35178
+        },
+        {
+          "atTurn": 57,
+          "actual": 35178
+        },
+        {
+          "atTurn": 58,
+          "actual": 35178
+        },
+        {
+          "atTurn": 59,
+          "actual": 35614
+        },
+        {
+          "atTurn": 60,
+          "actual": 35614
+        },
+        {
+          "atTurn": 61,
+          "actual": 35614
+        },
+        {
+          "atTurn": 62,
+          "actual": 38930
+        },
+        {
+          "atTurn": 63,
+          "actual": 38930
+        },
+        {
+          "atTurn": 64,
+          "actual": 38930
+        },
+        {
+          "atTurn": 65,
+          "actual": 39217
+        },
+        {
+          "atTurn": 66,
+          "actual": 39217
+        },
+        {
+          "atTurn": 67,
+          "actual": 39382
+        },
+        {
+          "atTurn": 68,
+          "actual": 39382
+        },
+        {
+          "atTurn": 69,
+          "actual": 39382
+        },
+        {
+          "atTurn": 70,
+          "actual": 39684
+        },
+        {
+          "atTurn": 71,
+          "actual": 39684
+        },
+        {
+          "atTurn": 72,
+          "actual": 39684
+        },
+        {
+          "atTurn": 73,
+          "actual": 39898
+        },
+        {
+          "atTurn": 74,
+          "actual": 39898
+        },
+        {
+          "atTurn": 75,
+          "actual": 41768
+        },
+        {
+          "atTurn": 76,
+          "actual": 41768
+        },
+        {
+          "atTurn": 77,
+          "actual": 41768
+        },
+        {
+          "atTurn": 78,
+          "actual": 41768
+        },
+        {
+          "atTurn": 80,
+          "actual": 43095
+        },
+        {
+          "atTurn": 81,
+          "actual": 43095
+        },
+        {
+          "atTurn": 82,
+          "actual": 43095
+        },
+        {
+          "atTurn": 83,
+          "actual": 43642
+        },
+        {
+          "atTurn": 84,
+          "actual": 43642
+        },
+        {
+          "atTurn": 85,
+          "actual": 43642
+        },
+        {
+          "atTurn": 86,
+          "actual": 44552
+        },
+        {
+          "atTurn": 87,
+          "actual": 44552
+        },
+        {
+          "atTurn": 88,
+          "actual": 44552
+        },
+        {
+          "atTurn": 89,
+          "actual": 44552
+        },
+        {
+          "atTurn": 90,
+          "actual": 44552
+        },
+        {
+          "atTurn": 92,
+          "actual": 45409
+        },
+        {
+          "atTurn": 93,
+          "actual": 45409
+        },
+        {
+          "atTurn": 94,
+          "actual": 45409
+        },
+        {
+          "atTurn": 95,
+          "actual": 46347
+        },
+        {
+          "atTurn": 96,
+          "actual": 46347
+        },
+        {
+          "atTurn": 97,
+          "actual": 46347
+        },
+        {
+          "atTurn": 98,
+          "actual": 47543
+        },
+        {
+          "atTurn": 99,
+          "actual": 47543
+        },
+        {
+          "atTurn": 100,
+          "actual": 47543
+        },
+        {
+          "atTurn": 101,
+          "actual": 47543
+        },
+        {
+          "atTurn": 103,
+          "actual": 48772
+        },
+        {
+          "atTurn": 104,
+          "actual": 48772
+        },
+        {
+          "atTurn": 105,
+          "actual": 48772
+        },
+        {
+          "atTurn": 107,
+          "actual": 33338
+        },
+        {
+          "atTurn": 108,
+          "actual": 33338
+        },
+        {
+          "atTurn": 109,
+          "actual": 33338
+        },
+        {
+          "atTurn": 110,
+          "actual": 34319
+        },
+        {
+          "atTurn": 111,
+          "actual": 34319
+        },
+        {
+          "atTurn": 112,
+          "actual": 34704
+        },
+        {
+          "atTurn": 113,
+          "actual": 34704
+        },
+        {
+          "atTurn": 114,
+          "actual": 35099
+        },
+        {
+          "atTurn": 115,
+          "actual": 35099
+        },
+        {
+          "atTurn": 116,
+          "actual": 35099
+        },
+        {
+          "atTurn": 117,
+          "actual": 35841
+        },
+        {
+          "atTurn": 118,
+          "actual": 35841
+        },
+        {
+          "atTurn": 119,
+          "actual": 35841
+        },
+        {
+          "atTurn": 120,
+          "actual": 36656
+        },
+        {
+          "atTurn": 121,
+          "actual": 36656
+        },
+        {
+          "atTurn": 122,
+          "actual": 36656
+        },
+        {
+          "atTurn": 123,
+          "actual": 36980
+        },
+        {
+          "atTurn": 124,
+          "actual": 36980
+        },
+        {
+          "atTurn": 125,
+          "actual": 36980
+        },
+        {
+          "atTurn": 126,
+          "actual": 37805
+        },
+        {
+          "atTurn": 127,
+          "actual": 37805
+        },
+        {
+          "atTurn": 128,
+          "actual": 38050
+        },
+        {
+          "atTurn": 129,
+          "actual": 38050
+        },
+        {
+          "atTurn": 130,
+          "actual": 38221
+        },
+        {
+          "atTurn": 131,
+          "actual": 38221
+        },
+        {
+          "atTurn": 132,
+          "actual": 38507
+        },
+        {
+          "atTurn": 133,
+          "actual": 38507
+        },
+        {
+          "atTurn": 134,
+          "actual": 38507
+        },
+        {
+          "atTurn": 135,
+          "actual": 38507
+        },
+        {
+          "atTurn": 137,
+          "actual": 39582
+        },
+        {
+          "atTurn": 138,
+          "actual": 39582
+        },
+        {
+          "atTurn": 139,
+          "actual": 40501
+        },
+        {
+          "atTurn": 140,
+          "actual": 40501
+        },
+        {
+          "atTurn": 141,
+          "actual": 40501
+        },
+        {
+          "atTurn": 142,
+          "actual": 41654
+        },
+        {
+          "atTurn": 143,
+          "actual": 41654
+        },
+        {
+          "atTurn": 144,
+          "actual": 42026
+        },
+        {
+          "atTurn": 145,
+          "actual": 42026
+        },
+        {
+          "atTurn": 146,
+          "actual": 42792
+        },
+        {
+          "atTurn": 147,
+          "actual": 42792
+        },
+        {
+          "atTurn": 148,
+          "actual": 42792
+        },
+        {
+          "atTurn": 149,
+          "actual": 43696
+        },
+        {
+          "atTurn": 150,
+          "actual": 43696
+        },
+        {
+          "atTurn": 151,
+          "actual": 43696
+        },
+        {
+          "atTurn": 152,
+          "actual": 44045
+        },
+        {
+          "atTurn": 153,
+          "actual": 44045
+        },
+        {
+          "atTurn": 154,
+          "actual": 44045
+        },
+        {
+          "atTurn": 155,
+          "actual": 44617
+        },
+        {
+          "atTurn": 156,
+          "actual": 44617
+        },
+        {
+          "atTurn": 157,
+          "actual": 45175
+        },
+        {
+          "atTurn": 158,
+          "actual": 45175
+        },
+        {
+          "atTurn": 159,
+          "actual": 46145
+        },
+        {
+          "atTurn": 160,
+          "actual": 46145
+        },
+        {
+          "atTurn": 161,
+          "actual": 46145
+        },
+        {
+          "atTurn": 162,
+          "actual": 47227
+        },
+        {
+          "atTurn": 163,
+          "actual": 47227
+        },
+        {
+          "atTurn": 164,
+          "actual": 47227
+        },
+        {
+          "atTurn": 166,
+          "actual": 37485
+        },
+        {
+          "atTurn": 167,
+          "actual": 37485
+        },
+        {
+          "atTurn": 168,
+          "actual": 40021
+        },
+        {
+          "atTurn": 169,
+          "actual": 40021
+        },
+        {
+          "atTurn": 170,
+          "actual": 40021
+        },
+        {
+          "atTurn": 171,
+          "actual": 40021
+        },
+        {
+          "atTurn": 172,
+          "actual": 41071
+        },
+        {
+          "atTurn": 173,
+          "actual": 41071
+        },
+        {
+          "atTurn": 174,
+          "actual": 41071
+        },
+        {
+          "atTurn": 175,
+          "actual": 41283
+        },
+        {
+          "atTurn": 176,
+          "actual": 41283
+        },
+        {
+          "atTurn": 177,
+          "actual": 41529
+        },
+        {
+          "atTurn": 178,
+          "actual": 41529
+        },
+        {
+          "atTurn": 179,
+          "actual": 42190
+        },
+        {
+          "atTurn": 180,
+          "actual": 42190
+        },
+        {
+          "atTurn": 181,
+          "actual": 43017
+        },
+        {
+          "atTurn": 182,
+          "actual": 43017
+        },
+        {
+          "atTurn": 183,
+          "actual": 43017
+        },
+        {
+          "atTurn": 184,
+          "actual": 43710
+        },
+        {
+          "atTurn": 185,
+          "actual": 43710
+        },
+        {
+          "atTurn": 186,
+          "actual": 44230
+        },
+        {
+          "atTurn": 187,
+          "actual": 44230
+        },
+        {
+          "atTurn": 188,
+          "actual": 44230
+        },
+        {
+          "atTurn": 190,
+          "actual": 38191
+        },
+        {
+          "atTurn": 191,
+          "actual": 38191
+        },
+        {
+          "atTurn": 192,
+          "actual": 38191
+        },
+        {
+          "atTurn": 193,
+          "actual": 38736
+        },
+        {
+          "atTurn": 194,
+          "actual": 38736
+        },
+        {
+          "atTurn": 195,
+          "actual": 41897
+        },
+        {
+          "atTurn": 196,
+          "actual": 41897
+        },
+        {
+          "atTurn": 197,
+          "actual": 41897
+        },
+        {
+          "atTurn": 199,
+          "actual": 40751
+        },
+        {
+          "atTurn": 200,
+          "actual": 40751
+        },
+        {
+          "atTurn": 201,
+          "actual": 40751
+        },
+        {
+          "atTurn": 202,
+          "actual": 40751
+        },
+        {
+          "atTurn": 203,
+          "actual": 43642
+        },
+        {
+          "atTurn": 204,
+          "actual": 43642
+        },
+        {
+          "atTurn": 205,
+          "actual": 43642
+        },
+        {
+          "atTurn": 206,
+          "actual": 43642
+        },
+        {
+          "atTurn": 207,
+          "actual": 43642
+        },
+        {
+          "atTurn": 208,
+          "actual": 35533
+        },
+        {
+          "atTurn": 209,
+          "actual": 35533
+        },
+        {
+          "atTurn": 210,
+          "actual": 35533
+        },
+        {
+          "atTurn": 211,
+          "actual": 35533
+        },
+        {
+          "atTurn": 213,
+          "actual": 37959
+        },
+        {
+          "atTurn": 214,
+          "actual": 37959
+        },
+        {
+          "atTurn": 215,
+          "actual": 37959
+        },
+        {
+          "atTurn": 216,
+          "actual": 39894
+        },
+        {
+          "atTurn": 217,
+          "actual": 39894
+        },
+        {
+          "atTurn": 218,
+          "actual": 39894
+        },
+        {
+          "atTurn": 219,
+          "actual": 44618
+        },
+        {
+          "atTurn": 220,
+          "actual": 44618
+        },
+        {
+          "atTurn": 221,
+          "actual": 44618
+        },
+        {
+          "atTurn": 222,
+          "actual": 44618
+        },
+        {
+          "atTurn": 224,
+          "actual": 48050
+        },
+        {
+          "atTurn": 225,
+          "actual": 48050
+        },
+        {
+          "atTurn": 226,
+          "actual": 48050
+        },
+        {
+          "atTurn": 228,
+          "actual": 34336
+        },
+        {
+          "atTurn": 229,
+          "actual": 34336
+        },
+        {
+          "atTurn": 230,
+          "actual": 34336
+        },
+        {
+          "atTurn": 231,
+          "actual": 34336
+        },
+        {
+          "atTurn": 233,
+          "actual": 40786
+        },
+        {
+          "atTurn": 234,
+          "actual": 40786
+        },
+        {
+          "atTurn": 235,
+          "actual": 40786
+        },
+        {
+          "atTurn": 236,
+          "actual": 40786
+        },
+        {
+          "atTurn": 238,
+          "actual": 43716
+        },
+        {
+          "atTurn": 239,
+          "actual": 43716
+        },
+        {
+          "atTurn": 240,
+          "actual": 43716
+        },
+        {
+          "atTurn": 241,
+          "actual": 43716
+        },
+        {
+          "atTurn": 243,
+          "actual": 45481
+        },
+        {
+          "atTurn": 244,
+          "actual": 45481
+        },
+        {
+          "atTurn": 245,
+          "actual": 45481
+        },
+        {
+          "atTurn": 246,
+          "actual": 45481
+        },
+        {
+          "atTurn": 247,
+          "actual": 47808
+        },
+        {
+          "atTurn": 248,
+          "actual": 47808
+        },
+        {
+          "atTurn": 249,
+          "actual": 47808
+        },
+        {
+          "atTurn": 250,
+          "actual": 47808
+        },
+        {
+          "atTurn": 252,
+          "actual": 38488
+        },
+        {
+          "atTurn": 253,
+          "actual": 38488
+        },
+        {
+          "atTurn": 254,
+          "actual": 38488
+        },
+        {
+          "atTurn": 255,
+          "actual": 38488
+        },
+        {
+          "atTurn": 256,
+          "actual": 38488
+        },
+        {
+          "atTurn": 258,
+          "actual": 42355
+        },
+        {
+          "atTurn": 259,
+          "actual": 42355
+        },
+        {
+          "atTurn": 260,
+          "actual": 42355
+        },
+        {
+          "atTurn": 261,
+          "actual": 42355
+        },
+        {
+          "atTurn": 262,
+          "actual": 35520
+        },
+        {
+          "atTurn": 263,
+          "actual": 35520
+        },
+        {
+          "atTurn": 264,
+          "actual": 35520
+        },
+        {
+          "atTurn": 266,
+          "actual": 37241
+        },
+        {
+          "atTurn": 267,
+          "actual": 37241
+        },
+        {
+          "atTurn": 268,
+          "actual": 37241
+        },
+        {
+          "atTurn": 270,
+          "actual": 42412
+        },
+        {
+          "atTurn": 271,
+          "actual": 42412
+        },
+        {
+          "atTurn": 272,
+          "actual": 43290
+        },
+        {
+          "atTurn": 273,
+          "actual": 43290
+        },
+        {
+          "atTurn": 274,
+          "actual": 44211
+        },
+        {
+          "atTurn": 275,
+          "actual": 44211
+        },
+        {
+          "atTurn": 276,
+          "actual": 44663
+        },
+        {
+          "atTurn": 277,
+          "actual": 44663
+        },
+        {
+          "atTurn": 278,
+          "actual": 44663
+        },
+        {
+          "atTurn": 279,
+          "actual": 44663
+        },
+        {
+          "atTurn": 281,
+          "actual": 41338
+        },
+        {
+          "atTurn": 282,
+          "actual": 41338
+        },
+        {
+          "atTurn": 283,
+          "actual": 41338
+        },
+        {
+          "atTurn": 284,
+          "actual": 41338
+        },
+        {
+          "atTurn": 286,
+          "actual": 43491
+        },
+        {
+          "atTurn": 287,
+          "actual": 43491
+        },
+        {
+          "atTurn": 288,
+          "actual": 43491
+        },
+        {
+          "atTurn": 289,
+          "actual": 39469
+        },
+        {
+          "atTurn": 290,
+          "actual": 39469
+        },
+        {
+          "atTurn": 291,
+          "actual": 39469
+        },
+        {
+          "atTurn": 293,
+          "actual": 41499
+        },
+        {
+          "atTurn": 294,
+          "actual": 41499
+        },
+        {
+          "atTurn": 295,
+          "actual": 45611
+        },
+        {
+          "atTurn": 296,
+          "actual": 45611
+        },
+        {
+          "atTurn": 297,
+          "actual": 47896
+        },
+        {
+          "atTurn": 298,
+          "actual": 47896
+        },
+        {
+          "atTurn": 299,
+          "actual": 47896
+        },
+        {
+          "atTurn": 300,
+          "actual": 40536
+        },
+        {
+          "atTurn": 301,
+          "actual": 40536
+        },
+        {
+          "atTurn": 302,
+          "actual": 40536
+        },
+        {
+          "atTurn": 304,
+          "actual": 45045
+        },
+        {
+          "atTurn": 305,
+          "actual": 45045
+        },
+        {
+          "atTurn": 306,
+          "actual": 45045
+        },
+        {
+          "atTurn": 308,
+          "actual": 47045
+        },
+        {
+          "atTurn": 309,
+          "actual": 47045
+        },
+        {
+          "atTurn": 311,
+          "actual": 42449
+        },
+        {
+          "atTurn": 312,
+          "actual": 42449
+        },
+        {
+          "atTurn": 313,
+          "actual": 42449
+        },
+        {
+          "atTurn": 315,
+          "actual": 44727
+        },
+        {
+          "atTurn": 316,
+          "actual": 44727
+        },
+        {
+          "atTurn": 317,
+          "actual": 42091
+        },
+        {
+          "atTurn": 318,
+          "actual": 42091
+        },
+        {
+          "atTurn": 319,
+          "actual": 42091
+        },
+        {
+          "atTurn": 320,
+          "actual": 42091
+        },
+        {
+          "atTurn": 322,
+          "actual": 46721
+        },
+        {
+          "atTurn": 323,
+          "actual": 46721
+        },
+        {
+          "atTurn": 324,
+          "actual": 41777
+        },
+        {
+          "atTurn": 325,
+          "actual": 41777
+        },
+        {
+          "atTurn": 326,
+          "actual": 41777
+        },
+        {
+          "atTurn": 328,
+          "actual": 43727
+        },
+        {
+          "atTurn": 329,
+          "actual": 43727
+        },
+        {
+          "atTurn": 330,
+          "actual": 46087
+        },
+        {
+          "atTurn": 331,
+          "actual": 46087
+        },
+        {
+          "atTurn": 333,
+          "actual": 46186
+        },
+        {
+          "atTurn": 334,
+          "actual": 46186
+        },
+        {
+          "atTurn": 335,
+          "actual": 46186
+        },
+        {
+          "atTurn": 336,
+          "actual": 46667
+        },
+        {
+          "atTurn": 337,
+          "actual": 46667
+        },
+        {
+          "atTurn": 338,
+          "actual": 46667
+        },
+        {
+          "atTurn": 339,
+          "actual": 47245
+        },
+        {
+          "atTurn": 340,
+          "actual": 47245
+        },
+        {
+          "atTurn": 341,
+          "actual": 47400
+        },
+        {
+          "atTurn": 342,
+          "actual": 47400
+        },
+        {
+          "atTurn": 343,
+          "actual": 47400
+        },
+        {
+          "atTurn": 345,
+          "actual": 46555
+        },
+        {
+          "atTurn": 346,
+          "actual": 46578
+        },
+        {
+          "atTurn": 347,
+          "actual": 43697
+        },
+        {
+          "atTurn": 348,
+          "actual": 43697
+        },
+        {
+          "atTurn": 349,
+          "actual": 43697
+        },
+        {
+          "atTurn": 350,
+          "actual": 43697
+        },
+        {
+          "atTurn": 351,
+          "actual": 43697
+        },
+        {
+          "atTurn": 352,
+          "actual": 43697
+        },
+        {
+          "atTurn": 353,
+          "actual": 43697
+        },
+        {
+          "atTurn": 355,
+          "actual": 53147
+        },
+        {
+          "atTurn": 356,
+          "actual": 53147
+        },
+        {
+          "atTurn": 357,
+          "actual": 53147
+        },
+        {
+          "atTurn": 358,
+          "actual": 56412
+        },
+        {
+          "atTurn": 359,
+          "actual": 56412
+        },
+        {
+          "atTurn": 361,
+          "actual": 42629
+        },
+        {
+          "atTurn": 362,
+          "actual": 42629
+        },
+        {
+          "atTurn": 363,
+          "actual": 42629
+        },
+        {
+          "atTurn": 364,
+          "actual": 42629
+        },
+        {
+          "atTurn": 365,
+          "actual": 42629
+        },
+        {
+          "atTurn": 366,
+          "actual": 43229
+        },
+        {
+          "atTurn": 367,
+          "actual": 43229
+        },
+        {
+          "atTurn": 368,
+          "actual": 43229
+        },
+        {
+          "atTurn": 370,
+          "actual": 45264
+        },
+        {
+          "atTurn": 371,
+          "actual": 45264
+        },
+        {
+          "atTurn": 372,
+          "actual": 45264
+        },
+        {
+          "atTurn": 373,
+          "actual": 43451
+        },
+        {
+          "atTurn": 374,
+          "actual": 43451
+        },
+        {
+          "atTurn": 375,
+          "actual": 43451
+        },
+        {
+          "atTurn": 377,
+          "actual": 45474
+        },
+        {
+          "atTurn": 378,
+          "actual": 45474
+        },
+        {
+          "atTurn": 379,
+          "actual": 45474
+        },
+        {
+          "atTurn": 381,
+          "actual": 46028
+        },
+        {
+          "atTurn": 382,
+          "actual": 46028
+        },
+        {
+          "atTurn": 384,
+          "actual": 48410
+        },
+        {
+          "atTurn": 385,
+          "actual": 48410
+        },
+        {
+          "atTurn": 386,
+          "actual": 43979
+        },
+        {
+          "atTurn": 387,
+          "actual": 43979
+        },
+        {
+          "atTurn": 388,
+          "actual": 43979
+        },
+        {
+          "atTurn": 389,
+          "actual": 42132
+        },
+        {
+          "atTurn": 390,
+          "actual": 42132
+        },
+        {
+          "atTurn": 391,
+          "actual": 42132
+        },
+        {
+          "atTurn": 393,
+          "actual": 44232
+        },
+        {
+          "atTurn": 394,
+          "actual": 44232
+        },
+        {
+          "atTurn": 395,
+          "actual": 44232
+        },
+        {
+          "atTurn": 396,
+          "actual": 46588
+        },
+        {
+          "atTurn": 397,
+          "actual": 46588
+        },
+        {
+          "atTurn": 399,
+          "actual": 49078
+        },
+        {
+          "atTurn": 400,
+          "actual": 49078
+        },
+        {
+          "atTurn": 401,
+          "actual": 49078
+        },
+        {
+          "atTurn": 402,
+          "actual": 50887
+        },
+        {
+          "atTurn": 403,
+          "actual": 50887
+        },
+        {
+          "atTurn": 404,
+          "actual": 50887
+        },
+        {
+          "atTurn": 405,
+          "actual": 47353
+        },
+        {
+          "atTurn": 406,
+          "actual": 47353
+        },
+        {
+          "atTurn": 407,
+          "actual": 47617
+        },
+        {
+          "atTurn": 408,
+          "actual": 47617
+        },
+        {
+          "atTurn": 409,
+          "actual": 47617
+        },
+        {
+          "atTurn": 410,
+          "actual": 47617
+        },
+        {
+          "atTurn": 411,
+          "actual": 46892
+        },
+        {
+          "atTurn": 412,
+          "actual": 46892
+        },
+        {
+          "atTurn": 413,
+          "actual": 46892
+        },
+        {
+          "atTurn": 414,
+          "actual": 0
+        }
+      ],
+      "estContentTokensTotal": 2230161,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\governance.ts",
+          "reads": 30
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\context.ts",
+          "reads": 23
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\GOVERNOR_ALGORITHM.md",
+          "reads": 17
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\inventory.ts",
+          "reads": 11
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\rules\\rule-engine.ts",
+          "reads": 5
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\scoring\\score.ts",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\tests\\token-estimator.test.ts",
+          "reads": 4
+        },
+        {
+          "path": "^import .*",
+          "reads": 4
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 99,
+        "certain:SINGLE_SOURCE_SIGNAL": 201
+      }
+    },
+    {
+      "sessionId": "12b69c7f-c15c-4313-97a4-192014ec3f51",
+      "rawFile": "12b69c7f-c15c-4313-97a4-192014ec3f51.jsonl",
+      "rawBytes": 1806877,
+      "rawLines": 361,
+      "assistantTurns": 43,
+      "extractedItems": 75,
+      "keptItems": 75,
+      "truncatedItems": 19,
+      "tokenUsage": {
+        "input": 37,
+        "cacheRead": 1061107,
+        "cacheCreation": 259989,
+        "output": 25194,
+        "turns": 37
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 27039
+        },
+        {
+          "atTurn": 2,
+          "actual": 27039
+        },
+        {
+          "atTurn": 3,
+          "actual": 28117
+        },
+        {
+          "atTurn": 4,
+          "actual": 28117
+        },
+        {
+          "atTurn": 5,
+          "actual": 28117
+        },
+        {
+          "atTurn": 6,
+          "actual": 28117
+        },
+        {
+          "atTurn": 7,
+          "actual": 28117
+        },
+        {
+          "atTurn": 9,
+          "actual": 32314
+        },
+        {
+          "atTurn": 10,
+          "actual": 32314
+        },
+        {
+          "atTurn": 11,
+          "actual": 32314
+        },
+        {
+          "atTurn": 12,
+          "actual": 32314
+        },
+        {
+          "atTurn": 14,
+          "actual": 32640
+        },
+        {
+          "atTurn": 15,
+          "actual": 32640
+        },
+        {
+          "atTurn": 16,
+          "actual": 32640
+        },
+        {
+          "atTurn": 18,
+          "actual": 35464
+        },
+        {
+          "atTurn": 19,
+          "actual": 35464
+        },
+        {
+          "atTurn": 20,
+          "actual": 35464
+        },
+        {
+          "atTurn": 21,
+          "actual": 35464
+        },
+        {
+          "atTurn": 23,
+          "actual": 36881
+        },
+        {
+          "atTurn": 24,
+          "actual": 36881
+        },
+        {
+          "atTurn": 25,
+          "actual": 36881
+        },
+        {
+          "atTurn": 26,
+          "actual": 37811
+        },
+        {
+          "atTurn": 27,
+          "actual": 37811
+        },
+        {
+          "atTurn": 28,
+          "actual": 37811
+        },
+        {
+          "atTurn": 29,
+          "actual": 37811
+        },
+        {
+          "atTurn": 30,
+          "actual": 37811
+        },
+        {
+          "atTurn": 31,
+          "actual": 37811
+        },
+        {
+          "atTurn": 33,
+          "actual": 39562
+        },
+        {
+          "atTurn": 34,
+          "actual": 39562
+        },
+        {
+          "atTurn": 35,
+          "actual": 39562
+        },
+        {
+          "atTurn": 36,
+          "actual": 41543
+        },
+        {
+          "atTurn": 37,
+          "actual": 41543
+        },
+        {
+          "atTurn": 38,
+          "actual": 44481
+        },
+        {
+          "atTurn": 39,
+          "actual": 44481
+        },
+        {
+          "atTurn": 40,
+          "actual": 44481
+        },
+        {
+          "atTurn": 42,
+          "actual": 42357
+        },
+        {
+          "atTurn": 43,
+          "actual": 42357
+        }
+      ],
+      "estContentTokensTotal": 140718,
+      "topFileRefs": [
+        {
+          "path": "**/*CONTEXT_SURVIVAL*",
+          "reads": 2
+        },
+        {
+          "path": "AGENT_CONTEXT_SURVIVAL",
+          "reads": 2
+        },
+        {
+          "path": "C:\\Users\\ddias\\AppData\\Local\\Temp\\claude\\c--ddias-dev-ecc-curator\\12b69c7f-c15c-4313-97a4-192014ec3f51\\tasks\\w8fe5veyk.output",
+          "reads": 2
+        },
+        {
+          "path": "Phase 7",
+          "reads": 2
+        },
+        {
+          "path": "Survival|EXECUTION_RULES|Execution Rules",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\docs\\AGENT_CONTEXT_SURVIVAL.md",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\docs\\integrations\\AGENT_EXECUTION_RULES.md",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\drafts\\AGENT_CONTEXT_SURVIVAL.md",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 34,
+        "certain:SINGLE_SOURCE_SIGNAL": 41
+      }
+    },
+    {
+      "sessionId": "1966ca36-ba23-47de-bc41-5ae258eb967f",
+      "rawFile": "1966ca36-ba23-47de-bc41-5ae258eb967f.jsonl",
+      "rawBytes": 320011,
+      "rawLines": 36,
+      "assistantTurns": 2,
+      "extractedItems": 5,
+      "keptItems": 5,
+      "truncatedItems": 1,
+      "tokenUsage": {
+        "input": 2,
+        "cacheRead": 0,
+        "cacheCreation": 40002,
+        "output": 36,
+        "turns": 2
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 20002
+        },
+        {
+          "atTurn": 2,
+          "actual": 20002
+        }
+      ],
+      "estContentTokensTotal": 18269,
+      "topFileRefs": [],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 5
+      }
+    },
+    {
+      "sessionId": "1e456aa6-6ce5-4cc3-9252-fba43b7dfcac",
+      "rawFile": "1e456aa6-6ce5-4cc3-9252-fba43b7dfcac.jsonl",
+      "rawBytes": 6838801,
+      "rawLines": 1849,
+      "assistantTurns": 287,
+      "extractedItems": 364,
+      "keptItems": 300,
+      "truncatedItems": 95,
+      "tokenUsage": {
+        "input": 256,
+        "cacheRead": 13446968,
+        "cacheCreation": 4710393,
+        "output": 242937,
+        "turns": 256
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22487
+        },
+        {
+          "atTurn": 2,
+          "actual": 22487
+        },
+        {
+          "atTurn": 3,
+          "actual": 22487
+        },
+        {
+          "atTurn": 4,
+          "actual": 26934
+        },
+        {
+          "atTurn": 5,
+          "actual": 26934
+        },
+        {
+          "atTurn": 6,
+          "actual": 26934
+        },
+        {
+          "atTurn": 7,
+          "actual": 26934
+        },
+        {
+          "atTurn": 9,
+          "actual": 32293
+        },
+        {
+          "atTurn": 10,
+          "actual": 32293
+        },
+        {
+          "atTurn": 11,
+          "actual": 32293
+        },
+        {
+          "atTurn": 12,
+          "actual": 32293
+        },
+        {
+          "atTurn": 13,
+          "actual": 32293
+        },
+        {
+          "atTurn": 15,
+          "actual": 41518
+        },
+        {
+          "atTurn": 16,
+          "actual": 41518
+        },
+        {
+          "atTurn": 17,
+          "actual": 41518
+        },
+        {
+          "atTurn": 18,
+          "actual": 41518
+        },
+        {
+          "atTurn": 20,
+          "actual": 45675
+        },
+        {
+          "atTurn": 21,
+          "actual": 45675
+        },
+        {
+          "atTurn": 22,
+          "actual": 45675
+        },
+        {
+          "atTurn": 23,
+          "actual": 47655
+        },
+        {
+          "atTurn": 24,
+          "actual": 47655
+        },
+        {
+          "atTurn": 25,
+          "actual": 47655
+        },
+        {
+          "atTurn": 27,
+          "actual": 56246
+        },
+        {
+          "atTurn": 28,
+          "actual": 56246
+        },
+        {
+          "atTurn": 29,
+          "actual": 56246
+        },
+        {
+          "atTurn": 31,
+          "actual": 60736
+        },
+        {
+          "atTurn": 32,
+          "actual": 60736
+        },
+        {
+          "atTurn": 33,
+          "actual": 60736
+        },
+        {
+          "atTurn": 35,
+          "actual": 67611
+        },
+        {
+          "atTurn": 36,
+          "actual": 67611
+        },
+        {
+          "atTurn": 37,
+          "actual": 67611
+        },
+        {
+          "atTurn": 38,
+          "actual": 70986
+        },
+        {
+          "atTurn": 39,
+          "actual": 70986
+        },
+        {
+          "atTurn": 40,
+          "actual": 72485
+        },
+        {
+          "atTurn": 41,
+          "actual": 72485
+        },
+        {
+          "atTurn": 42,
+          "actual": 76068
+        },
+        {
+          "atTurn": 43,
+          "actual": 76068
+        },
+        {
+          "atTurn": 44,
+          "actual": 79905
+        },
+        {
+          "atTurn": 45,
+          "actual": 79905
+        },
+        {
+          "atTurn": 46,
+          "actual": 83733
+        },
+        {
+          "atTurn": 47,
+          "actual": 83733
+        },
+        {
+          "atTurn": 48,
+          "actual": 83733
+        },
+        {
+          "atTurn": 49,
+          "actual": 84431
+        },
+        {
+          "atTurn": 50,
+          "actual": 84431
+        },
+        {
+          "atTurn": 51,
+          "actual": 85547
+        },
+        {
+          "atTurn": 52,
+          "actual": 85547
+        },
+        {
+          "atTurn": 53,
+          "actual": 86417
+        },
+        {
+          "atTurn": 54,
+          "actual": 86417
+        },
+        {
+          "atTurn": 55,
+          "actual": 87497
+        },
+        {
+          "atTurn": 56,
+          "actual": 87497
+        },
+        {
+          "atTurn": 57,
+          "actual": 87497
+        },
+        {
+          "atTurn": 58,
+          "actual": 91421
+        },
+        {
+          "atTurn": 59,
+          "actual": 91421
+        },
+        {
+          "atTurn": 60,
+          "actual": 91421
+        },
+        {
+          "atTurn": 61,
+          "actual": 92626
+        },
+        {
+          "atTurn": 62,
+          "actual": 92626
+        },
+        {
+          "atTurn": 63,
+          "actual": 93303
+        },
+        {
+          "atTurn": 64,
+          "actual": 93303
+        },
+        {
+          "atTurn": 65,
+          "actual": 95063
+        },
+        {
+          "atTurn": 66,
+          "actual": 95063
+        },
+        {
+          "atTurn": 67,
+          "actual": 97287
+        },
+        {
+          "atTurn": 68,
+          "actual": 97287
+        },
+        {
+          "atTurn": 69,
+          "actual": 97287
+        },
+        {
+          "atTurn": 70,
+          "actual": 97656
+        },
+        {
+          "atTurn": 71,
+          "actual": 97656
+        },
+        {
+          "atTurn": 72,
+          "actual": 98855
+        },
+        {
+          "atTurn": 73,
+          "actual": 98855
+        },
+        {
+          "atTurn": 74,
+          "actual": 101449
+        },
+        {
+          "atTurn": 75,
+          "actual": 101449
+        },
+        {
+          "atTurn": 76,
+          "actual": 105402
+        },
+        {
+          "atTurn": 77,
+          "actual": 105402
+        },
+        {
+          "atTurn": 78,
+          "actual": 107327
+        },
+        {
+          "atTurn": 79,
+          "actual": 107327
+        },
+        {
+          "atTurn": 80,
+          "actual": 111005
+        },
+        {
+          "atTurn": 81,
+          "actual": 111005
+        },
+        {
+          "atTurn": 82,
+          "actual": 111893
+        },
+        {
+          "atTurn": 83,
+          "actual": 111893
+        },
+        {
+          "atTurn": 85,
+          "actual": 37882
+        },
+        {
+          "atTurn": 86,
+          "actual": 37882
+        },
+        {
+          "atTurn": 87,
+          "actual": 37882
+        },
+        {
+          "atTurn": 89,
+          "actual": 49723
+        },
+        {
+          "atTurn": 90,
+          "actual": 49723
+        },
+        {
+          "atTurn": 91,
+          "actual": 51192
+        },
+        {
+          "atTurn": 92,
+          "actual": 51192
+        },
+        {
+          "atTurn": 93,
+          "actual": 52276
+        },
+        {
+          "atTurn": 94,
+          "actual": 52276
+        },
+        {
+          "atTurn": 95,
+          "actual": 52276
+        },
+        {
+          "atTurn": 96,
+          "actual": 61059
+        },
+        {
+          "atTurn": 97,
+          "actual": 61059
+        },
+        {
+          "atTurn": 98,
+          "actual": 64866
+        },
+        {
+          "atTurn": 99,
+          "actual": 64866
+        },
+        {
+          "atTurn": 100,
+          "actual": 65449
+        },
+        {
+          "atTurn": 101,
+          "actual": 65449
+        },
+        {
+          "atTurn": 102,
+          "actual": 65449
+        },
+        {
+          "atTurn": 104,
+          "actual": 65882
+        },
+        {
+          "atTurn": 105,
+          "actual": 65882
+        },
+        {
+          "atTurn": 106,
+          "actual": 68536
+        },
+        {
+          "atTurn": 107,
+          "actual": 68536
+        },
+        {
+          "atTurn": 108,
+          "actual": 68536
+        },
+        {
+          "atTurn": 109,
+          "actual": 69145
+        },
+        {
+          "atTurn": 110,
+          "actual": 69145
+        },
+        {
+          "atTurn": 111,
+          "actual": 73046
+        },
+        {
+          "atTurn": 112,
+          "actual": 73046
+        },
+        {
+          "atTurn": 113,
+          "actual": 73553
+        },
+        {
+          "atTurn": 114,
+          "actual": 73553
+        },
+        {
+          "atTurn": 115,
+          "actual": 74175
+        },
+        {
+          "atTurn": 116,
+          "actual": 74175
+        },
+        {
+          "atTurn": 117,
+          "actual": 74654
+        },
+        {
+          "atTurn": 118,
+          "actual": 74654
+        },
+        {
+          "atTurn": 119,
+          "actual": 75718
+        },
+        {
+          "atTurn": 120,
+          "actual": 75718
+        },
+        {
+          "atTurn": 121,
+          "actual": 76721
+        },
+        {
+          "atTurn": 122,
+          "actual": 76721
+        },
+        {
+          "atTurn": 123,
+          "actual": 77724
+        },
+        {
+          "atTurn": 124,
+          "actual": 77724
+        },
+        {
+          "atTurn": 125,
+          "actual": 78621
+        },
+        {
+          "atTurn": 126,
+          "actual": 78621
+        },
+        {
+          "atTurn": 127,
+          "actual": 78621
+        },
+        {
+          "atTurn": 128,
+          "actual": 78621
+        },
+        {
+          "atTurn": 129,
+          "actual": 78621
+        },
+        {
+          "atTurn": 131,
+          "actual": 82327
+        },
+        {
+          "atTurn": 132,
+          "actual": 82327
+        },
+        {
+          "atTurn": 133,
+          "actual": 82327
+        },
+        {
+          "atTurn": 135,
+          "actual": 82811
+        },
+        {
+          "atTurn": 136,
+          "actual": 82811
+        },
+        {
+          "atTurn": 137,
+          "actual": 82811
+        },
+        {
+          "atTurn": 139,
+          "actual": 83398
+        },
+        {
+          "atTurn": 140,
+          "actual": 83398
+        },
+        {
+          "atTurn": 141,
+          "actual": 83398
+        },
+        {
+          "atTurn": 143,
+          "actual": 84089
+        },
+        {
+          "atTurn": 144,
+          "actual": 84089
+        },
+        {
+          "atTurn": 145,
+          "actual": 84089
+        },
+        {
+          "atTurn": 147,
+          "actual": 84607
+        },
+        {
+          "atTurn": 148,
+          "actual": 84607
+        },
+        {
+          "atTurn": 149,
+          "actual": 84607
+        },
+        {
+          "atTurn": 151,
+          "actual": 85181
+        },
+        {
+          "atTurn": 152,
+          "actual": 85181
+        },
+        {
+          "atTurn": 153,
+          "actual": 85305
+        },
+        {
+          "atTurn": 154,
+          "actual": 85305
+        },
+        {
+          "atTurn": 155,
+          "actual": 85568
+        },
+        {
+          "atTurn": 156,
+          "actual": 85568
+        },
+        {
+          "atTurn": 157,
+          "actual": 86216
+        },
+        {
+          "atTurn": 158,
+          "actual": 86216
+        },
+        {
+          "atTurn": 159,
+          "actual": 86846
+        },
+        {
+          "atTurn": 160,
+          "actual": 86846
+        },
+        {
+          "atTurn": 161,
+          "actual": 86846
+        },
+        {
+          "atTurn": 163,
+          "actual": 87755
+        },
+        {
+          "atTurn": 164,
+          "actual": 87755
+        },
+        {
+          "atTurn": 165,
+          "actual": 88384
+        },
+        {
+          "atTurn": 166,
+          "actual": 88384
+        },
+        {
+          "atTurn": 167,
+          "actual": 89176
+        },
+        {
+          "atTurn": 168,
+          "actual": 89176
+        },
+        {
+          "atTurn": 169,
+          "actual": 90929
+        },
+        {
+          "atTurn": 170,
+          "actual": 90929
+        },
+        {
+          "atTurn": 171,
+          "actual": 90929
+        },
+        {
+          "atTurn": 173,
+          "actual": 94466
+        },
+        {
+          "atTurn": 174,
+          "actual": 94466
+        },
+        {
+          "atTurn": 175,
+          "actual": 94466
+        },
+        {
+          "atTurn": 177,
+          "actual": 97835
+        },
+        {
+          "atTurn": 178,
+          "actual": 97835
+        },
+        {
+          "atTurn": 179,
+          "actual": 99660
+        },
+        {
+          "atTurn": 180,
+          "actual": 99660
+        },
+        {
+          "atTurn": 181,
+          "actual": 100202
+        },
+        {
+          "atTurn": 182,
+          "actual": 100202
+        },
+        {
+          "atTurn": 183,
+          "actual": 100202
+        },
+        {
+          "atTurn": 185,
+          "actual": 101502
+        },
+        {
+          "atTurn": 186,
+          "actual": 101502
+        },
+        {
+          "atTurn": 187,
+          "actual": 101502
+        },
+        {
+          "atTurn": 188,
+          "actual": 101502
+        },
+        {
+          "atTurn": 190,
+          "actual": 102348
+        },
+        {
+          "atTurn": 191,
+          "actual": 102348
+        },
+        {
+          "atTurn": 192,
+          "actual": 102348
+        },
+        {
+          "atTurn": 194,
+          "actual": 103183
+        },
+        {
+          "atTurn": 195,
+          "actual": 103183
+        },
+        {
+          "atTurn": 196,
+          "actual": 103183
+        },
+        {
+          "atTurn": 198,
+          "actual": 103800
+        },
+        {
+          "atTurn": 199,
+          "actual": 103800
+        },
+        {
+          "atTurn": 200,
+          "actual": 104266
+        },
+        {
+          "atTurn": 201,
+          "actual": 104266
+        },
+        {
+          "atTurn": 202,
+          "actual": 104266
+        },
+        {
+          "atTurn": 204,
+          "actual": 107445
+        },
+        {
+          "atTurn": 205,
+          "actual": 107445
+        },
+        {
+          "atTurn": 206,
+          "actual": 107445
+        },
+        {
+          "atTurn": 207,
+          "actual": 107445
+        },
+        {
+          "atTurn": 209,
+          "actual": 108978
+        },
+        {
+          "atTurn": 210,
+          "actual": 109001
+        },
+        {
+          "atTurn": 211,
+          "actual": 109001
+        },
+        {
+          "atTurn": 212,
+          "actual": 109329
+        },
+        {
+          "atTurn": 213,
+          "actual": 109329
+        },
+        {
+          "atTurn": 214,
+          "actual": 109329
+        },
+        {
+          "atTurn": 216,
+          "actual": 110005
+        },
+        {
+          "atTurn": 217,
+          "actual": 110005
+        },
+        {
+          "atTurn": 218,
+          "actual": 111159
+        },
+        {
+          "atTurn": 219,
+          "actual": 111159
+        },
+        {
+          "atTurn": 221,
+          "actual": 36249
+        },
+        {
+          "atTurn": 222,
+          "actual": 36249
+        },
+        {
+          "atTurn": 223,
+          "actual": 36249
+        },
+        {
+          "atTurn": 225,
+          "actual": 37292
+        },
+        {
+          "atTurn": 226,
+          "actual": 37292
+        },
+        {
+          "atTurn": 227,
+          "actual": 37623
+        },
+        {
+          "atTurn": 228,
+          "actual": 37623
+        },
+        {
+          "atTurn": 229,
+          "actual": 37962
+        },
+        {
+          "atTurn": 230,
+          "actual": 37962
+        },
+        {
+          "atTurn": 231,
+          "actual": 38478
+        },
+        {
+          "atTurn": 232,
+          "actual": 38478
+        },
+        {
+          "atTurn": 233,
+          "actual": 38478
+        },
+        {
+          "atTurn": 234,
+          "actual": 38779
+        },
+        {
+          "atTurn": 235,
+          "actual": 38779
+        },
+        {
+          "atTurn": 236,
+          "actual": 39875
+        },
+        {
+          "atTurn": 237,
+          "actual": 39875
+        },
+        {
+          "atTurn": 238,
+          "actual": 39875
+        },
+        {
+          "atTurn": 239,
+          "actual": 41388
+        },
+        {
+          "atTurn": 240,
+          "actual": 41388
+        },
+        {
+          "atTurn": 241,
+          "actual": 41946
+        },
+        {
+          "atTurn": 242,
+          "actual": 41946
+        },
+        {
+          "atTurn": 243,
+          "actual": 42394
+        },
+        {
+          "atTurn": 244,
+          "actual": 42394
+        },
+        {
+          "atTurn": 245,
+          "actual": 42394
+        },
+        {
+          "atTurn": 247,
+          "actual": 43182
+        },
+        {
+          "atTurn": 248,
+          "actual": 43182
+        },
+        {
+          "atTurn": 249,
+          "actual": 43717
+        },
+        {
+          "atTurn": 250,
+          "actual": 43717
+        },
+        {
+          "atTurn": 251,
+          "actual": 43717
+        },
+        {
+          "atTurn": 252,
+          "actual": 43717
+        },
+        {
+          "atTurn": 253,
+          "actual": 43717
+        },
+        {
+          "atTurn": 255,
+          "actual": 45086
+        },
+        {
+          "atTurn": 256,
+          "actual": 45086
+        },
+        {
+          "atTurn": 257,
+          "actual": 45086
+        },
+        {
+          "atTurn": 258,
+          "actual": 45315
+        },
+        {
+          "atTurn": 259,
+          "actual": 45315
+        },
+        {
+          "atTurn": 260,
+          "actual": 45315
+        },
+        {
+          "atTurn": 261,
+          "actual": 45618
+        },
+        {
+          "atTurn": 262,
+          "actual": 45618
+        },
+        {
+          "atTurn": 263,
+          "actual": 45807
+        },
+        {
+          "atTurn": 264,
+          "actual": 45807
+        },
+        {
+          "atTurn": 265,
+          "actual": 46092
+        },
+        {
+          "atTurn": 266,
+          "actual": 46092
+        },
+        {
+          "atTurn": 267,
+          "actual": 46902
+        },
+        {
+          "atTurn": 268,
+          "actual": 46902
+        },
+        {
+          "atTurn": 269,
+          "actual": 47394
+        },
+        {
+          "atTurn": 270,
+          "actual": 47394
+        },
+        {
+          "atTurn": 271,
+          "actual": 47394
+        },
+        {
+          "atTurn": 273,
+          "actual": 47903
+        },
+        {
+          "atTurn": 274,
+          "actual": 47903
+        },
+        {
+          "atTurn": 275,
+          "actual": 47903
+        },
+        {
+          "atTurn": 276,
+          "actual": 48225
+        },
+        {
+          "atTurn": 277,
+          "actual": 48225
+        },
+        {
+          "atTurn": 278,
+          "actual": 48225
+        },
+        {
+          "atTurn": 279,
+          "actual": 48225
+        },
+        {
+          "atTurn": 281,
+          "actual": 49170
+        },
+        {
+          "atTurn": 282,
+          "actual": 49170
+        },
+        {
+          "atTurn": 283,
+          "actual": 49170
+        },
+        {
+          "atTurn": 284,
+          "actual": 49530
+        },
+        {
+          "atTurn": 285,
+          "actual": 49530
+        },
+        {
+          "atTurn": 286,
+          "actual": 49718
+        },
+        {
+          "atTurn": 287,
+          "actual": 49718
+        }
+      ],
+      "estContentTokensTotal": 374070,
+      "topFileRefs": [
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\src\\governor\\provider.ts",
+          "reads": 6
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\docs\\DECISION_INTELLIGENCE.md",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\DECISIONS.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\DECISION_INTELLIGENCE.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\DECISION_SCHEMAS.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\PROVIDERS.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\experimental\\adapter.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\package.json",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 33,
+        "certain:SINGLE_SOURCE_SIGNAL": 267
+      }
+    },
+    {
+      "sessionId": "29958462-1a63-4969-9e42-f62a6e49982a",
+      "rawFile": "29958462-1a63-4969-9e42-f62a6e49982a.jsonl",
+      "rawBytes": 6192963,
+      "rawLines": 895,
+      "assistantTurns": 111,
+      "extractedItems": 165,
+      "keptItems": 165,
+      "truncatedItems": 67,
+      "tokenUsage": {
+        "input": 98,
+        "cacheRead": 2918271,
+        "cacheCreation": 990014,
+        "output": 84459,
+        "turns": 98
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 21874
+        },
+        {
+          "atTurn": 2,
+          "actual": 21874
+        },
+        {
+          "atTurn": 3,
+          "actual": 22308
+        },
+        {
+          "atTurn": 4,
+          "actual": 22308
+        },
+        {
+          "atTurn": 5,
+          "actual": 22308
+        },
+        {
+          "atTurn": 7,
+          "actual": 22898
+        },
+        {
+          "atTurn": 8,
+          "actual": 22898
+        },
+        {
+          "atTurn": 9,
+          "actual": 22898
+        },
+        {
+          "atTurn": 10,
+          "actual": 23829
+        },
+        {
+          "atTurn": 11,
+          "actual": 23829
+        },
+        {
+          "atTurn": 12,
+          "actual": 23829
+        },
+        {
+          "atTurn": 13,
+          "actual": 23829
+        },
+        {
+          "atTurn": 15,
+          "actual": 24784
+        },
+        {
+          "atTurn": 16,
+          "actual": 24784
+        },
+        {
+          "atTurn": 17,
+          "actual": 29942
+        },
+        {
+          "atTurn": 18,
+          "actual": 29942
+        },
+        {
+          "atTurn": 19,
+          "actual": 29942
+        },
+        {
+          "atTurn": 20,
+          "actual": 29942
+        },
+        {
+          "atTurn": 22,
+          "actual": 41329
+        },
+        {
+          "atTurn": 23,
+          "actual": 41329
+        },
+        {
+          "atTurn": 24,
+          "actual": 41329
+        },
+        {
+          "atTurn": 25,
+          "actual": 41329
+        },
+        {
+          "atTurn": 27,
+          "actual": 42611
+        },
+        {
+          "atTurn": 28,
+          "actual": 42611
+        },
+        {
+          "atTurn": 29,
+          "actual": 42611
+        },
+        {
+          "atTurn": 30,
+          "actual": 42611
+        },
+        {
+          "atTurn": 31,
+          "actual": 42611
+        },
+        {
+          "atTurn": 32,
+          "actual": 33778
+        },
+        {
+          "atTurn": 33,
+          "actual": 33778
+        },
+        {
+          "atTurn": 34,
+          "actual": 33778
+        },
+        {
+          "atTurn": 35,
+          "actual": 33778
+        },
+        {
+          "atTurn": 37,
+          "actual": 45907
+        },
+        {
+          "atTurn": 38,
+          "actual": 45907
+        },
+        {
+          "atTurn": 39,
+          "actual": 48256
+        },
+        {
+          "atTurn": 40,
+          "actual": 48256
+        },
+        {
+          "atTurn": 42,
+          "actual": 39028
+        },
+        {
+          "atTurn": 43,
+          "actual": 39028
+        },
+        {
+          "atTurn": 44,
+          "actual": 39028
+        },
+        {
+          "atTurn": 46,
+          "actual": 45708
+        },
+        {
+          "atTurn": 47,
+          "actual": 45708
+        },
+        {
+          "atTurn": 48,
+          "actual": 45708
+        },
+        {
+          "atTurn": 49,
+          "actual": 38090
+        },
+        {
+          "atTurn": 50,
+          "actual": 38090
+        },
+        {
+          "atTurn": 51,
+          "actual": 38090
+        },
+        {
+          "atTurn": 53,
+          "actual": 44746
+        },
+        {
+          "atTurn": 54,
+          "actual": 44746
+        },
+        {
+          "atTurn": 55,
+          "actual": 38799
+        },
+        {
+          "atTurn": 56,
+          "actual": 38799
+        },
+        {
+          "atTurn": 57,
+          "actual": 38799
+        },
+        {
+          "atTurn": 59,
+          "actual": 42220
+        },
+        {
+          "atTurn": 60,
+          "actual": 42220
+        },
+        {
+          "atTurn": 61,
+          "actual": 42727
+        },
+        {
+          "atTurn": 62,
+          "actual": 42727
+        },
+        {
+          "atTurn": 63,
+          "actual": 43022
+        },
+        {
+          "atTurn": 64,
+          "actual": 43022
+        },
+        {
+          "atTurn": 65,
+          "actual": 46620
+        },
+        {
+          "atTurn": 66,
+          "actual": 46620
+        },
+        {
+          "atTurn": 67,
+          "actual": 47399
+        },
+        {
+          "atTurn": 68,
+          "actual": 47399
+        },
+        {
+          "atTurn": 70,
+          "actual": 40642
+        },
+        {
+          "atTurn": 71,
+          "actual": 40642
+        },
+        {
+          "atTurn": 72,
+          "actual": 44027
+        },
+        {
+          "atTurn": 73,
+          "actual": 44027
+        },
+        {
+          "atTurn": 74,
+          "actual": 44027
+        },
+        {
+          "atTurn": 75,
+          "actual": 46792
+        },
+        {
+          "atTurn": 76,
+          "actual": 46792
+        },
+        {
+          "atTurn": 77,
+          "actual": 46792
+        },
+        {
+          "atTurn": 78,
+          "actual": 47785
+        },
+        {
+          "atTurn": 79,
+          "actual": 47785
+        },
+        {
+          "atTurn": 80,
+          "actual": 47785
+        },
+        {
+          "atTurn": 81,
+          "actual": 47785
+        },
+        {
+          "atTurn": 83,
+          "actual": 42777
+        },
+        {
+          "atTurn": 84,
+          "actual": 42777
+        },
+        {
+          "atTurn": 85,
+          "actual": 42777
+        },
+        {
+          "atTurn": 86,
+          "actual": 43356
+        },
+        {
+          "atTurn": 87,
+          "actual": 43356
+        },
+        {
+          "atTurn": 88,
+          "actual": 43517
+        },
+        {
+          "atTurn": 89,
+          "actual": 43517
+        },
+        {
+          "atTurn": 90,
+          "actual": 43517
+        },
+        {
+          "atTurn": 91,
+          "actual": 44067
+        },
+        {
+          "atTurn": 92,
+          "actual": 44067
+        },
+        {
+          "atTurn": 93,
+          "actual": 44067
+        },
+        {
+          "atTurn": 94,
+          "actual": 44371
+        },
+        {
+          "atTurn": 95,
+          "actual": 44371
+        },
+        {
+          "atTurn": 96,
+          "actual": 44959
+        },
+        {
+          "atTurn": 97,
+          "actual": 44959
+        },
+        {
+          "atTurn": 98,
+          "actual": 44959
+        },
+        {
+          "atTurn": 99,
+          "actual": 44959
+        },
+        {
+          "atTurn": 100,
+          "actual": 45302
+        },
+        {
+          "atTurn": 101,
+          "actual": 45302
+        },
+        {
+          "atTurn": 102,
+          "actual": 45302
+        },
+        {
+          "atTurn": 103,
+          "actual": 45568
+        },
+        {
+          "atTurn": 104,
+          "actual": 45568
+        },
+        {
+          "atTurn": 106,
+          "actual": 44721
+        },
+        {
+          "atTurn": 107,
+          "actual": 44721
+        },
+        {
+          "atTurn": 108,
+          "actual": 44721
+        },
+        {
+          "atTurn": 110,
+          "actual": 45877
+        },
+        {
+          "atTurn": 111,
+          "actual": 45877
+        }
+      ],
+      "estContentTokensTotal": 579475,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\tests\\experimental-integration.test.ts",
+          "reads": 7
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\experimental\\adapter.ts",
+          "reads": 6
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\assembler\\assemble.ts",
+          "reads": 5
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\EXPERIMENTAL_INTEGRATION.md",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\tests\\claude-code-hook.test.ts",
+          "reads": 3
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\.claude\\ecc-curator.json",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\CONFIGURATION.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\DECISIONS.md",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 59,
+        "certain:SINGLE_SOURCE_SIGNAL": 106
+      }
+    },
+    {
+      "sessionId": "43e58f7f-de1d-42ec-bc67-22114ad581a9",
+      "rawFile": "43e58f7f-de1d-42ec-bc67-22114ad581a9.jsonl",
+      "rawBytes": 2829801,
+      "rawLines": 805,
+      "assistantTurns": 126,
+      "extractedItems": 144,
+      "keptItems": 144,
+      "truncatedItems": 27,
+      "tokenUsage": {
+        "input": 117,
+        "cacheRead": 6139374,
+        "cacheCreation": 2540076,
+        "output": 101462,
+        "turns": 117
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22085
+        },
+        {
+          "atTurn": 2,
+          "actual": 22085
+        },
+        {
+          "atTurn": 3,
+          "actual": 22085
+        },
+        {
+          "atTurn": 4,
+          "actual": 26145
+        },
+        {
+          "atTurn": 5,
+          "actual": 26145
+        },
+        {
+          "atTurn": 6,
+          "actual": 26145
+        },
+        {
+          "atTurn": 7,
+          "actual": 26145
+        },
+        {
+          "atTurn": 8,
+          "actual": 26145
+        },
+        {
+          "atTurn": 10,
+          "actual": 38105
+        },
+        {
+          "atTurn": 11,
+          "actual": 38105
+        },
+        {
+          "atTurn": 12,
+          "actual": 38105
+        },
+        {
+          "atTurn": 13,
+          "actual": 38105
+        },
+        {
+          "atTurn": 15,
+          "actual": 41349
+        },
+        {
+          "atTurn": 16,
+          "actual": 41349
+        },
+        {
+          "atTurn": 17,
+          "actual": 41349
+        },
+        {
+          "atTurn": 19,
+          "actual": 50005
+        },
+        {
+          "atTurn": 20,
+          "actual": 50005
+        },
+        {
+          "atTurn": 21,
+          "actual": 50005
+        },
+        {
+          "atTurn": 23,
+          "actual": 52857
+        },
+        {
+          "atTurn": 24,
+          "actual": 52857
+        },
+        {
+          "atTurn": 25,
+          "actual": 52857
+        },
+        {
+          "atTurn": 27,
+          "actual": 53616
+        },
+        {
+          "atTurn": 28,
+          "actual": 53616
+        },
+        {
+          "atTurn": 29,
+          "actual": 53616
+        },
+        {
+          "atTurn": 31,
+          "actual": 54467
+        },
+        {
+          "atTurn": 32,
+          "actual": 54467
+        },
+        {
+          "atTurn": 33,
+          "actual": 54467
+        },
+        {
+          "atTurn": 35,
+          "actual": 58610
+        },
+        {
+          "atTurn": 36,
+          "actual": 58610
+        },
+        {
+          "atTurn": 37,
+          "actual": 58944
+        },
+        {
+          "atTurn": 38,
+          "actual": 58944
+        },
+        {
+          "atTurn": 39,
+          "actual": 59933
+        },
+        {
+          "atTurn": 40,
+          "actual": 59933
+        },
+        {
+          "atTurn": 41,
+          "actual": 60798
+        },
+        {
+          "atTurn": 42,
+          "actual": 60798
+        },
+        {
+          "atTurn": 43,
+          "actual": 65056
+        },
+        {
+          "atTurn": 44,
+          "actual": 65056
+        },
+        {
+          "atTurn": 45,
+          "actual": 68446
+        },
+        {
+          "atTurn": 46,
+          "actual": 68446
+        },
+        {
+          "atTurn": 47,
+          "actual": 71636
+        },
+        {
+          "atTurn": 48,
+          "actual": 71636
+        },
+        {
+          "atTurn": 49,
+          "actual": 75018
+        },
+        {
+          "atTurn": 50,
+          "actual": 75018
+        },
+        {
+          "atTurn": 51,
+          "actual": 75581
+        },
+        {
+          "atTurn": 52,
+          "actual": 75581
+        },
+        {
+          "atTurn": 53,
+          "actual": 76157
+        },
+        {
+          "atTurn": 54,
+          "actual": 76157
+        },
+        {
+          "atTurn": 55,
+          "actual": 76765
+        },
+        {
+          "atTurn": 56,
+          "actual": 76765
+        },
+        {
+          "atTurn": 57,
+          "actual": 80039
+        },
+        {
+          "atTurn": 58,
+          "actual": 80039
+        },
+        {
+          "atTurn": 59,
+          "actual": 80039
+        },
+        {
+          "atTurn": 60,
+          "actual": 80039
+        },
+        {
+          "atTurn": 62,
+          "actual": 80863
+        },
+        {
+          "atTurn": 63,
+          "actual": 80863
+        },
+        {
+          "atTurn": 64,
+          "actual": 80863
+        },
+        {
+          "atTurn": 66,
+          "actual": 81583
+        },
+        {
+          "atTurn": 67,
+          "actual": 81583
+        },
+        {
+          "atTurn": 68,
+          "actual": 81836
+        },
+        {
+          "atTurn": 69,
+          "actual": 81836
+        },
+        {
+          "atTurn": 70,
+          "actual": 83441
+        },
+        {
+          "atTurn": 71,
+          "actual": 83441
+        },
+        {
+          "atTurn": 72,
+          "actual": 83701
+        },
+        {
+          "atTurn": 73,
+          "actual": 83701
+        },
+        {
+          "atTurn": 74,
+          "actual": 83962
+        },
+        {
+          "atTurn": 75,
+          "actual": 83962
+        },
+        {
+          "atTurn": 76,
+          "actual": 84211
+        },
+        {
+          "atTurn": 77,
+          "actual": 84211
+        },
+        {
+          "atTurn": 78,
+          "actual": 84640
+        },
+        {
+          "atTurn": 79,
+          "actual": 84640
+        },
+        {
+          "atTurn": 80,
+          "actual": 85013
+        },
+        {
+          "atTurn": 81,
+          "actual": 85013
+        },
+        {
+          "atTurn": 82,
+          "actual": 85304
+        },
+        {
+          "atTurn": 83,
+          "actual": 85304
+        },
+        {
+          "atTurn": 84,
+          "actual": 85304
+        },
+        {
+          "atTurn": 85,
+          "actual": 87466
+        },
+        {
+          "atTurn": 86,
+          "actual": 87466
+        },
+        {
+          "atTurn": 87,
+          "actual": 88423
+        },
+        {
+          "atTurn": 88,
+          "actual": 88423
+        },
+        {
+          "atTurn": 89,
+          "actual": 89098
+        },
+        {
+          "atTurn": 90,
+          "actual": 89098
+        },
+        {
+          "atTurn": 91,
+          "actual": 89358
+        },
+        {
+          "atTurn": 92,
+          "actual": 89358
+        },
+        {
+          "atTurn": 93,
+          "actual": 89358
+        },
+        {
+          "atTurn": 94,
+          "actual": 90538
+        },
+        {
+          "atTurn": 95,
+          "actual": 90538
+        },
+        {
+          "atTurn": 96,
+          "actual": 90538
+        },
+        {
+          "atTurn": 97,
+          "actual": 90538
+        },
+        {
+          "atTurn": 98,
+          "actual": 90538
+        },
+        {
+          "atTurn": 99,
+          "actual": 91184
+        },
+        {
+          "atTurn": 100,
+          "actual": 91184
+        },
+        {
+          "atTurn": 101,
+          "actual": 91766
+        },
+        {
+          "atTurn": 102,
+          "actual": 91766
+        },
+        {
+          "atTurn": 103,
+          "actual": 92938
+        },
+        {
+          "atTurn": 104,
+          "actual": 92938
+        },
+        {
+          "atTurn": 105,
+          "actual": 92938
+        },
+        {
+          "atTurn": 106,
+          "actual": 93852
+        },
+        {
+          "atTurn": 107,
+          "actual": 93852
+        },
+        {
+          "atTurn": 108,
+          "actual": 93852
+        },
+        {
+          "atTurn": 109,
+          "actual": 94612
+        },
+        {
+          "atTurn": 110,
+          "actual": 94612
+        },
+        {
+          "atTurn": 111,
+          "actual": 95010
+        },
+        {
+          "atTurn": 112,
+          "actual": 95010
+        },
+        {
+          "atTurn": 113,
+          "actual": 95197
+        },
+        {
+          "atTurn": 114,
+          "actual": 95197
+        },
+        {
+          "atTurn": 115,
+          "actual": 97110
+        },
+        {
+          "atTurn": 116,
+          "actual": 97110
+        },
+        {
+          "atTurn": 117,
+          "actual": 97110
+        },
+        {
+          "atTurn": 118,
+          "actual": 97909
+        },
+        {
+          "atTurn": 119,
+          "actual": 97909
+        },
+        {
+          "atTurn": 120,
+          "actual": 98258
+        },
+        {
+          "atTurn": 121,
+          "actual": 98258
+        },
+        {
+          "atTurn": 122,
+          "actual": 98258
+        },
+        {
+          "atTurn": 123,
+          "actual": 98704
+        },
+        {
+          "atTurn": 124,
+          "actual": 98704
+        },
+        {
+          "atTurn": 125,
+          "actual": 98995
+        },
+        {
+          "atTurn": 126,
+          "actual": 98995
+        }
+      ],
+      "estContentTokensTotal": 126242,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\runner.mjs",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\BENCHMARK_DATASETS.md",
+          "reads": 3
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\CONTEXT_CLASSIFIER.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\EVALUATION.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\dataset.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\harness.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\package.json",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\classify\\classify.ts",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 19,
+        "certain:SINGLE_SOURCE_SIGNAL": 125
+      }
+    },
+    {
+      "sessionId": "44ab90b4-0904-48b4-a1d0-2d333ff3c286",
+      "rawFile": "44ab90b4-0904-48b4-a1d0-2d333ff3c286.jsonl",
+      "rawBytes": 2311480,
+      "rawLines": 298,
+      "assistantTurns": 34,
+      "extractedItems": 59,
+      "keptItems": 59,
+      "truncatedItems": 38,
+      "tokenUsage": {
+        "input": 30,
+        "cacheRead": 656811,
+        "cacheCreation": 284010,
+        "output": 5033,
+        "turns": 31
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22532
+        },
+        {
+          "atTurn": 2,
+          "actual": 22532
+        },
+        {
+          "atTurn": 3,
+          "actual": 22532
+        },
+        {
+          "atTurn": 4,
+          "actual": 24378
+        },
+        {
+          "atTurn": 5,
+          "actual": 24401
+        },
+        {
+          "atTurn": 6,
+          "actual": 24401
+        },
+        {
+          "atTurn": 7,
+          "actual": 24401
+        },
+        {
+          "atTurn": 8,
+          "actual": 24945
+        },
+        {
+          "atTurn": 9,
+          "actual": 24945
+        },
+        {
+          "atTurn": 10,
+          "actual": 24945
+        },
+        {
+          "atTurn": 11,
+          "actual": 24945
+        },
+        {
+          "atTurn": 12,
+          "actual": 24945
+        },
+        {
+          "atTurn": 13,
+          "actual": 24945
+        },
+        {
+          "atTurn": 14,
+          "actual": 24945
+        },
+        {
+          "atTurn": 16,
+          "actual": 31286
+        },
+        {
+          "atTurn": 17,
+          "actual": 31286
+        },
+        {
+          "atTurn": 18,
+          "actual": 31286
+        },
+        {
+          "atTurn": 19,
+          "actual": 31286
+        },
+        {
+          "atTurn": 20,
+          "actual": 31286
+        },
+        {
+          "atTurn": 22,
+          "actual": 46711
+        },
+        {
+          "atTurn": 23,
+          "actual": 46711
+        },
+        {
+          "atTurn": 24,
+          "actual": 47225
+        },
+        {
+          "atTurn": 25,
+          "actual": 47225
+        },
+        {
+          "atTurn": 26,
+          "actual": 47225
+        },
+        {
+          "atTurn": 28,
+          "actual": 40530
+        },
+        {
+          "atTurn": 29,
+          "actual": 40530
+        },
+        {
+          "atTurn": 30,
+          "actual": 40530
+        },
+        {
+          "atTurn": 31,
+          "actual": 29314
+        },
+        {
+          "atTurn": 32,
+          "actual": 29314
+        },
+        {
+          "atTurn": 33,
+          "actual": 29314
+        },
+        {
+          "atTurn": 34,
+          "actual": 0
+        }
+      ],
+      "estContentTokensTotal": 270652,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\inventory\\inventory.ts",
+          "reads": 3
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\rules\\rule-engine.ts",
+          "reads": 3
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\governor\\govern.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\scoring\\score.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\token-estimator.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\assembler.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\context.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\governance.ts",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 28,
+        "certain:SINGLE_SOURCE_SIGNAL": 31
+      }
+    },
+    {
+      "sessionId": "7706f467-09a5-4015-8490-06a08b680034",
+      "rawFile": "7706f467-09a5-4015-8490-06a08b680034.jsonl",
+      "rawBytes": 2216364,
+      "rawLines": 493,
+      "assistantTurns": 62,
+      "extractedItems": 93,
+      "keptItems": 93,
+      "truncatedItems": 51,
+      "tokenUsage": {
+        "input": 55,
+        "cacheRead": 1180116,
+        "cacheCreation": 2039279,
+        "output": 46999,
+        "turns": 55
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22323
+        },
+        {
+          "atTurn": 2,
+          "actual": 22323
+        },
+        {
+          "atTurn": 3,
+          "actual": 22323
+        },
+        {
+          "atTurn": 4,
+          "actual": 25021
+        },
+        {
+          "atTurn": 5,
+          "actual": 25021
+        },
+        {
+          "atTurn": 6,
+          "actual": 25021
+        },
+        {
+          "atTurn": 8,
+          "actual": 26619
+        },
+        {
+          "atTurn": 9,
+          "actual": 26619
+        },
+        {
+          "atTurn": 10,
+          "actual": 26619
+        },
+        {
+          "atTurn": 11,
+          "actual": 29458
+        },
+        {
+          "atTurn": 12,
+          "actual": 29458
+        },
+        {
+          "atTurn": 13,
+          "actual": 29458
+        },
+        {
+          "atTurn": 14,
+          "actual": 29458
+        },
+        {
+          "atTurn": 16,
+          "actual": 38095
+        },
+        {
+          "atTurn": 17,
+          "actual": 38095
+        },
+        {
+          "atTurn": 18,
+          "actual": 38095
+        },
+        {
+          "atTurn": 19,
+          "actual": 38095
+        },
+        {
+          "atTurn": 20,
+          "actual": 38095
+        },
+        {
+          "atTurn": 21,
+          "actual": 38095
+        },
+        {
+          "atTurn": 23,
+          "actual": 52018
+        },
+        {
+          "atTurn": 24,
+          "actual": 52018
+        },
+        {
+          "atTurn": 25,
+          "actual": 52018
+        },
+        {
+          "atTurn": 26,
+          "actual": 52018
+        },
+        {
+          "atTurn": 27,
+          "actual": 52018
+        },
+        {
+          "atTurn": 28,
+          "actual": 52018
+        },
+        {
+          "atTurn": 29,
+          "actual": 52018
+        },
+        {
+          "atTurn": 30,
+          "actual": 52018
+        },
+        {
+          "atTurn": 31,
+          "actual": 52018
+        },
+        {
+          "atTurn": 33,
+          "actual": 63209
+        },
+        {
+          "atTurn": 34,
+          "actual": 63209
+        },
+        {
+          "atTurn": 35,
+          "actual": 63209
+        },
+        {
+          "atTurn": 36,
+          "actual": 63209
+        },
+        {
+          "atTurn": 37,
+          "actual": 63209
+        },
+        {
+          "atTurn": 39,
+          "actual": 73090
+        },
+        {
+          "atTurn": 40,
+          "actual": 73090
+        },
+        {
+          "atTurn": 41,
+          "actual": 73090
+        },
+        {
+          "atTurn": 43,
+          "actual": 75082
+        },
+        {
+          "atTurn": 44,
+          "actual": 75082
+        },
+        {
+          "atTurn": 45,
+          "actual": 75082
+        },
+        {
+          "atTurn": 47,
+          "actual": 80547
+        },
+        {
+          "atTurn": 48,
+          "actual": 80547
+        },
+        {
+          "atTurn": 49,
+          "actual": 80944
+        },
+        {
+          "atTurn": 50,
+          "actual": 80944
+        },
+        {
+          "atTurn": 51,
+          "actual": 87426
+        },
+        {
+          "atTurn": 52,
+          "actual": 87426
+        },
+        {
+          "atTurn": 53,
+          "actual": 90706
+        },
+        {
+          "atTurn": 54,
+          "actual": 90706
+        },
+        {
+          "atTurn": 55,
+          "actual": 91201
+        },
+        {
+          "atTurn": 56,
+          "actual": 91201
+        },
+        {
+          "atTurn": 57,
+          "actual": 91685
+        },
+        {
+          "atTurn": 58,
+          "actual": 91685
+        },
+        {
+          "atTurn": 59,
+          "actual": 92281
+        },
+        {
+          "atTurn": 60,
+          "actual": 92281
+        },
+        {
+          "atTurn": 61,
+          "actual": 96428
+        },
+        {
+          "atTurn": 62,
+          "actual": 96428
+        }
+      ],
+      "estContentTokensTotal": 202351,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\ARCHITECTURE.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\CONTEXT_MODEL.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\DECISIONS.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\POSITIONING.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\ROADMAP.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\drafts\\IMPLEMENTATION_PLAN.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\harness.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\real-agent.ts",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 18,
+        "certain:SINGLE_SOURCE_SIGNAL": 75
+      }
+    },
+    {
+      "sessionId": "79a4d454-0a3c-498a-abff-ff534576a354",
+      "rawFile": "79a4d454-0a3c-498a-abff-ff534576a354.jsonl",
+      "rawBytes": 7178261,
+      "rawLines": 1886,
+      "assistantTurns": 282,
+      "extractedItems": 335,
+      "keptItems": 300,
+      "truncatedItems": 99,
+      "tokenUsage": {
+        "input": 261,
+        "cacheRead": 16625579,
+        "cacheCreation": 2964823,
+        "output": 227284,
+        "turns": 261
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22101
+        },
+        {
+          "atTurn": 2,
+          "actual": 22101
+        },
+        {
+          "atTurn": 3,
+          "actual": 22101
+        },
+        {
+          "atTurn": 4,
+          "actual": 23134
+        },
+        {
+          "atTurn": 5,
+          "actual": 23134
+        },
+        {
+          "atTurn": 6,
+          "actual": 23625
+        },
+        {
+          "atTurn": 7,
+          "actual": 23625
+        },
+        {
+          "atTurn": 8,
+          "actual": 23625
+        },
+        {
+          "atTurn": 10,
+          "actual": 30919
+        },
+        {
+          "atTurn": 11,
+          "actual": 30919
+        },
+        {
+          "atTurn": 12,
+          "actual": 30919
+        },
+        {
+          "atTurn": 13,
+          "actual": 30919
+        },
+        {
+          "atTurn": 15,
+          "actual": 46357
+        },
+        {
+          "atTurn": 16,
+          "actual": 46357
+        },
+        {
+          "atTurn": 17,
+          "actual": 46357
+        },
+        {
+          "atTurn": 19,
+          "actual": 53570
+        },
+        {
+          "atTurn": 20,
+          "actual": 53570
+        },
+        {
+          "atTurn": 21,
+          "actual": 53570
+        },
+        {
+          "atTurn": 23,
+          "actual": 58768
+        },
+        {
+          "atTurn": 24,
+          "actual": 58768
+        },
+        {
+          "atTurn": 25,
+          "actual": 58768
+        },
+        {
+          "atTurn": 26,
+          "actual": 58768
+        },
+        {
+          "atTurn": 28,
+          "actual": 61849
+        },
+        {
+          "atTurn": 29,
+          "actual": 61849
+        },
+        {
+          "atTurn": 30,
+          "actual": 61849
+        },
+        {
+          "atTurn": 32,
+          "actual": 64417
+        },
+        {
+          "atTurn": 33,
+          "actual": 64417
+        },
+        {
+          "atTurn": 34,
+          "actual": 64417
+        },
+        {
+          "atTurn": 36,
+          "actual": 71737
+        },
+        {
+          "atTurn": 37,
+          "actual": 71737
+        },
+        {
+          "atTurn": 38,
+          "actual": 71737
+        },
+        {
+          "atTurn": 39,
+          "actual": 73444
+        },
+        {
+          "atTurn": 40,
+          "actual": 73444
+        },
+        {
+          "atTurn": 41,
+          "actual": 74867
+        },
+        {
+          "atTurn": 42,
+          "actual": 74867
+        },
+        {
+          "atTurn": 43,
+          "actual": 77007
+        },
+        {
+          "atTurn": 44,
+          "actual": 77007
+        },
+        {
+          "atTurn": 45,
+          "actual": 77007
+        },
+        {
+          "atTurn": 47,
+          "actual": 80309
+        },
+        {
+          "atTurn": 48,
+          "actual": 80309
+        },
+        {
+          "atTurn": 49,
+          "actual": 81777
+        },
+        {
+          "atTurn": 50,
+          "actual": 81777
+        },
+        {
+          "atTurn": 51,
+          "actual": 85881
+        },
+        {
+          "atTurn": 52,
+          "actual": 85881
+        },
+        {
+          "atTurn": 53,
+          "actual": 89404
+        },
+        {
+          "atTurn": 54,
+          "actual": 89404
+        },
+        {
+          "atTurn": 55,
+          "actual": 92919
+        },
+        {
+          "atTurn": 56,
+          "actual": 92919
+        },
+        {
+          "atTurn": 57,
+          "actual": 98068
+        },
+        {
+          "atTurn": 58,
+          "actual": 98068
+        },
+        {
+          "atTurn": 59,
+          "actual": 99139
+        },
+        {
+          "atTurn": 60,
+          "actual": 99139
+        },
+        {
+          "atTurn": 61,
+          "actual": 101643
+        },
+        {
+          "atTurn": 62,
+          "actual": 101643
+        },
+        {
+          "atTurn": 63,
+          "actual": 101643
+        },
+        {
+          "atTurn": 64,
+          "actual": 102272
+        },
+        {
+          "atTurn": 65,
+          "actual": 102272
+        },
+        {
+          "atTurn": 66,
+          "actual": 104172
+        },
+        {
+          "atTurn": 67,
+          "actual": 104172
+        },
+        {
+          "atTurn": 68,
+          "actual": 105515
+        },
+        {
+          "atTurn": 69,
+          "actual": 105515
+        },
+        {
+          "atTurn": 70,
+          "actual": 106313
+        },
+        {
+          "atTurn": 71,
+          "actual": 106313
+        },
+        {
+          "atTurn": 72,
+          "actual": 106313
+        },
+        {
+          "atTurn": 73,
+          "actual": 106861
+        },
+        {
+          "atTurn": 74,
+          "actual": 106861
+        },
+        {
+          "atTurn": 75,
+          "actual": 107464
+        },
+        {
+          "atTurn": 76,
+          "actual": 107464
+        },
+        {
+          "atTurn": 77,
+          "actual": 107843
+        },
+        {
+          "atTurn": 78,
+          "actual": 107843
+        },
+        {
+          "atTurn": 79,
+          "actual": 107843
+        },
+        {
+          "atTurn": 80,
+          "actual": 110878
+        },
+        {
+          "atTurn": 81,
+          "actual": 110878
+        },
+        {
+          "atTurn": 82,
+          "actual": 110878
+        },
+        {
+          "atTurn": 84,
+          "actual": 41059
+        },
+        {
+          "atTurn": 85,
+          "actual": 41059
+        },
+        {
+          "atTurn": 86,
+          "actual": 41059
+        },
+        {
+          "atTurn": 87,
+          "actual": 41059
+        },
+        {
+          "atTurn": 88,
+          "actual": 41059
+        },
+        {
+          "atTurn": 90,
+          "actual": 44989
+        },
+        {
+          "atTurn": 91,
+          "actual": 44989
+        },
+        {
+          "atTurn": 92,
+          "actual": 44989
+        },
+        {
+          "atTurn": 93,
+          "actual": 44989
+        },
+        {
+          "atTurn": 94,
+          "actual": 44989
+        },
+        {
+          "atTurn": 96,
+          "actual": 53858
+        },
+        {
+          "atTurn": 97,
+          "actual": 53858
+        },
+        {
+          "atTurn": 98,
+          "actual": 53858
+        },
+        {
+          "atTurn": 99,
+          "actual": 53858
+        },
+        {
+          "atTurn": 101,
+          "actual": 58007
+        },
+        {
+          "atTurn": 102,
+          "actual": 58007
+        },
+        {
+          "atTurn": 103,
+          "actual": 58007
+        },
+        {
+          "atTurn": 105,
+          "actual": 59072
+        },
+        {
+          "atTurn": 106,
+          "actual": 59072
+        },
+        {
+          "atTurn": 107,
+          "actual": 59072
+        },
+        {
+          "atTurn": 108,
+          "actual": 61175
+        },
+        {
+          "atTurn": 109,
+          "actual": 61175
+        },
+        {
+          "atTurn": 110,
+          "actual": 62031
+        },
+        {
+          "atTurn": 111,
+          "actual": 62031
+        },
+        {
+          "atTurn": 112,
+          "actual": 62418
+        },
+        {
+          "atTurn": 113,
+          "actual": 62418
+        },
+        {
+          "atTurn": 114,
+          "actual": 62825
+        },
+        {
+          "atTurn": 115,
+          "actual": 62825
+        },
+        {
+          "atTurn": 116,
+          "actual": 63828
+        },
+        {
+          "atTurn": 117,
+          "actual": 63828
+        },
+        {
+          "atTurn": 118,
+          "actual": 64131
+        },
+        {
+          "atTurn": 119,
+          "actual": 64131
+        },
+        {
+          "atTurn": 120,
+          "actual": 64375
+        },
+        {
+          "atTurn": 121,
+          "actual": 64375
+        },
+        {
+          "atTurn": 122,
+          "actual": 67530
+        },
+        {
+          "atTurn": 123,
+          "actual": 67530
+        },
+        {
+          "atTurn": 124,
+          "actual": 67530
+        },
+        {
+          "atTurn": 126,
+          "actual": 68189
+        },
+        {
+          "atTurn": 127,
+          "actual": 68189
+        },
+        {
+          "atTurn": 128,
+          "actual": 68454
+        },
+        {
+          "atTurn": 129,
+          "actual": 68454
+        },
+        {
+          "atTurn": 130,
+          "actual": 68800
+        },
+        {
+          "atTurn": 131,
+          "actual": 68800
+        },
+        {
+          "atTurn": 132,
+          "actual": 68800
+        },
+        {
+          "atTurn": 134,
+          "actual": 70149
+        },
+        {
+          "atTurn": 135,
+          "actual": 70149
+        },
+        {
+          "atTurn": 136,
+          "actual": 71224
+        },
+        {
+          "atTurn": 137,
+          "actual": 71224
+        },
+        {
+          "atTurn": 138,
+          "actual": 71224
+        },
+        {
+          "atTurn": 139,
+          "actual": 71224
+        },
+        {
+          "atTurn": 141,
+          "actual": 72379
+        },
+        {
+          "atTurn": 142,
+          "actual": 72379
+        },
+        {
+          "atTurn": 143,
+          "actual": 72494
+        },
+        {
+          "atTurn": 144,
+          "actual": 72494
+        },
+        {
+          "atTurn": 145,
+          "actual": 72494
+        },
+        {
+          "atTurn": 146,
+          "actual": 75801
+        },
+        {
+          "atTurn": 147,
+          "actual": 75801
+        },
+        {
+          "atTurn": 148,
+          "actual": 77416
+        },
+        {
+          "atTurn": 149,
+          "actual": 77416
+        },
+        {
+          "atTurn": 150,
+          "actual": 78798
+        },
+        {
+          "atTurn": 151,
+          "actual": 78798
+        },
+        {
+          "atTurn": 152,
+          "actual": 80247
+        },
+        {
+          "atTurn": 153,
+          "actual": 80247
+        },
+        {
+          "atTurn": 154,
+          "actual": 81601
+        },
+        {
+          "atTurn": 155,
+          "actual": 81601
+        },
+        {
+          "atTurn": 156,
+          "actual": 81601
+        },
+        {
+          "atTurn": 157,
+          "actual": 82059
+        },
+        {
+          "atTurn": 158,
+          "actual": 82059
+        },
+        {
+          "atTurn": 159,
+          "actual": 82485
+        },
+        {
+          "atTurn": 160,
+          "actual": 82485
+        },
+        {
+          "atTurn": 161,
+          "actual": 82706
+        },
+        {
+          "atTurn": 162,
+          "actual": 82706
+        },
+        {
+          "atTurn": 163,
+          "actual": 82706
+        },
+        {
+          "atTurn": 164,
+          "actual": 84336
+        },
+        {
+          "atTurn": 165,
+          "actual": 84336
+        },
+        {
+          "atTurn": 166,
+          "actual": 84520
+        },
+        {
+          "atTurn": 167,
+          "actual": 84520
+        },
+        {
+          "atTurn": 168,
+          "actual": 85139
+        },
+        {
+          "atTurn": 169,
+          "actual": 85139
+        },
+        {
+          "atTurn": 170,
+          "actual": 85826
+        },
+        {
+          "atTurn": 171,
+          "actual": 85826
+        },
+        {
+          "atTurn": 172,
+          "actual": 86225
+        },
+        {
+          "atTurn": 173,
+          "actual": 86225
+        },
+        {
+          "atTurn": 174,
+          "actual": 86446
+        },
+        {
+          "atTurn": 175,
+          "actual": 86446
+        },
+        {
+          "atTurn": 176,
+          "actual": 86901
+        },
+        {
+          "atTurn": 177,
+          "actual": 86901
+        },
+        {
+          "atTurn": 178,
+          "actual": 87505
+        },
+        {
+          "atTurn": 179,
+          "actual": 87505
+        },
+        {
+          "atTurn": 180,
+          "actual": 88296
+        },
+        {
+          "atTurn": 181,
+          "actual": 88296
+        },
+        {
+          "atTurn": 182,
+          "actual": 89349
+        },
+        {
+          "atTurn": 183,
+          "actual": 89349
+        },
+        {
+          "atTurn": 184,
+          "actual": 89897
+        },
+        {
+          "atTurn": 185,
+          "actual": 89897
+        },
+        {
+          "atTurn": 186,
+          "actual": 90478
+        },
+        {
+          "atTurn": 187,
+          "actual": 90478
+        },
+        {
+          "atTurn": 188,
+          "actual": 90828
+        },
+        {
+          "atTurn": 189,
+          "actual": 90828
+        },
+        {
+          "atTurn": 190,
+          "actual": 92322
+        },
+        {
+          "atTurn": 191,
+          "actual": 92322
+        },
+        {
+          "atTurn": 192,
+          "actual": 92589
+        },
+        {
+          "atTurn": 193,
+          "actual": 92589
+        },
+        {
+          "atTurn": 194,
+          "actual": 93618
+        },
+        {
+          "atTurn": 195,
+          "actual": 93618
+        },
+        {
+          "atTurn": 196,
+          "actual": 93969
+        },
+        {
+          "atTurn": 197,
+          "actual": 93969
+        },
+        {
+          "atTurn": 198,
+          "actual": 94470
+        },
+        {
+          "atTurn": 199,
+          "actual": 94470
+        },
+        {
+          "atTurn": 200,
+          "actual": 95164
+        },
+        {
+          "atTurn": 201,
+          "actual": 95164
+        },
+        {
+          "atTurn": 202,
+          "actual": 96187
+        },
+        {
+          "atTurn": 203,
+          "actual": 96187
+        },
+        {
+          "atTurn": 204,
+          "actual": 96187
+        },
+        {
+          "atTurn": 206,
+          "actual": 96692
+        },
+        {
+          "atTurn": 207,
+          "actual": 96692
+        },
+        {
+          "atTurn": 208,
+          "actual": 96815
+        },
+        {
+          "atTurn": 209,
+          "actual": 96815
+        },
+        {
+          "atTurn": 210,
+          "actual": 97596
+        },
+        {
+          "atTurn": 211,
+          "actual": 97596
+        },
+        {
+          "atTurn": 212,
+          "actual": 98733
+        },
+        {
+          "atTurn": 213,
+          "actual": 98733
+        },
+        {
+          "atTurn": 214,
+          "actual": 98733
+        },
+        {
+          "atTurn": 216,
+          "actual": 99718
+        },
+        {
+          "atTurn": 217,
+          "actual": 99718
+        },
+        {
+          "atTurn": 218,
+          "actual": 100260
+        },
+        {
+          "atTurn": 219,
+          "actual": 100260
+        },
+        {
+          "atTurn": 220,
+          "actual": 100948
+        },
+        {
+          "atTurn": 221,
+          "actual": 100948
+        },
+        {
+          "atTurn": 222,
+          "actual": 101468
+        },
+        {
+          "atTurn": 223,
+          "actual": 101468
+        },
+        {
+          "atTurn": 224,
+          "actual": 102039
+        },
+        {
+          "atTurn": 225,
+          "actual": 102039
+        },
+        {
+          "atTurn": 226,
+          "actual": 102426
+        },
+        {
+          "atTurn": 227,
+          "actual": 102426
+        },
+        {
+          "atTurn": 228,
+          "actual": 102693
+        },
+        {
+          "atTurn": 229,
+          "actual": 102693
+        },
+        {
+          "atTurn": 230,
+          "actual": 102854
+        },
+        {
+          "atTurn": 231,
+          "actual": 102854
+        },
+        {
+          "atTurn": 232,
+          "actual": 103167
+        },
+        {
+          "atTurn": 233,
+          "actual": 103167
+        },
+        {
+          "atTurn": 234,
+          "actual": 104149
+        },
+        {
+          "atTurn": 235,
+          "actual": 104149
+        },
+        {
+          "atTurn": 236,
+          "actual": 104856
+        },
+        {
+          "atTurn": 237,
+          "actual": 104856
+        },
+        {
+          "atTurn": 238,
+          "actual": 104856
+        },
+        {
+          "atTurn": 239,
+          "actual": 106937
+        },
+        {
+          "atTurn": 240,
+          "actual": 106937
+        },
+        {
+          "atTurn": 241,
+          "actual": 108024
+        },
+        {
+          "atTurn": 242,
+          "actual": 108024
+        },
+        {
+          "atTurn": 243,
+          "actual": 108024
+        },
+        {
+          "atTurn": 244,
+          "actual": 108024
+        },
+        {
+          "atTurn": 246,
+          "actual": 111293
+        },
+        {
+          "atTurn": 247,
+          "actual": 111293
+        },
+        {
+          "atTurn": 248,
+          "actual": 111293
+        },
+        {
+          "atTurn": 250,
+          "actual": 113715
+        },
+        {
+          "atTurn": 251,
+          "actual": 113715
+        },
+        {
+          "atTurn": 253,
+          "actual": 33982
+        },
+        {
+          "atTurn": 254,
+          "actual": 33982
+        },
+        {
+          "atTurn": 255,
+          "actual": 34278
+        },
+        {
+          "atTurn": 256,
+          "actual": 34278
+        },
+        {
+          "atTurn": 257,
+          "actual": 34923
+        },
+        {
+          "atTurn": 258,
+          "actual": 34923
+        },
+        {
+          "atTurn": 259,
+          "actual": 35050
+        },
+        {
+          "atTurn": 260,
+          "actual": 35050
+        },
+        {
+          "atTurn": 261,
+          "actual": 35277
+        },
+        {
+          "atTurn": 262,
+          "actual": 35277
+        },
+        {
+          "atTurn": 263,
+          "actual": 35555
+        },
+        {
+          "atTurn": 264,
+          "actual": 35555
+        },
+        {
+          "atTurn": 265,
+          "actual": 36185
+        },
+        {
+          "atTurn": 266,
+          "actual": 36185
+        },
+        {
+          "atTurn": 267,
+          "actual": 36500
+        },
+        {
+          "atTurn": 268,
+          "actual": 36500
+        },
+        {
+          "atTurn": 269,
+          "actual": 37485
+        },
+        {
+          "atTurn": 270,
+          "actual": 37485
+        },
+        {
+          "atTurn": 271,
+          "actual": 37811
+        },
+        {
+          "atTurn": 272,
+          "actual": 37811
+        },
+        {
+          "atTurn": 273,
+          "actual": 38838
+        },
+        {
+          "atTurn": 274,
+          "actual": 38838
+        },
+        {
+          "atTurn": 275,
+          "actual": 40138
+        },
+        {
+          "atTurn": 276,
+          "actual": 40138
+        },
+        {
+          "atTurn": 277,
+          "actual": 40593
+        },
+        {
+          "atTurn": 278,
+          "actual": 40593
+        },
+        {
+          "atTurn": 279,
+          "actual": 41349
+        },
+        {
+          "atTurn": 280,
+          "actual": 41349
+        },
+        {
+          "atTurn": 281,
+          "actual": 42392
+        },
+        {
+          "atTurn": 282,
+          "actual": 42392
+        }
+      ],
+      "estContentTokensTotal": 394720,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\EVALUATION.md",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\harness.ts",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\experimental\\adapter.ts",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\package.json",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\governance.ts",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\assembler.ts",
+          "reads": 3
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\ARCHITECTURE.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\CONTEXT_MODEL.md",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 29,
+        "certain:SINGLE_SOURCE_SIGNAL": 271
+      }
+    },
+    {
+      "sessionId": "85b1dd6a-934f-49dc-984c-51aed9e53bf3",
+      "rawFile": "85b1dd6a-934f-49dc-984c-51aed9e53bf3.jsonl",
+      "rawBytes": 14246877,
+      "rawLines": 1789,
+      "assistantTurns": 211,
+      "extractedItems": 326,
+      "keptItems": 300,
+      "truncatedItems": 182,
+      "tokenUsage": {
+        "input": 181,
+        "cacheRead": 5175586,
+        "cacheCreation": 2704342,
+        "output": 169877,
+        "turns": 182
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 24044
+        },
+        {
+          "atTurn": 2,
+          "actual": 24044
+        },
+        {
+          "atTurn": 3,
+          "actual": 24044
+        },
+        {
+          "atTurn": 4,
+          "actual": 25016
+        },
+        {
+          "atTurn": 5,
+          "actual": 25016
+        },
+        {
+          "atTurn": 6,
+          "actual": 25016
+        },
+        {
+          "atTurn": 8,
+          "actual": 32285
+        },
+        {
+          "atTurn": 9,
+          "actual": 32285
+        },
+        {
+          "atTurn": 10,
+          "actual": 32285
+        },
+        {
+          "atTurn": 11,
+          "actual": 32731
+        },
+        {
+          "atTurn": 12,
+          "actual": 32731
+        },
+        {
+          "atTurn": 13,
+          "actual": 32731
+        },
+        {
+          "atTurn": 14,
+          "actual": 32731
+        },
+        {
+          "atTurn": 16,
+          "actual": 46224
+        },
+        {
+          "atTurn": 17,
+          "actual": 46224
+        },
+        {
+          "atTurn": 18,
+          "actual": 46621
+        },
+        {
+          "atTurn": 19,
+          "actual": 46621
+        },
+        {
+          "atTurn": 20,
+          "actual": 46621
+        },
+        {
+          "atTurn": 21,
+          "actual": 46621
+        },
+        {
+          "atTurn": 22,
+          "actual": 35486
+        },
+        {
+          "atTurn": 23,
+          "actual": 35486
+        },
+        {
+          "atTurn": 24,
+          "actual": 35486
+        },
+        {
+          "atTurn": 25,
+          "actual": 35486
+        },
+        {
+          "atTurn": 27,
+          "actual": 38218
+        },
+        {
+          "atTurn": 28,
+          "actual": 38218
+        },
+        {
+          "atTurn": 29,
+          "actual": 38218
+        },
+        {
+          "atTurn": 31,
+          "actual": 44529
+        },
+        {
+          "atTurn": 32,
+          "actual": 44529
+        },
+        {
+          "atTurn": 33,
+          "actual": 44529
+        },
+        {
+          "atTurn": 35,
+          "actual": 47226
+        },
+        {
+          "atTurn": 36,
+          "actual": 47226
+        },
+        {
+          "atTurn": 37,
+          "actual": 48333
+        },
+        {
+          "atTurn": 38,
+          "actual": 48333
+        },
+        {
+          "atTurn": 40,
+          "actual": 45101
+        },
+        {
+          "atTurn": 41,
+          "actual": 45124
+        },
+        {
+          "atTurn": 42,
+          "actual": 45124
+        },
+        {
+          "atTurn": 43,
+          "actual": 45124
+        },
+        {
+          "atTurn": 45,
+          "actual": 45655
+        },
+        {
+          "atTurn": 46,
+          "actual": 45655
+        },
+        {
+          "atTurn": 47,
+          "actual": 45655
+        },
+        {
+          "atTurn": 48,
+          "actual": 38104
+        },
+        {
+          "atTurn": 49,
+          "actual": 38104
+        },
+        {
+          "atTurn": 50,
+          "actual": 38104
+        },
+        {
+          "atTurn": 51,
+          "actual": 38803
+        },
+        {
+          "atTurn": 52,
+          "actual": 38803
+        },
+        {
+          "atTurn": 53,
+          "actual": 38803
+        },
+        {
+          "atTurn": 54,
+          "actual": 38803
+        },
+        {
+          "atTurn": 55,
+          "actual": 38803
+        },
+        {
+          "atTurn": 56,
+          "actual": 38803
+        },
+        {
+          "atTurn": 58,
+          "actual": 46947
+        },
+        {
+          "atTurn": 59,
+          "actual": 46947
+        },
+        {
+          "atTurn": 60,
+          "actual": 46947
+        },
+        {
+          "atTurn": 61,
+          "actual": 46947
+        },
+        {
+          "atTurn": 63,
+          "actual": 47521
+        },
+        {
+          "atTurn": 64,
+          "actual": 47521
+        },
+        {
+          "atTurn": 65,
+          "actual": 47521
+        },
+        {
+          "atTurn": 66,
+          "actual": 47521
+        },
+        {
+          "atTurn": 67,
+          "actual": 47521
+        },
+        {
+          "atTurn": 68,
+          "actual": 42174
+        },
+        {
+          "atTurn": 69,
+          "actual": 42174
+        },
+        {
+          "atTurn": 70,
+          "actual": 42174
+        },
+        {
+          "atTurn": 71,
+          "actual": 42174
+        },
+        {
+          "atTurn": 72,
+          "actual": 42174
+        },
+        {
+          "atTurn": 73,
+          "actual": 40058
+        },
+        {
+          "atTurn": 74,
+          "actual": 40058
+        },
+        {
+          "atTurn": 75,
+          "actual": 40058
+        },
+        {
+          "atTurn": 76,
+          "actual": 40382
+        },
+        {
+          "atTurn": 77,
+          "actual": 40382
+        },
+        {
+          "atTurn": 78,
+          "actual": 40820
+        },
+        {
+          "atTurn": 79,
+          "actual": 40820
+        },
+        {
+          "atTurn": 80,
+          "actual": 40820
+        },
+        {
+          "atTurn": 81,
+          "actual": 40820
+        },
+        {
+          "atTurn": 83,
+          "actual": 44948
+        },
+        {
+          "atTurn": 84,
+          "actual": 44948
+        },
+        {
+          "atTurn": 85,
+          "actual": 44948
+        },
+        {
+          "atTurn": 86,
+          "actual": 44948
+        },
+        {
+          "atTurn": 88,
+          "actual": 49930
+        },
+        {
+          "atTurn": 89,
+          "actual": 49930
+        },
+        {
+          "atTurn": 90,
+          "actual": 49930
+        },
+        {
+          "atTurn": 91,
+          "actual": 49930
+        },
+        {
+          "atTurn": 92,
+          "actual": 42165
+        },
+        {
+          "atTurn": 93,
+          "actual": 42165
+        },
+        {
+          "atTurn": 94,
+          "actual": 42165
+        },
+        {
+          "atTurn": 95,
+          "actual": 43677
+        },
+        {
+          "atTurn": 96,
+          "actual": 43677
+        },
+        {
+          "atTurn": 97,
+          "actual": 43905
+        },
+        {
+          "atTurn": 98,
+          "actual": 43905
+        },
+        {
+          "atTurn": 99,
+          "actual": 43905
+        },
+        {
+          "atTurn": 101,
+          "actual": 45802
+        },
+        {
+          "atTurn": 102,
+          "actual": 45802
+        },
+        {
+          "atTurn": 103,
+          "actual": 45802
+        },
+        {
+          "atTurn": 104,
+          "actual": 45802
+        },
+        {
+          "atTurn": 106,
+          "actual": 55939
+        },
+        {
+          "atTurn": 107,
+          "actual": 55939
+        },
+        {
+          "atTurn": 108,
+          "actual": 55939
+        },
+        {
+          "atTurn": 109,
+          "actual": 55939
+        },
+        {
+          "atTurn": 110,
+          "actual": 41359
+        },
+        {
+          "atTurn": 111,
+          "actual": 41359
+        },
+        {
+          "atTurn": 112,
+          "actual": 41359
+        },
+        {
+          "atTurn": 113,
+          "actual": 41771
+        },
+        {
+          "atTurn": 114,
+          "actual": 41771
+        },
+        {
+          "atTurn": 115,
+          "actual": 41771
+        },
+        {
+          "atTurn": 116,
+          "actual": 42705
+        },
+        {
+          "atTurn": 117,
+          "actual": 42705
+        },
+        {
+          "atTurn": 118,
+          "actual": 42705
+        },
+        {
+          "atTurn": 120,
+          "actual": 53155
+        },
+        {
+          "atTurn": 121,
+          "actual": 53155
+        },
+        {
+          "atTurn": 122,
+          "actual": 53155
+        },
+        {
+          "atTurn": 124,
+          "actual": 54320
+        },
+        {
+          "atTurn": 125,
+          "actual": 54320
+        },
+        {
+          "atTurn": 126,
+          "actual": 54320
+        },
+        {
+          "atTurn": 128,
+          "actual": 56910
+        },
+        {
+          "atTurn": 129,
+          "actual": 56910
+        },
+        {
+          "atTurn": 130,
+          "actual": 56910
+        },
+        {
+          "atTurn": 132,
+          "actual": 41427
+        },
+        {
+          "atTurn": 133,
+          "actual": 41427
+        },
+        {
+          "atTurn": 134,
+          "actual": 41427
+        },
+        {
+          "atTurn": 135,
+          "actual": 41427
+        },
+        {
+          "atTurn": 136,
+          "actual": 41427
+        },
+        {
+          "atTurn": 137,
+          "actual": 41427
+        },
+        {
+          "atTurn": 139,
+          "actual": 47497
+        },
+        {
+          "atTurn": 140,
+          "actual": 47497
+        },
+        {
+          "atTurn": 141,
+          "actual": 47850
+        },
+        {
+          "atTurn": 142,
+          "actual": 47850
+        },
+        {
+          "atTurn": 143,
+          "actual": 47850
+        },
+        {
+          "atTurn": 145,
+          "actual": 43849
+        },
+        {
+          "atTurn": 146,
+          "actual": 43849
+        },
+        {
+          "atTurn": 147,
+          "actual": 43849
+        },
+        {
+          "atTurn": 148,
+          "actual": 43849
+        },
+        {
+          "atTurn": 150,
+          "actual": 46691
+        },
+        {
+          "atTurn": 151,
+          "actual": 46691
+        },
+        {
+          "atTurn": 152,
+          "actual": 46691
+        },
+        {
+          "atTurn": 154,
+          "actual": 47758
+        },
+        {
+          "atTurn": 155,
+          "actual": 47758
+        },
+        {
+          "atTurn": 156,
+          "actual": 47758
+        },
+        {
+          "atTurn": 158,
+          "actual": 42203
+        },
+        {
+          "atTurn": 159,
+          "actual": 42203
+        },
+        {
+          "atTurn": 160,
+          "actual": 42203
+        },
+        {
+          "atTurn": 162,
+          "actual": 45257
+        },
+        {
+          "atTurn": 163,
+          "actual": 45257
+        },
+        {
+          "atTurn": 164,
+          "actual": 41723
+        },
+        {
+          "atTurn": 165,
+          "actual": 41723
+        },
+        {
+          "atTurn": 166,
+          "actual": 41723
+        },
+        {
+          "atTurn": 167,
+          "actual": 41723
+        },
+        {
+          "atTurn": 169,
+          "actual": 44276
+        },
+        {
+          "atTurn": 170,
+          "actual": 44276
+        },
+        {
+          "atTurn": 171,
+          "actual": 44413
+        },
+        {
+          "atTurn": 172,
+          "actual": 44413
+        },
+        {
+          "atTurn": 173,
+          "actual": 44526
+        },
+        {
+          "atTurn": 174,
+          "actual": 44526
+        },
+        {
+          "atTurn": 175,
+          "actual": 46073
+        },
+        {
+          "atTurn": 176,
+          "actual": 46073
+        },
+        {
+          "atTurn": 178,
+          "actual": 45864
+        },
+        {
+          "atTurn": 179,
+          "actual": 45864
+        },
+        {
+          "atTurn": 180,
+          "actual": 46553
+        },
+        {
+          "atTurn": 181,
+          "actual": 46553
+        },
+        {
+          "atTurn": 182,
+          "actual": 40406
+        },
+        {
+          "atTurn": 183,
+          "actual": 40406
+        },
+        {
+          "atTurn": 184,
+          "actual": 40406
+        },
+        {
+          "atTurn": 185,
+          "actual": 40406
+        },
+        {
+          "atTurn": 187,
+          "actual": 41403
+        },
+        {
+          "atTurn": 188,
+          "actual": 41403
+        },
+        {
+          "atTurn": 189,
+          "actual": 41403
+        },
+        {
+          "atTurn": 191,
+          "actual": 43910
+        },
+        {
+          "atTurn": 192,
+          "actual": 43910
+        },
+        {
+          "atTurn": 193,
+          "actual": 51453
+        },
+        {
+          "atTurn": 194,
+          "actual": 51453
+        },
+        {
+          "atTurn": 195,
+          "actual": 51453
+        },
+        {
+          "atTurn": 197,
+          "actual": 45761
+        },
+        {
+          "atTurn": 198,
+          "actual": 45761
+        },
+        {
+          "atTurn": 199,
+          "actual": 45761
+        },
+        {
+          "atTurn": 200,
+          "actual": 43238
+        },
+        {
+          "atTurn": 201,
+          "actual": 43238
+        },
+        {
+          "atTurn": 202,
+          "actual": 43238
+        },
+        {
+          "atTurn": 204,
+          "actual": 45621
+        },
+        {
+          "atTurn": 205,
+          "actual": 45621
+        },
+        {
+          "atTurn": 206,
+          "actual": 45621
+        },
+        {
+          "atTurn": 207,
+          "actual": 43005
+        },
+        {
+          "atTurn": 208,
+          "actual": 43005
+        },
+        {
+          "atTurn": 209,
+          "actual": 43005
+        },
+        {
+          "atTurn": 210,
+          "actual": 43005
+        },
+        {
+          "atTurn": 211,
+          "actual": 0
+        }
+      ],
+      "estContentTokensTotal": 1463322,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\context.ts",
+          "reads": 23
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\types\\inventory.ts",
+          "reads": 14
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\CONTEXT_MODEL.md",
+          "reads": 12
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\eval\\scenarios.ts",
+          "reads": 10
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\scoring\\score.ts",
+          "reads": 10
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\inventory\\inventory.ts",
+          "reads": 8
+        },
+        {
+          "path": "src/**/*.ts",
+          "reads": 8
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\rules\\rule-engine.ts",
+          "reads": 7
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 101,
+        "certain:SINGLE_SOURCE_SIGNAL": 199
+      }
+    },
+    {
+      "sessionId": "925b33ec-cf4b-41ba-afec-c273c6be70f0",
+      "rawFile": "925b33ec-cf4b-41ba-afec-c273c6be70f0.jsonl",
+      "rawBytes": 5085690,
+      "rawLines": 1407,
+      "assistantTurns": 235,
+      "extractedItems": 284,
+      "keptItems": 284,
+      "truncatedItems": 67,
+      "tokenUsage": {
+        "input": 219,
+        "cacheRead": 8621442,
+        "cacheCreation": 6290157,
+        "output": 185135,
+        "turns": 219
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22985
+        },
+        {
+          "atTurn": 2,
+          "actual": 22985
+        },
+        {
+          "atTurn": 3,
+          "actual": 22985
+        },
+        {
+          "atTurn": 4,
+          "actual": 27899
+        },
+        {
+          "atTurn": 5,
+          "actual": 27899
+        },
+        {
+          "atTurn": 6,
+          "actual": 27899
+        },
+        {
+          "atTurn": 7,
+          "actual": 28633
+        },
+        {
+          "atTurn": 8,
+          "actual": 28633
+        },
+        {
+          "atTurn": 9,
+          "actual": 28633
+        },
+        {
+          "atTurn": 10,
+          "actual": 28633
+        },
+        {
+          "atTurn": 11,
+          "actual": 28633
+        },
+        {
+          "atTurn": 13,
+          "actual": 44644
+        },
+        {
+          "atTurn": 14,
+          "actual": 44644
+        },
+        {
+          "atTurn": 15,
+          "actual": 44644
+        },
+        {
+          "atTurn": 16,
+          "actual": 44644
+        },
+        {
+          "atTurn": 18,
+          "actual": 49336
+        },
+        {
+          "atTurn": 19,
+          "actual": 49336
+        },
+        {
+          "atTurn": 20,
+          "actual": 49336
+        },
+        {
+          "atTurn": 22,
+          "actual": 52837
+        },
+        {
+          "atTurn": 23,
+          "actual": 52837
+        },
+        {
+          "atTurn": 24,
+          "actual": 52837
+        },
+        {
+          "atTurn": 25,
+          "actual": 64842
+        },
+        {
+          "atTurn": 26,
+          "actual": 64842
+        },
+        {
+          "atTurn": 27,
+          "actual": 64842
+        },
+        {
+          "atTurn": 28,
+          "actual": 70643
+        },
+        {
+          "atTurn": 29,
+          "actual": 70643
+        },
+        {
+          "atTurn": 30,
+          "actual": 70643
+        },
+        {
+          "atTurn": 31,
+          "actual": 70643
+        },
+        {
+          "atTurn": 33,
+          "actual": 73474
+        },
+        {
+          "atTurn": 34,
+          "actual": 73474
+        },
+        {
+          "atTurn": 35,
+          "actual": 73474
+        },
+        {
+          "atTurn": 36,
+          "actual": 82127
+        },
+        {
+          "atTurn": 37,
+          "actual": 82127
+        },
+        {
+          "atTurn": 38,
+          "actual": 83122
+        },
+        {
+          "atTurn": 39,
+          "actual": 83122
+        },
+        {
+          "atTurn": 40,
+          "actual": 83337
+        },
+        {
+          "atTurn": 41,
+          "actual": 83337
+        },
+        {
+          "atTurn": 42,
+          "actual": 83337
+        },
+        {
+          "atTurn": 43,
+          "actual": 83337
+        },
+        {
+          "atTurn": 44,
+          "actual": 83337
+        },
+        {
+          "atTurn": 46,
+          "actual": 86529
+        },
+        {
+          "atTurn": 47,
+          "actual": 86529
+        },
+        {
+          "atTurn": 48,
+          "actual": 89986
+        },
+        {
+          "atTurn": 49,
+          "actual": 89986
+        },
+        {
+          "atTurn": 50,
+          "actual": 89986
+        },
+        {
+          "atTurn": 51,
+          "actual": 89986
+        },
+        {
+          "atTurn": 52,
+          "actual": 92109
+        },
+        {
+          "atTurn": 53,
+          "actual": 92109
+        },
+        {
+          "atTurn": 54,
+          "actual": 92109
+        },
+        {
+          "atTurn": 55,
+          "actual": 92881
+        },
+        {
+          "atTurn": 56,
+          "actual": 92881
+        },
+        {
+          "atTurn": 57,
+          "actual": 93065
+        },
+        {
+          "atTurn": 58,
+          "actual": 93065
+        },
+        {
+          "atTurn": 59,
+          "actual": 93065
+        },
+        {
+          "atTurn": 60,
+          "actual": 93471
+        },
+        {
+          "atTurn": 61,
+          "actual": 93471
+        },
+        {
+          "atTurn": 62,
+          "actual": 97288
+        },
+        {
+          "atTurn": 63,
+          "actual": 97288
+        },
+        {
+          "atTurn": 64,
+          "actual": 97288
+        },
+        {
+          "atTurn": 65,
+          "actual": 100882
+        },
+        {
+          "atTurn": 66,
+          "actual": 100882
+        },
+        {
+          "atTurn": 67,
+          "actual": 101783
+        },
+        {
+          "atTurn": 68,
+          "actual": 101783
+        },
+        {
+          "atTurn": 69,
+          "actual": 102030
+        },
+        {
+          "atTurn": 70,
+          "actual": 102030
+        },
+        {
+          "atTurn": 71,
+          "actual": 102030
+        },
+        {
+          "atTurn": 72,
+          "actual": 102030
+        },
+        {
+          "atTurn": 74,
+          "actual": 106557
+        },
+        {
+          "atTurn": 75,
+          "actual": 106557
+        },
+        {
+          "atTurn": 76,
+          "actual": 110832
+        },
+        {
+          "atTurn": 77,
+          "actual": 110832
+        },
+        {
+          "atTurn": 78,
+          "actual": 110832
+        },
+        {
+          "atTurn": 79,
+          "actual": 110832
+        },
+        {
+          "atTurn": 81,
+          "actual": 112479
+        },
+        {
+          "atTurn": 82,
+          "actual": 112479
+        },
+        {
+          "atTurn": 83,
+          "actual": 112479
+        },
+        {
+          "atTurn": 84,
+          "actual": 112479
+        },
+        {
+          "atTurn": 85,
+          "actual": 112479
+        },
+        {
+          "atTurn": 87,
+          "actual": 32400
+        },
+        {
+          "atTurn": 88,
+          "actual": 32400
+        },
+        {
+          "atTurn": 89,
+          "actual": 32400
+        },
+        {
+          "atTurn": 90,
+          "actual": 32400
+        },
+        {
+          "atTurn": 92,
+          "actual": 36104
+        },
+        {
+          "atTurn": 93,
+          "actual": 36104
+        },
+        {
+          "atTurn": 94,
+          "actual": 36104
+        },
+        {
+          "atTurn": 96,
+          "actual": 36800
+        },
+        {
+          "atTurn": 97,
+          "actual": 36800
+        },
+        {
+          "atTurn": 98,
+          "actual": 36800
+        },
+        {
+          "atTurn": 100,
+          "actual": 37468
+        },
+        {
+          "atTurn": 101,
+          "actual": 37468
+        },
+        {
+          "atTurn": 102,
+          "actual": 37468
+        },
+        {
+          "atTurn": 103,
+          "actual": 41978
+        },
+        {
+          "atTurn": 104,
+          "actual": 41978
+        },
+        {
+          "atTurn": 105,
+          "actual": 41978
+        },
+        {
+          "atTurn": 106,
+          "actual": 41978
+        },
+        {
+          "atTurn": 107,
+          "actual": 42593
+        },
+        {
+          "atTurn": 108,
+          "actual": 42593
+        },
+        {
+          "atTurn": 109,
+          "actual": 42593
+        },
+        {
+          "atTurn": 110,
+          "actual": 42593
+        },
+        {
+          "atTurn": 112,
+          "actual": 44211
+        },
+        {
+          "atTurn": 113,
+          "actual": 44211
+        },
+        {
+          "atTurn": 114,
+          "actual": 44211
+        },
+        {
+          "atTurn": 115,
+          "actual": 44211
+        },
+        {
+          "atTurn": 116,
+          "actual": 44671
+        },
+        {
+          "atTurn": 117,
+          "actual": 44671
+        },
+        {
+          "atTurn": 118,
+          "actual": 44671
+        },
+        {
+          "atTurn": 119,
+          "actual": 47683
+        },
+        {
+          "atTurn": 120,
+          "actual": 47683
+        },
+        {
+          "atTurn": 121,
+          "actual": 47683
+        },
+        {
+          "atTurn": 122,
+          "actual": 47810
+        },
+        {
+          "atTurn": 123,
+          "actual": 47810
+        },
+        {
+          "atTurn": 124,
+          "actual": 47810
+        },
+        {
+          "atTurn": 125,
+          "actual": 48250
+        },
+        {
+          "atTurn": 126,
+          "actual": 48250
+        },
+        {
+          "atTurn": 127,
+          "actual": 48250
+        },
+        {
+          "atTurn": 128,
+          "actual": 49596
+        },
+        {
+          "atTurn": 129,
+          "actual": 49596
+        },
+        {
+          "atTurn": 130,
+          "actual": 49596
+        },
+        {
+          "atTurn": 131,
+          "actual": 50485
+        },
+        {
+          "atTurn": 132,
+          "actual": 50485
+        },
+        {
+          "atTurn": 133,
+          "actual": 50710
+        },
+        {
+          "atTurn": 134,
+          "actual": 50710
+        },
+        {
+          "atTurn": 135,
+          "actual": 52083
+        },
+        {
+          "atTurn": 136,
+          "actual": 52083
+        },
+        {
+          "atTurn": 137,
+          "actual": 52327
+        },
+        {
+          "atTurn": 138,
+          "actual": 52327
+        },
+        {
+          "atTurn": 139,
+          "actual": 52898
+        },
+        {
+          "atTurn": 140,
+          "actual": 52898
+        },
+        {
+          "atTurn": 141,
+          "actual": 54773
+        },
+        {
+          "atTurn": 142,
+          "actual": 54773
+        },
+        {
+          "atTurn": 143,
+          "actual": 54773
+        },
+        {
+          "atTurn": 144,
+          "actual": 54773
+        },
+        {
+          "atTurn": 145,
+          "actual": 54773
+        },
+        {
+          "atTurn": 146,
+          "actual": 54773
+        },
+        {
+          "atTurn": 147,
+          "actual": 54773
+        },
+        {
+          "atTurn": 148,
+          "actual": 54773
+        },
+        {
+          "atTurn": 150,
+          "actual": 55920
+        },
+        {
+          "atTurn": 151,
+          "actual": 55920
+        },
+        {
+          "atTurn": 152,
+          "actual": 55920
+        },
+        {
+          "atTurn": 153,
+          "actual": 56974
+        },
+        {
+          "atTurn": 154,
+          "actual": 56974
+        },
+        {
+          "atTurn": 155,
+          "actual": 59251
+        },
+        {
+          "atTurn": 156,
+          "actual": 59251
+        },
+        {
+          "atTurn": 157,
+          "actual": 59251
+        },
+        {
+          "atTurn": 158,
+          "actual": 59913
+        },
+        {
+          "atTurn": 159,
+          "actual": 59913
+        },
+        {
+          "atTurn": 160,
+          "actual": 61249
+        },
+        {
+          "atTurn": 161,
+          "actual": 61249
+        },
+        {
+          "atTurn": 162,
+          "actual": 62749
+        },
+        {
+          "atTurn": 163,
+          "actual": 62749
+        },
+        {
+          "atTurn": 164,
+          "actual": 63682
+        },
+        {
+          "atTurn": 165,
+          "actual": 63682
+        },
+        {
+          "atTurn": 166,
+          "actual": 63966
+        },
+        {
+          "atTurn": 167,
+          "actual": 63966
+        },
+        {
+          "atTurn": 168,
+          "actual": 65253
+        },
+        {
+          "atTurn": 169,
+          "actual": 65253
+        },
+        {
+          "atTurn": 170,
+          "actual": 65253
+        },
+        {
+          "atTurn": 171,
+          "actual": 65253
+        },
+        {
+          "atTurn": 172,
+          "actual": 65253
+        },
+        {
+          "atTurn": 174,
+          "actual": 68518
+        },
+        {
+          "atTurn": 175,
+          "actual": 68518
+        },
+        {
+          "atTurn": 176,
+          "actual": 69535
+        },
+        {
+          "atTurn": 177,
+          "actual": 69535
+        },
+        {
+          "atTurn": 178,
+          "actual": 69939
+        },
+        {
+          "atTurn": 179,
+          "actual": 69939
+        },
+        {
+          "atTurn": 180,
+          "actual": 71364
+        },
+        {
+          "atTurn": 181,
+          "actual": 71364
+        },
+        {
+          "atTurn": 182,
+          "actual": 71772
+        },
+        {
+          "atTurn": 183,
+          "actual": 71772
+        },
+        {
+          "atTurn": 184,
+          "actual": 73432
+        },
+        {
+          "atTurn": 185,
+          "actual": 73432
+        },
+        {
+          "atTurn": 186,
+          "actual": 75420
+        },
+        {
+          "atTurn": 187,
+          "actual": 75420
+        },
+        {
+          "atTurn": 188,
+          "actual": 75837
+        },
+        {
+          "atTurn": 189,
+          "actual": 75837
+        },
+        {
+          "atTurn": 190,
+          "actual": 75837
+        },
+        {
+          "atTurn": 191,
+          "actual": 79097
+        },
+        {
+          "atTurn": 192,
+          "actual": 79097
+        },
+        {
+          "atTurn": 193,
+          "actual": 79341
+        },
+        {
+          "atTurn": 194,
+          "actual": 79341
+        },
+        {
+          "atTurn": 195,
+          "actual": 79497
+        },
+        {
+          "atTurn": 196,
+          "actual": 79497
+        },
+        {
+          "atTurn": 197,
+          "actual": 79896
+        },
+        {
+          "atTurn": 198,
+          "actual": 79896
+        },
+        {
+          "atTurn": 199,
+          "actual": 79896
+        },
+        {
+          "atTurn": 200,
+          "actual": 79896
+        },
+        {
+          "atTurn": 201,
+          "actual": 79896
+        },
+        {
+          "atTurn": 203,
+          "actual": 80685
+        },
+        {
+          "atTurn": 204,
+          "actual": 80685
+        },
+        {
+          "atTurn": 205,
+          "actual": 81110
+        },
+        {
+          "atTurn": 206,
+          "actual": 81110
+        },
+        {
+          "atTurn": 207,
+          "actual": 81965
+        },
+        {
+          "atTurn": 208,
+          "actual": 81965
+        },
+        {
+          "atTurn": 209,
+          "actual": 82872
+        },
+        {
+          "atTurn": 210,
+          "actual": 82872
+        },
+        {
+          "atTurn": 211,
+          "actual": 83944
+        },
+        {
+          "atTurn": 212,
+          "actual": 83944
+        },
+        {
+          "atTurn": 213,
+          "actual": 83944
+        },
+        {
+          "atTurn": 214,
+          "actual": 84906
+        },
+        {
+          "atTurn": 215,
+          "actual": 84906
+        },
+        {
+          "atTurn": 216,
+          "actual": 86057
+        },
+        {
+          "atTurn": 217,
+          "actual": 86057
+        },
+        {
+          "atTurn": 218,
+          "actual": 86057
+        },
+        {
+          "atTurn": 219,
+          "actual": 86057
+        },
+        {
+          "atTurn": 220,
+          "actual": 86057
+        },
+        {
+          "atTurn": 222,
+          "actual": 87205
+        },
+        {
+          "atTurn": 223,
+          "actual": 87205
+        },
+        {
+          "atTurn": 224,
+          "actual": 87488
+        },
+        {
+          "atTurn": 225,
+          "actual": 87488
+        },
+        {
+          "atTurn": 226,
+          "actual": 87915
+        },
+        {
+          "atTurn": 227,
+          "actual": 87915
+        },
+        {
+          "atTurn": 228,
+          "actual": 87915
+        },
+        {
+          "atTurn": 229,
+          "actual": 88997
+        },
+        {
+          "atTurn": 230,
+          "actual": 88997
+        },
+        {
+          "atTurn": 231,
+          "actual": 88997
+        },
+        {
+          "atTurn": 232,
+          "actual": 89589
+        },
+        {
+          "atTurn": 233,
+          "actual": 89589
+        },
+        {
+          "atTurn": 234,
+          "actual": 89801
+        },
+        {
+          "atTurn": 235,
+          "actual": 89801
+        }
+      ],
+      "estContentTokensTotal": 262320,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\governor\\govern.ts",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\src\\classify\\classify.ts",
+          "reads": 3
+        },
+        {
+          "path": "C:\\Users\\ddias\\.claude\\projects\\c--ddias-dev-ecc-curator\\925b33ec-cf4b-41ba-afec-c273c6be70f0.jsonl",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\.claude\\ecc-curator.json",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\capture-real-sessions.mjs",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\harness.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\real-agent.ts",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\runner-real.mjs",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 58,
+        "certain:SINGLE_SOURCE_SIGNAL": 226
+      }
+    },
+    {
+      "sessionId": "96064b5f-cdee-49c3-9468-15e417c6c406",
+      "rawFile": "96064b5f-cdee-49c3-9468-15e417c6c406.jsonl",
+      "rawBytes": 947768,
+      "rawLines": 217,
+      "assistantTurns": 32,
+      "extractedItems": 48,
+      "keptItems": 48,
+      "truncatedItems": 23,
+      "tokenUsage": {
+        "input": 27,
+        "cacheRead": 707859,
+        "cacheCreation": 158774,
+        "output": 4884,
+        "turns": 27
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22147
+        },
+        {
+          "atTurn": 2,
+          "actual": 22147
+        },
+        {
+          "atTurn": 3,
+          "actual": 22147
+        },
+        {
+          "atTurn": 4,
+          "actual": 22147
+        },
+        {
+          "atTurn": 5,
+          "actual": 22745
+        },
+        {
+          "atTurn": 6,
+          "actual": 22745
+        },
+        {
+          "atTurn": 7,
+          "actual": 22745
+        },
+        {
+          "atTurn": 9,
+          "actual": 30036
+        },
+        {
+          "atTurn": 10,
+          "actual": 30036
+        },
+        {
+          "atTurn": 11,
+          "actual": 30036
+        },
+        {
+          "atTurn": 12,
+          "actual": 30036
+        },
+        {
+          "atTurn": 14,
+          "actual": 30365
+        },
+        {
+          "atTurn": 15,
+          "actual": 30365
+        },
+        {
+          "atTurn": 16,
+          "actual": 30365
+        },
+        {
+          "atTurn": 17,
+          "actual": 30365
+        },
+        {
+          "atTurn": 18,
+          "actual": 30365
+        },
+        {
+          "atTurn": 20,
+          "actual": 35584
+        },
+        {
+          "atTurn": 21,
+          "actual": 35584
+        },
+        {
+          "atTurn": 22,
+          "actual": 35584
+        },
+        {
+          "atTurn": 23,
+          "actual": 35584
+        },
+        {
+          "atTurn": 25,
+          "actual": 40590
+        },
+        {
+          "atTurn": 26,
+          "actual": 40590
+        },
+        {
+          "atTurn": 27,
+          "actual": 40590
+        },
+        {
+          "atTurn": 28,
+          "actual": 40590
+        },
+        {
+          "atTurn": 30,
+          "actual": 40947
+        },
+        {
+          "atTurn": 31,
+          "actual": 44064
+        },
+        {
+          "atTurn": 32,
+          "actual": 48161
+        }
+      ],
+      "estContentTokensTotal": 91850,
+      "topFileRefs": [
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\docs\\EVALUATION.md",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\docs\\EXPERIMENTAL_INTEGRATION.md",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\docs\\ROADMAP.md",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\package.json",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\src\\eval\\metrics.ts",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\src\\eval\\scenarios.ts",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\src\\pipeline\\run.ts",
+          "reads": 2
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\src\\types\\context.ts",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 11,
+        "certain:SINGLE_SOURCE_SIGNAL": 37
+      }
+    },
+    {
+      "sessionId": "9c3a2fb1-ec4b-4080-9462-0a7b41928772",
+      "rawFile": "9c3a2fb1-ec4b-4080-9462-0a7b41928772.jsonl",
+      "rawBytes": 566428,
+      "rawLines": 116,
+      "assistantTurns": 15,
+      "extractedItems": 18,
+      "keptItems": 18,
+      "truncatedItems": 3,
+      "tokenUsage": {
+        "input": 15,
+        "cacheRead": 324024,
+        "cacheCreation": 41539,
+        "output": 3013,
+        "turns": 15
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22517
+        },
+        {
+          "atTurn": 2,
+          "actual": 22517
+        },
+        {
+          "atTurn": 3,
+          "actual": 22517
+        },
+        {
+          "atTurn": 4,
+          "actual": 23768
+        },
+        {
+          "atTurn": 5,
+          "actual": 23768
+        },
+        {
+          "atTurn": 6,
+          "actual": 24001
+        },
+        {
+          "atTurn": 7,
+          "actual": 24001
+        },
+        {
+          "atTurn": 8,
+          "actual": 24001
+        },
+        {
+          "atTurn": 9,
+          "actual": 24440
+        },
+        {
+          "atTurn": 10,
+          "actual": 24440
+        },
+        {
+          "atTurn": 11,
+          "actual": 24440
+        },
+        {
+          "atTurn": 12,
+          "actual": 24670
+        },
+        {
+          "atTurn": 13,
+          "actual": 24670
+        },
+        {
+          "atTurn": 14,
+          "actual": 27914
+        },
+        {
+          "atTurn": 15,
+          "actual": 27914
+        }
+      ],
+      "estContentTokensTotal": 26973,
+      "topFileRefs": [
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\README.md",
+          "reads": 1
+        },
+        {
+          "path": "c:\\ddias-dev\\ecc-curator\\package.json",
+          "reads": 1
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 8,
+        "certain:SINGLE_SOURCE_SIGNAL": 10
+      }
+    },
+    {
+      "sessionId": "a8da5132-b0d6-4460-85d0-81d819a2edeb",
+      "rawFile": "a8da5132-b0d6-4460-85d0-81d819a2edeb.jsonl",
+      "rawBytes": 2495328,
+      "rawLines": 296,
+      "assistantTurns": 35,
+      "extractedItems": 65,
+      "keptItems": 65,
+      "truncatedItems": 32,
+      "tokenUsage": {
+        "input": 31,
+        "cacheRead": 645376,
+        "cacheCreation": 586727,
+        "output": 33764,
+        "turns": 32
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 26742
+        },
+        {
+          "atTurn": 2,
+          "actual": 26742
+        },
+        {
+          "atTurn": 3,
+          "actual": 26742
+        },
+        {
+          "atTurn": 4,
+          "actual": 26742
+        },
+        {
+          "atTurn": 5,
+          "actual": 27512
+        },
+        {
+          "atTurn": 6,
+          "actual": 27535
+        },
+        {
+          "atTurn": 7,
+          "actual": 27537
+        },
+        {
+          "atTurn": 8,
+          "actual": 27537
+        },
+        {
+          "atTurn": 9,
+          "actual": 27537
+        },
+        {
+          "atTurn": 10,
+          "actual": 27537
+        },
+        {
+          "atTurn": 11,
+          "actual": 27537
+        },
+        {
+          "atTurn": 13,
+          "actual": 36920
+        },
+        {
+          "atTurn": 14,
+          "actual": 36920
+        },
+        {
+          "atTurn": 15,
+          "actual": 36920
+        },
+        {
+          "atTurn": 16,
+          "actual": 44552
+        },
+        {
+          "atTurn": 17,
+          "actual": 44552
+        },
+        {
+          "atTurn": 18,
+          "actual": 44552
+        },
+        {
+          "atTurn": 20,
+          "actual": 52550
+        },
+        {
+          "atTurn": 21,
+          "actual": 52550
+        },
+        {
+          "atTurn": 22,
+          "actual": 52550
+        },
+        {
+          "atTurn": 23,
+          "actual": 52550
+        },
+        {
+          "atTurn": 24,
+          "actual": 52550
+        },
+        {
+          "atTurn": 26,
+          "actual": 53464
+        },
+        {
+          "atTurn": 27,
+          "actual": 53464
+        },
+        {
+          "atTurn": 28,
+          "actual": 53464
+        },
+        {
+          "atTurn": 29,
+          "actual": 43227
+        },
+        {
+          "atTurn": 30,
+          "actual": 43227
+        },
+        {
+          "atTurn": 31,
+          "actual": 43227
+        },
+        {
+          "atTurn": 32,
+          "actual": 45065
+        },
+        {
+          "atTurn": 33,
+          "actual": 45065
+        },
+        {
+          "atTurn": 34,
+          "actual": 45065
+        },
+        {
+          "atTurn": 35,
+          "actual": 0
+        }
+      ],
+      "estContentTokensTotal": 298193,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\README.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\ARCHITECTURE.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\CONTEXT_MODEL.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\GOVERNOR_ALGORITHM.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\INVENTORY_API.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\PROMPT_ASSEMBLER.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\ROADMAP.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\SCORING_SPEC.md",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 36,
+        "certain:SINGLE_SOURCE_SIGNAL": 29
+      }
+    },
+    {
+      "sessionId": "ca98efb7-016b-4f0d-82d3-8f5e63846de8",
+      "rawFile": "ca98efb7-016b-4f0d-82d3-8f5e63846de8.jsonl",
+      "rawBytes": 5024360,
+      "rawLines": 1355,
+      "assistantTurns": 225,
+      "extractedItems": 274,
+      "keptItems": 274,
+      "truncatedItems": 66,
+      "tokenUsage": {
+        "input": 208,
+        "cacheRead": 11318901,
+        "cacheCreation": 4477002,
+        "output": 175126,
+        "turns": 208
+      },
+      "usagePerTurn": [
+        {
+          "atTurn": 1,
+          "actual": 22523
+        },
+        {
+          "atTurn": 2,
+          "actual": 22523
+        },
+        {
+          "atTurn": 3,
+          "actual": 22523
+        },
+        {
+          "atTurn": 4,
+          "actual": 23390
+        },
+        {
+          "atTurn": 5,
+          "actual": 23390
+        },
+        {
+          "atTurn": 6,
+          "actual": 23390
+        },
+        {
+          "atTurn": 7,
+          "actual": 23390
+        },
+        {
+          "atTurn": 8,
+          "actual": 23390
+        },
+        {
+          "atTurn": 10,
+          "actual": 37165
+        },
+        {
+          "atTurn": 11,
+          "actual": 37165
+        },
+        {
+          "atTurn": 12,
+          "actual": 37165
+        },
+        {
+          "atTurn": 13,
+          "actual": 41498
+        },
+        {
+          "atTurn": 14,
+          "actual": 41498
+        },
+        {
+          "atTurn": 15,
+          "actual": 50996
+        },
+        {
+          "atTurn": 16,
+          "actual": 50996
+        },
+        {
+          "atTurn": 17,
+          "actual": 50996
+        },
+        {
+          "atTurn": 18,
+          "actual": 51343
+        },
+        {
+          "atTurn": 19,
+          "actual": 51343
+        },
+        {
+          "atTurn": 20,
+          "actual": 51343
+        },
+        {
+          "atTurn": 22,
+          "actual": 51732
+        },
+        {
+          "atTurn": 23,
+          "actual": 51732
+        },
+        {
+          "atTurn": 24,
+          "actual": 57357
+        },
+        {
+          "atTurn": 25,
+          "actual": 57357
+        },
+        {
+          "atTurn": 26,
+          "actual": 61581
+        },
+        {
+          "atTurn": 27,
+          "actual": 61581
+        },
+        {
+          "atTurn": 28,
+          "actual": 61581
+        },
+        {
+          "atTurn": 30,
+          "actual": 65876
+        },
+        {
+          "atTurn": 31,
+          "actual": 65876
+        },
+        {
+          "atTurn": 32,
+          "actual": 69377
+        },
+        {
+          "atTurn": 33,
+          "actual": 69377
+        },
+        {
+          "atTurn": 34,
+          "actual": 69377
+        },
+        {
+          "atTurn": 35,
+          "actual": 69377
+        },
+        {
+          "atTurn": 37,
+          "actual": 70657
+        },
+        {
+          "atTurn": 38,
+          "actual": 70657
+        },
+        {
+          "atTurn": 39,
+          "actual": 70657
+        },
+        {
+          "atTurn": 40,
+          "actual": 71694
+        },
+        {
+          "atTurn": 41,
+          "actual": 71694
+        },
+        {
+          "atTurn": 42,
+          "actual": 72541
+        },
+        {
+          "atTurn": 43,
+          "actual": 72541
+        },
+        {
+          "atTurn": 44,
+          "actual": 72541
+        },
+        {
+          "atTurn": 45,
+          "actual": 74009
+        },
+        {
+          "atTurn": 46,
+          "actual": 74009
+        },
+        {
+          "atTurn": 47,
+          "actual": 74009
+        },
+        {
+          "atTurn": 48,
+          "actual": 75863
+        },
+        {
+          "atTurn": 49,
+          "actual": 75863
+        },
+        {
+          "atTurn": 50,
+          "actual": 75863
+        },
+        {
+          "atTurn": 51,
+          "actual": 76123
+        },
+        {
+          "atTurn": 52,
+          "actual": 76123
+        },
+        {
+          "atTurn": 53,
+          "actual": 80028
+        },
+        {
+          "atTurn": 54,
+          "actual": 80028
+        },
+        {
+          "atTurn": 55,
+          "actual": 80028
+        },
+        {
+          "atTurn": 56,
+          "actual": 81441
+        },
+        {
+          "atTurn": 57,
+          "actual": 81441
+        },
+        {
+          "atTurn": 58,
+          "actual": 81441
+        },
+        {
+          "atTurn": 59,
+          "actual": 83721
+        },
+        {
+          "atTurn": 60,
+          "actual": 83721
+        },
+        {
+          "atTurn": 61,
+          "actual": 84602
+        },
+        {
+          "atTurn": 62,
+          "actual": 84602
+        },
+        {
+          "atTurn": 63,
+          "actual": 84602
+        },
+        {
+          "atTurn": 64,
+          "actual": 85638
+        },
+        {
+          "atTurn": 65,
+          "actual": 85638
+        },
+        {
+          "atTurn": 66,
+          "actual": 86858
+        },
+        {
+          "atTurn": 67,
+          "actual": 86858
+        },
+        {
+          "atTurn": 68,
+          "actual": 87129
+        },
+        {
+          "atTurn": 69,
+          "actual": 87129
+        },
+        {
+          "atTurn": 70,
+          "actual": 88319
+        },
+        {
+          "atTurn": 71,
+          "actual": 88319
+        },
+        {
+          "atTurn": 72,
+          "actual": 88319
+        },
+        {
+          "atTurn": 74,
+          "actual": 91382
+        },
+        {
+          "atTurn": 75,
+          "actual": 91382
+        },
+        {
+          "atTurn": 76,
+          "actual": 91659
+        },
+        {
+          "atTurn": 77,
+          "actual": 91659
+        },
+        {
+          "atTurn": 78,
+          "actual": 92268
+        },
+        {
+          "atTurn": 79,
+          "actual": 92268
+        },
+        {
+          "atTurn": 80,
+          "actual": 92268
+        },
+        {
+          "atTurn": 81,
+          "actual": 92268
+        },
+        {
+          "atTurn": 83,
+          "actual": 92946
+        },
+        {
+          "atTurn": 84,
+          "actual": 92946
+        },
+        {
+          "atTurn": 85,
+          "actual": 93128
+        },
+        {
+          "atTurn": 86,
+          "actual": 93128
+        },
+        {
+          "atTurn": 87,
+          "actual": 93128
+        },
+        {
+          "atTurn": 88,
+          "actual": 94102
+        },
+        {
+          "atTurn": 89,
+          "actual": 94102
+        },
+        {
+          "atTurn": 90,
+          "actual": 94522
+        },
+        {
+          "atTurn": 91,
+          "actual": 94522
+        },
+        {
+          "atTurn": 92,
+          "actual": 94522
+        },
+        {
+          "atTurn": 93,
+          "actual": 94925
+        },
+        {
+          "atTurn": 94,
+          "actual": 94925
+        },
+        {
+          "atTurn": 95,
+          "actual": 95509
+        },
+        {
+          "atTurn": 96,
+          "actual": 95509
+        },
+        {
+          "atTurn": 97,
+          "actual": 96009
+        },
+        {
+          "atTurn": 98,
+          "actual": 96009
+        },
+        {
+          "atTurn": 99,
+          "actual": 96967
+        },
+        {
+          "atTurn": 100,
+          "actual": 96967
+        },
+        {
+          "atTurn": 101,
+          "actual": 96967
+        },
+        {
+          "atTurn": 102,
+          "actual": 97370
+        },
+        {
+          "atTurn": 103,
+          "actual": 97370
+        },
+        {
+          "atTurn": 104,
+          "actual": 98099
+        },
+        {
+          "atTurn": 105,
+          "actual": 98099
+        },
+        {
+          "atTurn": 106,
+          "actual": 98404
+        },
+        {
+          "atTurn": 107,
+          "actual": 98404
+        },
+        {
+          "atTurn": 108,
+          "actual": 98682
+        },
+        {
+          "atTurn": 109,
+          "actual": 98682
+        },
+        {
+          "atTurn": 110,
+          "actual": 98682
+        },
+        {
+          "atTurn": 111,
+          "actual": 99333
+        },
+        {
+          "atTurn": 112,
+          "actual": 99333
+        },
+        {
+          "atTurn": 113,
+          "actual": 99333
+        },
+        {
+          "atTurn": 114,
+          "actual": 101830
+        },
+        {
+          "atTurn": 115,
+          "actual": 101830
+        },
+        {
+          "atTurn": 116,
+          "actual": 102515
+        },
+        {
+          "atTurn": 117,
+          "actual": 102515
+        },
+        {
+          "atTurn": 118,
+          "actual": 102515
+        },
+        {
+          "atTurn": 119,
+          "actual": 102515
+        },
+        {
+          "atTurn": 121,
+          "actual": 107338
+        },
+        {
+          "atTurn": 122,
+          "actual": 107338
+        },
+        {
+          "atTurn": 123,
+          "actual": 107338
+        },
+        {
+          "atTurn": 124,
+          "actual": 107338
+        },
+        {
+          "atTurn": 125,
+          "actual": 108963
+        },
+        {
+          "atTurn": 126,
+          "actual": 108963
+        },
+        {
+          "atTurn": 127,
+          "actual": 108963
+        },
+        {
+          "atTurn": 128,
+          "actual": 109955
+        },
+        {
+          "atTurn": 129,
+          "actual": 109955
+        },
+        {
+          "atTurn": 130,
+          "actual": 110864
+        },
+        {
+          "atTurn": 131,
+          "actual": 110864
+        },
+        {
+          "atTurn": 132,
+          "actual": 111325
+        },
+        {
+          "atTurn": 133,
+          "actual": 111325
+        },
+        {
+          "atTurn": 134,
+          "actual": 111750
+        },
+        {
+          "atTurn": 135,
+          "actual": 111750
+        },
+        {
+          "atTurn": 136,
+          "actual": 112155
+        },
+        {
+          "atTurn": 137,
+          "actual": 112155
+        },
+        {
+          "atTurn": 138,
+          "actual": 112415
+        },
+        {
+          "atTurn": 139,
+          "actual": 112415
+        },
+        {
+          "atTurn": 140,
+          "actual": 113168
+        },
+        {
+          "atTurn": 141,
+          "actual": 113168
+        },
+        {
+          "atTurn": 142,
+          "actual": 113168
+        },
+        {
+          "atTurn": 144,
+          "actual": 42627
+        },
+        {
+          "atTurn": 145,
+          "actual": 42627
+        },
+        {
+          "atTurn": 146,
+          "actual": 42627
+        },
+        {
+          "atTurn": 147,
+          "actual": 42627
+        },
+        {
+          "atTurn": 149,
+          "actual": 46797
+        },
+        {
+          "atTurn": 150,
+          "actual": 46797
+        },
+        {
+          "atTurn": 151,
+          "actual": 46797
+        },
+        {
+          "atTurn": 153,
+          "actual": 48130
+        },
+        {
+          "atTurn": 154,
+          "actual": 48130
+        },
+        {
+          "atTurn": 155,
+          "actual": 48130
+        },
+        {
+          "atTurn": 157,
+          "actual": 49468
+        },
+        {
+          "atTurn": 158,
+          "actual": 49468
+        },
+        {
+          "atTurn": 159,
+          "actual": 49468
+        },
+        {
+          "atTurn": 160,
+          "actual": 51852
+        },
+        {
+          "atTurn": 161,
+          "actual": 51852
+        },
+        {
+          "atTurn": 162,
+          "actual": 52622
+        },
+        {
+          "atTurn": 163,
+          "actual": 52622
+        },
+        {
+          "atTurn": 164,
+          "actual": 52622
+        },
+        {
+          "atTurn": 165,
+          "actual": 52622
+        },
+        {
+          "atTurn": 167,
+          "actual": 56981
+        },
+        {
+          "atTurn": 168,
+          "actual": 56981
+        },
+        {
+          "atTurn": 169,
+          "actual": 56981
+        },
+        {
+          "atTurn": 171,
+          "actual": 58288
+        },
+        {
+          "atTurn": 172,
+          "actual": 58288
+        },
+        {
+          "atTurn": 173,
+          "actual": 60974
+        },
+        {
+          "atTurn": 174,
+          "actual": 60974
+        },
+        {
+          "atTurn": 175,
+          "actual": 61939
+        },
+        {
+          "atTurn": 176,
+          "actual": 61939
+        },
+        {
+          "atTurn": 177,
+          "actual": 62504
+        },
+        {
+          "atTurn": 178,
+          "actual": 62504
+        },
+        {
+          "atTurn": 179,
+          "actual": 62504
+        },
+        {
+          "atTurn": 180,
+          "actual": 65301
+        },
+        {
+          "atTurn": 181,
+          "actual": 65301
+        },
+        {
+          "atTurn": 182,
+          "actual": 66047
+        },
+        {
+          "atTurn": 183,
+          "actual": 66047
+        },
+        {
+          "atTurn": 184,
+          "actual": 67438
+        },
+        {
+          "atTurn": 185,
+          "actual": 67438
+        },
+        {
+          "atTurn": 186,
+          "actual": 67438
+        },
+        {
+          "atTurn": 187,
+          "actual": 67438
+        },
+        {
+          "atTurn": 189,
+          "actual": 67721
+        },
+        {
+          "atTurn": 190,
+          "actual": 67721
+        },
+        {
+          "atTurn": 191,
+          "actual": 68272
+        },
+        {
+          "atTurn": 192,
+          "actual": 68272
+        },
+        {
+          "atTurn": 193,
+          "actual": 68272
+        },
+        {
+          "atTurn": 195,
+          "actual": 68843
+        },
+        {
+          "atTurn": 196,
+          "actual": 68843
+        },
+        {
+          "atTurn": 197,
+          "actual": 68843
+        },
+        {
+          "atTurn": 199,
+          "actual": 69979
+        },
+        {
+          "atTurn": 200,
+          "actual": 69979
+        },
+        {
+          "atTurn": 201,
+          "actual": 69979
+        },
+        {
+          "atTurn": 202,
+          "actual": 70363
+        },
+        {
+          "atTurn": 203,
+          "actual": 70363
+        },
+        {
+          "atTurn": 204,
+          "actual": 70363
+        },
+        {
+          "atTurn": 205,
+          "actual": 70363
+        },
+        {
+          "atTurn": 207,
+          "actual": 70872
+        },
+        {
+          "atTurn": 208,
+          "actual": 70872
+        },
+        {
+          "atTurn": 209,
+          "actual": 71105
+        },
+        {
+          "atTurn": 210,
+          "actual": 71105
+        },
+        {
+          "atTurn": 211,
+          "actual": 76472
+        },
+        {
+          "atTurn": 212,
+          "actual": 76472
+        },
+        {
+          "atTurn": 213,
+          "actual": 77389
+        },
+        {
+          "atTurn": 214,
+          "actual": 77389
+        },
+        {
+          "atTurn": 215,
+          "actual": 77986
+        },
+        {
+          "atTurn": 216,
+          "actual": 77986
+        },
+        {
+          "atTurn": 217,
+          "actual": 77986
+        },
+        {
+          "atTurn": 218,
+          "actual": 78600
+        },
+        {
+          "atTurn": 219,
+          "actual": 78600
+        },
+        {
+          "atTurn": 220,
+          "actual": 78764
+        },
+        {
+          "atTurn": 221,
+          "actual": 78764
+        },
+        {
+          "atTurn": 222,
+          "actual": 79616
+        },
+        {
+          "atTurn": 223,
+          "actual": 79616
+        },
+        {
+          "atTurn": 224,
+          "actual": 80033
+        },
+        {
+          "atTurn": 225,
+          "actual": 80033
+        }
+      ],
+      "estContentTokensTotal": 258601,
+      "topFileRefs": [
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\evaluation\\harness.ts",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\tests\\real-agent.test.ts",
+          "reads": 4
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\tests\\dataset.test.ts",
+          "reads": 3
+        },
+        {
+          "path": "prompt",
+          "reads": 3
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\BENCHMARK_DATASETS.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\EVALUATION.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\EXPERIMENTAL_INTEGRATION.md",
+          "reads": 2
+        },
+        {
+          "path": "C:\\ddias-dev\\ecc-curator\\docs\\ROADMAP.md",
+          "reads": 2
+        }
+      ],
+      "classifierConfidence": {
+        "unrecognized:NO_MATCHING_SIGNALS": 63,
+        "certain:SINGLE_SOURCE_SIGNAL": 211
+      }
+    }
+  ],
+  "totals": {
+    "sessions": 15,
+    "items": 2430,
+    "truncated": 1015
+  },
+  "classifierVocabulary": "src/classify/classify.ts signal vocabulary (unchanged)"
+}

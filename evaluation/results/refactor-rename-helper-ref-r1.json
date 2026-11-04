@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1",
+  "workloadId": "refactor-rename-helper",
+  "contextWindowTokens": 32768,
+  "executionOrder": [
+    "governed",
+    "baseline"
+  ],
+  "runs": [
+    {
+      "mode": "baseline",
+      "promptTokens": 535,
+      "contextTokens": 263,
+      "itemsKept": 8,
+      "itemsDropped": 0,
+      "taskCompleted": true,
+      "testsPassed": 1,
+      "testsTotal": 1,
+      "testPassRate": 1,
+      "retries": 0,
+      "errors": 0,
+      "errorStage": null,
+      "sessionDurationMs": 90.33040000000028,
+      "promptUtilisation": 0.016326904296875,
+      "contextUtilisation": 0.008026123046875
+    },
+    {
+      "mode": "governed",
+      "promptTokens": 858,
+      "contextTokens": 180,
+      "itemsKept": 6,
+      "itemsDropped": 2,
+      "taskCompleted": true,
+      "testsPassed": 1,
+      "testsTotal": 1,
+      "testPassRate": 1,
+      "retries": 0,
+      "errors": 0,
+      "errorStage": null,
+      "sessionDurationMs": 84.94709999999986,
+      "promptUtilisation": 0.02618408203125,
+      "contextUtilisation": 0.0054931640625
+    }
+  ]
+}
