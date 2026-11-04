@@ -11,7 +11,7 @@ This is a product problem to evaluate, not a measured result established by this
 ECC Curator is for people running long-running, autonomous coding sessions, especially:
 
 - Developers using local coding models on commodity hardware
-- Users of coding-agent runtimes such as Claude Code, ECC Harness, and Strata
+- Users of coding-agent runtimes, accessed through optional adapters rather than a required orchestration runtime
 - Teams that need context use to remain explicit, predictable, and governed
 - Contributors building runtime integrations or context-optimization providers
 
@@ -58,6 +58,6 @@ Governance decision
 
 As a coding session progresses, its useful working set changes. The current goal and active task may remain essential, while old plans, repeated tool output, completed test logs, and stale diffs may no longer deserve space. ECC Curator is designed to make these trade-offs explicit rather than forwarding an ever-growing history or treating every problem as a compression task.
 
-The first design target is a local coding workflow with a 32 GB RAM, 16 GB VRAM reference profile, 64K–128K context windows, and coding models such as ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF. Claude Code, ECC Harness, and Strata are initial runtime integration targets. These choices guide implementation and evaluation; they are not current compatibility claims.
+The first design target is a local coding workflow with a 32 GB RAM, 16 GB VRAM reference profile, 64K–128K context windows, and coding models such as ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF. Claude Code Agent is the first-class runtime target and already has a limited integration; the runtime adapter proposal in [ADR-012](DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters) is intended to formalize and isolate that integration, not replace it. Agents Window, Strata, OpenCode, Codex, Cline, and Aider are candidates for future evaluation, not current compatibility claims.
 
 ECC Curator is deterministic-first and governance-led. Rules, budgets, and heuristics form the proposed baseline. Optional decision providers—including LiquidAI/d1-2B as a reference local evaluation candidate and Jev as a reference provider candidate—may propose help for ambiguous choices. The Governor retains policy, validation, and final decision authority. These providers are not integrated or required. Compression and transformation providers carry out selected strategies separately. The long-term product question is whether governed context helps an agent complete longer coding work reliably within a finite budget. Token reduction is a supporting measure, never the sole definition of success.

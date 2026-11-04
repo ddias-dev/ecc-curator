@@ -14,14 +14,14 @@ The first evaluation profile should reflect long-running local coding sessions r
 
 | Dimension | Initial target |
 |----------|----------------|
-| Agent environments | Claude Code, ECC Harness, Strata |
+| Agent environments | Claude Code Agent (first-class target; existing limited integration); Agents Window, Strata, OpenCode, Codex, Cline, Aider (candidates) |
 | Models | ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF; future local coding models |
 | Hardware profile | 32 GB RAM, 16 GB VRAM |
 | Context windows | 64K and 128K tokens |
 | Workload | Long-running autonomous coding sessions |
 | Session inputs | Plans, memories, diffs, test output, logs, tool responses, and conversation history |
 
-These are intended test targets, not a claim that integrations are available or that results have been measured. Record the exact model build, quantization, runtime, task, and hardware for every result so comparisons are reproducible.
+These are intended test targets, not a claim that integrations are available or that results have been measured. The proposed adapter direction and the requirement to evaluate runtimes by their actual capabilities are described in [ADR-012](DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters). Record the exact adapter and version, model build, quantization, runtime, task, and hardware for every result so comparisons are reproducible.
 
 LiquidAI/d1-2B is the reference local decision-provider evaluation candidate; Jev is a reference provider candidate. Neither has an implemented adapter here. Evaluate each against rules-only and heuristics-only baselines, including bounded provider input sizes and peak resource use alongside the target coding model. See [Decision Intelligence](DECISION_INTELLIGENCE.md).
 

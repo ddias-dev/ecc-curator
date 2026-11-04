@@ -21,13 +21,21 @@ The primary workload is a coding agent that continues work across many steps and
 
 This is a reference evaluation profile, not a minimum requirement, supported configuration, or performance guarantee. Actual feasibility will depend on the model build, quantization, runtime, operating system, workload, and available memory.
 
-## Initial integrations and models
+## Runtime integration direction and models
 
-### Agent runtimes
+The proposed architecture uses optional, replaceable adapters; no runtime is a Curator core dependency. Claude Code Agent is the first-class design target and already has a limited integration. Other runtimes should be evaluated on their actual extension points and user demand.
 
-- Claude Code
-- ECC Harness
+### Agent runtime candidates
+
+- Claude Code Agent — first-class target; existing limited integration
+- Agents Window
 - Strata
+- OpenCode
+- Codex
+- Cline
+- Aider
+
+The adapter strategy is proposed in [ADR-012](DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters). The existing Claude Code integration is not yet a general adapter framework, and its limited scope should not be mistaken for full conversation or autonomous-turn governance. ECC Harness is not treated as a required runtime or target architecture. No compatibility is implied for additional candidates until an adapter is implemented and tested against a documented runtime and version.
 
 ### Local coding models
 

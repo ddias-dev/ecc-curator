@@ -89,6 +89,7 @@ Limited budget should flow toward the highest-value context.
 flowchart TB
 
     Agent["Agent Runtime"]
+    Adapter["Optional Runtime Adapter"]
 
     Inventory["Context Inventory"]
 
@@ -111,7 +112,8 @@ flowchart TB
 
     LLM["Language Model"]
 
-    Agent --> Inventory
+    Agent --> Adapter
+    Adapter --> Inventory
 
     Inventory --> Budget
     Inventory --> Rules
@@ -136,8 +138,12 @@ flowchart TB
     CompressionProvider --> Assembler
     TransformationProvider --> Assembler
 
-    Assembler --> LLM
+    Assembler --> Adapter
+    Adapter --> Agent
+    Agent --> LLM
 ```
+
+The runtime adapter is an optional boundary around the governance core. It translates context and lifecycle events available from its host into Curator's runtime-neutral input, then returns governed context using only that host's supported integration points. The host agent—not the adapter or Curator—owns model invocation and execution. Adapters may expose different capabilities; this diagram does not imply equivalent coverage or existing runtime compatibility. The adapter framework is proposed in [ADR-012](DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters), not yet an implemented integration framework.
 
 ---
 

@@ -194,7 +194,7 @@ These are measurements only. A single comparison cannot establish task success r
 ## Known limitations and exclusions
 
 - Experimental only; disabled by default and not production-ready.
-- No general-purpose YAML loader or full Claude Code/ECC Harness replacement.
+- No general-purpose YAML loader, runtime adapter framework, or agent orchestration replacement.
 - The Claude hook runs only at `UserPromptSubmit`; it does not govern autonomous follow-up turns, tool calls, or the complete accumulated conversation context.
 - Terminal/tool output and test results are not collected automatically; add only selected results through `context.items`.
 - No LiquidAI/d1-2B, Jev, decision providers, compression providers, transformation providers, retrieval, durable memory, agent handoff, or model escalation.

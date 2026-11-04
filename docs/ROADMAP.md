@@ -8,13 +8,13 @@ Implementation specs: [Governor Algorithm](GOVERNOR_ALGORITHM.md), [Scoring Spec
 
 ## Current status
 
-The deterministic inventory, rules, scoring, Governor, and prompt-assembly pipeline for Phases 1–2 is implemented. The Phase 3 provider-neutral Decision Provider Interface is also implemented for `ContextRetentionDecision` (contracts in `src/types/decision.ts`, Governor-side enforcement in `src/governor/provider.ts`): gated provider escalation, typed validation and fallback codes, and decision provenance — with no provider adapter implemented yet and baseline operation still never requiring a provider. Its integration with Claude Code is limited and experimental: an opt-in `UserPromptSubmit` hook adds explicitly selected governed context, and a paired evaluation harness is available. This does not govern the full conversation or autonomous tool turns, and no benchmark results or outcome improvements have been established.
+The deterministic inventory, rules, scoring, Governor, and prompt-assembly pipeline for Phases 1–2 is implemented. The Phase 3 provider-neutral Decision Provider Interface is also implemented for `ContextRetentionDecision` (contracts in `src/types/decision.ts`, Governor-side enforcement in `src/governor/provider.ts`): gated provider escalation, typed validation and fallback codes, and decision provenance — with no decision-provider adapter implemented yet and baseline operation still never requiring a provider. Claude Code Agent is the first-class runtime target and already has a limited integration: an opt-in `UserPromptSubmit` hook adds explicitly selected governed context, and a paired evaluation harness is available. This does not govern the full conversation or autonomous tool turns, and no benchmark results or outcome improvements have been established.
 
 **Current focus:** validate the Phase 1–2 pipeline in bounded, repeatable baseline-versus-governed workloads using the Phase 5 evaluation tooling. Benchmark datasets, loader/validation, and a paired dataset runner now exist (`docs/BENCHMARK_DATASETS.md`), and a metadata-only context classifier is in place (`docs/CONTEXT_CLASSIFIER.md`); the current runs execute a scripted reference agent, so repeated real-agent runs and the resource measurements listed in Phase 5 remain future work. Do not treat Phase 7 as complete based on the experimental Claude Code hook.
 
-## Initial integration targets
+## Runtime integration direction
 
-The first runtime integration targets are **Claude Code, ECC Harness, and Strata**. The initial local coding-model evaluation target is **ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF**. The reference local decision-provider evaluation candidate is **LiquidAI/d1-2B**; **Jev** is a reference provider candidate. These are evaluation targets, not claims of current support or compatibility.
+The proposed integration direction is a runtime adapter framework, with **Claude Code Agent** as the first-class design target and existing integration. The adapter work should formalize and isolate the current Claude Code behavior without overstating its coverage. **Agents Window, Strata, OpenCode, Codex, Cline, and Aider** are runtimes to evaluate individually, not first-class targets by default. ECC Harness is not the target integration architecture; [ADR-012](DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters) proposes a staged transition and remains subject to acceptance and migration evidence. None of the candidate runtimes imply current compatibility. The initial local coding-model evaluation target is **ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF**. The reference local decision-provider evaluation candidate is **LiquidAI/d1-2B**; **Jev** is a reference provider candidate.
 
 ---
 
@@ -212,20 +212,22 @@ The listed projects are candidates, not current dependencies or validated compat
 
 ---
 
-# Phase 7 — Agent Integrations
+# Phase 7 — Runtime Adapter Integrations
 
-**Objective:** Bring governance directly into agent workflows.
+**Objective:** Expose Curator governance in agent workflows through optional adapters, without transferring execution or model invocation out of the host agent.
 
 > Agent integrations may consume [Agent Execution Rules](integrations/AGENT_EXECUTION_RULES.md) as a standard execution profile for context-aware development agents.
 
-## Initial Integrations
+This adapter direction is proposed in [ADR-012](DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters). Define and test the runtime-neutral contract and capability reporting before claiming runtime support.
 
-- [x] Claude Code — limited experimental `UserPromptSubmit` hook; validation ongoing (not a full agent integration)
-- [ ] ECC Harness
+## First-Class Runtime Target
+
+- [x] Claude Code Agent — existing limited `UserPromptSubmit` integration; formalize and isolate behind the runtime adapter boundary
+
+## Runtime Adapter Candidates
+
+- [ ] Agents Window — evaluate available integration points and contract fit
 - [ ] Strata
-
-## Other Potential Integrations
-
 - [ ] OpenCode
 - [ ] Codex
 - [ ] Cline
@@ -233,7 +235,10 @@ The listed projects are candidates, not current dependencies or validated compat
 
 ## Success Criteria
 
-- Integrations expose governance within their agent workflows
+- A versioned, runtime-neutral contract and explicit adapter capability model are tested independently of runtime SDKs
+- Runtime-specific code and dependencies are isolated from the Curator core
+- Integrations expose only capabilities supported by their host runtime
+- The host agent retains ownership of planning, tool execution, and model invocation
 - Evaluated in long-running autonomous coding sessions against an ungoverned baseline
 - Task completion and test outcomes are not worse while context use is evaluated
 - Evaluation includes the 32 GB RAM / 16 GB VRAM target profile and 64K and 128K context windows
@@ -279,27 +284,27 @@ Within a fixed token budget
 
 ---
 
-# Long-Term Vision
+# Proposed Ecosystem Direction
 
 ```text
-ECC Curator
+ecc-curator
         ↓
 Context Governance
 
-ECC Memory
+ecc-memory
         ↓
 Knowledge Governance
 
-ECC Router
+ecc-router
         ↓
 Model Governance
 
-ECC Harness
+runtime-adapters
         ↓
-Agent Orchestration
+Host agent runtimes
 ```
 
-ECC Curator becomes the context layer for the broader ECC ecosystem.
+This direction is proposed, not accepted or implemented. Governance remains in ECC Curator, execution remains in each host agent, and runtime adapters are replaceable integration components. See [ADR-012](DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters).
 
 ---
 

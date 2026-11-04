@@ -21,9 +21,9 @@ Drop
 
 ## Who and what this is for
 
-The primary use case is long-running, autonomous coding work on local models and commodity hardware. Initial integration targets are **Claude Code, ECC Harness, and Strata**. The initial evaluation profile targets **ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF**, future local coding models, **32 GB RAM, 16 GB VRAM**, and **64K or 128K context windows**.
+The primary use case is long-running, autonomous coding work on local models and commodity hardware. Runtime integration is intended to use optional, replaceable adapters, with **Claude Code Agent** as the first-class design target and existing integration. **Agents Window, Strata, OpenCode, Codex, Cline, and Aider** are among the runtimes under consideration. The initial evaluation profile targets **ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF**, future local coding models, **32 GB RAM, 16 GB VRAM**, and **64K or 128K context windows**.
 
-These are design and evaluation targets, not claims of current compatibility, benchmarked performance, or validated savings. The repository currently describes the proposed architecture and evaluation approach; integrations and productivity results are not yet established.
+These are design and evaluation targets, not claims of current compatibility, benchmarked performance, or validated savings. The runtime adapter direction is proposed in [ADR-012](docs/DECISIONS.md#adr-012-replace-standalone-ecc-harness-with-runtime-adapters); adapter support is not yet established. The repository currently describes the architecture and evaluation approach; productivity results are not yet established.
 
 ECC Curator owns governance. Optional decision providers can propose answers for ambiguous decisions, but policy, validation, and final decisions stay in the Governor:
 
@@ -68,11 +68,11 @@ Governance decision
 Context assembled for the next model call
 ```
 
-The design is deterministic-first, model- and runtime-agnostic, and local-first. It preserves the host agent's responsibility for coding and execution; ECC Curator's proposed responsibility is governing the context supplied to that work.
+The design is deterministic-first, model- and runtime-agnostic, and local-first. It preserves the host agent's responsibility for coding and execution; ECC Curator's proposed responsibility is governing the context supplied to that work. Runtime-specific integration belongs in optional adapters, not in the governance core.
 
 ## Project status
 
-This repository includes a deterministic TypeScript MVP, Claude Code `UserPromptSubmit` and `PreCompact` hooks, opt-in metadata-only logging, and a callback-based evaluation harness for local measurement. The prompt hook appends explicitly selected governed context without changing Claude Code's model routing. The integration is experimental, not production-ready, and makes no performance or quality claims.
+This repository includes a deterministic TypeScript MVP, experimental Claude Code `UserPromptSubmit` and `PreCompact` hooks, opt-in metadata-only logging, and a callback-based evaluation harness for local measurement. The prompt hook appends explicitly selected governed context without changing Claude Code's model routing. The integration is not a general runtime adapter framework or a production-ready integration, and makes no performance or quality claims.
 
 ## Documentation
 

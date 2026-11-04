@@ -2,7 +2,7 @@
 
 > Operational guidance for long-running coding agents working on ECC Curator and future ECC ecosystem repositories. These rules describe agent behavior; they are not runtime capabilities implemented by ECC Curator.
 
-This guidance applies to Claude Code, Copilot Agent, OpenCode, Codex, Aider, and future ECC Harness integrations. Adapt the mechanics to the agent's available tools without weakening the context-survival objectives.
+This guidance applies to Claude Code, Copilot Agent, Agents Window, Strata, OpenCode, Codex, Cline, Aider, and future runtime integrations. Adapt the mechanics to the agent's available tools without weakening the context-survival objectives.
 
 ## Objective
 
@@ -330,7 +330,7 @@ This document complements ECC Curator's context-governance philosophy by applyin
 - It is not part of Governor behavior.
 - It is not Inventory policy.
 - It is not Prompt Assembler logic.
-- It is guidance for development agents, including Claude Code, Copilot Agent, OpenCode, Codex, Aider, and future ECC Harness integrations.
+- It is guidance for development agents, including Claude Code, Copilot Agent, Agents Window, Strata, OpenCode, Codex, Cline, and Aider.
 
 It does not define ECC Curator runtime policy, inventory TTL behavior, context-item lifecycle, or automatic compaction handling. Runtime governance contracts remain specified in the [Governor Algorithm](../GOVERNOR_ALGORITHM.md), [Inventory API](../INVENTORY_API.md), and [Prompt Assembler](../PROMPT_ASSEMBLER.md).
 
