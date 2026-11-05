@@ -1,0 +1,170 @@
+{
+ "capturedAt": "2026-11-05T12:28:02.422Z",
+ "nodeVersion": "v24.22.1",
+ "agentModulePath": "C:\\ddias-dev\\ecc-curator\\evaluation\\agents\\codex\\agent-codex-cli.mjs",
+ "agentSettings": {
+  "agent": "codex-cli exec (0.166.0, vendored win32 binary via npm @openai/codex)",
+  "model": "account/config default (pin with CODEX_MODEL; undetermined pre-auth, see environment.md)",
+  "sandbox": "workspace-write (writable inside cwd workspace; approval_policy never in non-interactive exec)",
+  "approvalPolicy": "never",
+  "promptChannel": "stdin via `-` positional (write + close; EOF ends input) — argv hangs codex exec, see measured finding above",
+  "ephemeral": true,
+  "ignoreUserConfig": true,
+  "timeoutMs": 240000,
+  "rawEvidenceDir": "evaluation/agents/codex/results/raw"
+ },
+ "envNote": "agent callback inherits the parent process environment in full (model endpoint auth); recorded per docs/BENCHMARK_DATASETS.md",
+ "datasetDirectory": "benchmarks",
+ "datasetState": [
+  {
+   "file": "benchmarks\\coding\\feature-work-greeting.json",
+   "sha256": "783182620657cec2bd0695500e4345a00f0caaebf68054796e1123ef138efb98"
+  },
+  {
+   "file": "benchmarks\\coding\\issue-fix-boundary.json",
+   "sha256": "0a9a6b2fd2cf061ea228038eba30986ee5880d08bfba444a2eea42a13ac9509d"
+  },
+  {
+   "file": "benchmarks\\coding\\refactor-rename-helper.json",
+   "sha256": "d4ca46701dd86b3fba47691ca0cf1bf5ec500b827a9530f3acf72770d1d3e5fc"
+  }
+ ],
+ "repeats": 1,
+ "orderPattern": "rep0 baseline-first, rep1 governed-first, alternating",
+ "runs": [
+  {
+   "workloadId": "feature-work-greeting",
+   "rep": 0,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\agents\\codex\\results\\feature-work-greeting-attempt2-r0.json",
+   "baseline": {
+    "taskCompleted": false,
+    "testsPassed": 0,
+    "testsTotal": 1,
+    "promptTokens": 368,
+    "errors": 1,
+    "errorStage": "agent"
+   },
+   "governed": {
+    "taskCompleted": false,
+    "testsPassed": 0,
+    "testsTotal": 1,
+    "promptTokens": 613,
+    "itemsKept": 4,
+    "itemsDropped": 1,
+    "errors": 1,
+    "errorStage": "agent"
+   }
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "rep": 0,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\agents\\codex\\results\\issue-fix-boundary-attempt2-r0.json",
+   "baseline": {
+    "taskCompleted": false,
+    "testsPassed": 0,
+    "testsTotal": 1,
+    "promptTokens": 514,
+    "errors": 1,
+    "errorStage": "agent"
+   },
+   "governed": {
+    "taskCompleted": false,
+    "testsPassed": 0,
+    "testsTotal": 1,
+    "promptTokens": 899,
+    "itemsKept": 6,
+    "itemsDropped": 1,
+    "errors": 1,
+    "errorStage": "agent"
+   }
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "rep": 0,
+   "order": [
+    "baseline",
+    "governed"
+   ],
+   "resultFile": "C:\\ddias-dev\\ecc-curator\\evaluation\\agents\\codex\\results\\refactor-rename-helper-attempt2-r0.json",
+   "baseline": {
+    "taskCompleted": false,
+    "testsPassed": 0,
+    "testsTotal": 1,
+    "promptTokens": 535,
+    "errors": 1,
+    "errorStage": "agent"
+   },
+   "governed": {
+    "taskCompleted": false,
+    "testsPassed": 0,
+    "testsTotal": 1,
+    "promptTokens": 858,
+    "itemsKept": 6,
+    "itemsDropped": 2,
+    "errors": 1,
+    "errorStage": "agent"
+   }
+  }
+ ],
+ "summaries": [
+  {
+   "workloadId": "feature-work-greeting",
+   "reps": 1,
+   "baselineCompleted": 0,
+   "baselineTestsPass": 0,
+   "governedCompleted": 0,
+   "governedTestsPass": 0,
+   "promptTokens": {
+    "baseline": [
+     368
+    ],
+    "governed": [
+     613
+    ]
+   },
+   "errors": []
+  },
+  {
+   "workloadId": "issue-fix-boundary",
+   "reps": 1,
+   "baselineCompleted": 0,
+   "baselineTestsPass": 0,
+   "governedCompleted": 0,
+   "governedTestsPass": 0,
+   "promptTokens": {
+    "baseline": [
+     514
+    ],
+    "governed": [
+     899
+    ]
+   },
+   "errors": []
+  },
+  {
+   "workloadId": "refactor-rename-helper",
+   "reps": 1,
+   "baselineCompleted": 0,
+   "baselineTestsPass": 0,
+   "governedCompleted": 0,
+   "governedTestsPass": 0,
+   "promptTokens": {
+    "baseline": [
+     535
+    ],
+    "governed": [
+     858
+    ]
+   },
+   "errors": []
+  }
+ ]
+}
